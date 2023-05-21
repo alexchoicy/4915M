@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
-    services.AddScoped<IMemberServices, MemberServices>();
+    services.AddScoped<IOrderServices, OrderServices>();
 }
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

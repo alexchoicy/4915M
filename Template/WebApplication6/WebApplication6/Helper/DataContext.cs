@@ -20,6 +20,6 @@ namespace WebApplication6.Helper
 
         }
 
-        public DbSet<Member> Member { get; set; }
+        public DbSet<Order> Member { get; set; }
     }
 }
