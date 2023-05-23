@@ -10515,11 +10515,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexchoicy\\source\\repos\\WebApplication6\\WebApplication6\\WebApplication6.csproj",
+      "projectUniqueName": "D:\\IVE\\GroupProject\\ITP4915M\\Template\\WebApplication6\\WebApplication6\\WebApplication6.csproj",
       "projectName": "WebApplication6",
-      "projectPath": "C:\\Users\\alexchoicy\\source\\repos\\WebApplication6\\WebApplication6\\WebApplication6.csproj",
+      "projectPath": "D:\\IVE\\GroupProject\\ITP4915M\\Template\\WebApplication6\\WebApplication6\\WebApplication6.csproj",
       "packagesPath": "C:\\Users\\alexchoicy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexchoicy\\source\\repos\\WebApplication6\\WebApplication6\\obj\\",
+      "outputPath": "D:\\IVE\\GroupProject\\ITP4915M\\Template\\WebApplication6\\WebApplication6\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
