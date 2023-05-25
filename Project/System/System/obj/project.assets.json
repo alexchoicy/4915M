@@ -11013,11 +11013,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IVE\\GroupProject\\ITP4915M\\Project\\System\\System\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\alexchoicy\\IVE\\GroupProject\\4915M\\Project\\System\\System\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "D:\\IVE\\GroupProject\\ITP4915M\\Project\\System\\System\\Server.csproj",
+      "projectPath": "C:\\Users\\alexchoicy\\IVE\\GroupProject\\4915M\\Project\\System\\System\\Server.csproj",
       "packagesPath": "C:\\Users\\alexchoicy\\.nuget\\packages\\",
-      "outputPath": "D:\\IVE\\GroupProject\\ITP4915M\\Project\\System\\System\\obj\\",
+      "outputPath": "C:\\Users\\alexchoicy\\IVE\\GroupProject\\4915M\\Project\\System\\System\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11033,7 +11033,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11114,7 +11113,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

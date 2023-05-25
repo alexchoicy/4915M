@@ -19,8 +19,8 @@ namespace Server.Helper
         {
             var claims = new List<Claim>
             {
-                new(ClaimTypes.Name, staffId),
-                new(ClaimTypes.Role, PositionName)
+                new Claim("customStaffId", staffId),
+                new Claim("customPositionName", PositionName)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:KEY"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -29,8 +29,8 @@ namespace Server.Helper
                 expires: DateTime.Now.AddHours(5),
                 signingCredentials: creds
             );
-            var token = new JwtSecurityTokenHandler().WriteToken(jwt);
-            return token;
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(jwt);
         }
     }
 }

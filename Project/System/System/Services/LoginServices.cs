@@ -53,17 +53,16 @@ namespace Server.Services
             var request = query.FirstOrDefault();
             data = new LoginSuccModel();
             var account = _dataContext.account.FirstOrDefault(a => a.StaffID == ID);
-            if (request.AccountLock > DateTime.Now)
-            {
-                data.accountLock = request.AccountLock;
-                return LoginResult.LoginLater;
-            }
             if (request == null)
             {
                 data = null;
                 return LoginResult.UserNotFound;
             }
-
+            if (request.AccountLock > DateTime.Now)
+            {
+                data.accountLock = request.AccountLock;
+                return LoginResult.LoginLater;
+            }
             if (request.LoginCount >= 5)
             {
                 if (account != null)
@@ -76,7 +75,6 @@ namespace Server.Services
                 }
                 return LoginResult.UserNotFound;
             }
-
             if (!password.Equals(request.password))
             {
                 if (account != null)

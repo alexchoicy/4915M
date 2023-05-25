@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Server.Controllers.Input;
 using Server.Model.Dto;
 using Server.Services;
 namespace Server.Controllers
 {
     [ApiController]
+    [AllowAnonymous]
     [Route("api/Login")]
     public class LoginController : ControllerBase
     {
@@ -18,6 +20,10 @@ namespace Server.Controllers
         {
             try
             {
+                if (data.UserID == "String" || data.UserID == "")
+                {
+                    return NoContent();
+                }
                 LoginSuccModel succdata;
                 var result = _loginServices.Login(data.UserID, data.Password, out succdata);
                 if (result == LoginResult.UserNotFound)
