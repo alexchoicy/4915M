@@ -7,21 +7,21 @@ namespace WebApplication6.Controllers
     [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
-        private IOrderServices _memberServices;
+        private IOrderServices _orderServices;
 
-        public OrderController(IOrderServices memberServices)
+        public OrderController(IOrderServices orderServices)
         {
-            _memberServices = memberServices;
+            _orderServices = orderServices;
         }
         [HttpGet]
         public IActionResult GetAll(){
-            return Ok(_memberServices.GetAll());
+            return Ok(_orderServices.GetAll());
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(_memberServices.GetById(id));
+            return Ok(_orderServices.GetById(id));
         }
     }
 }
