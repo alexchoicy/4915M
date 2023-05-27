@@ -19,14 +19,60 @@ namespace Server.Model
             options.UseMySql(conntectionString,ServerVersion.AutoDetect(conntectionString));
 
         }
-        public DbSet<Staff> staff { get; set; }
         public DbSet<Account> account { get; set; }
+        public DbSet<Staff> staff { get; set; }
         public DbSet<Dept> dept { get; set; }
         public DbSet<Position> position { get; set; }
+        public DbSet<item> item { get; set; }
+        public DbSet<Order> order { get; set; }
+        public DbSet<Restaurant> restaurant { get; set; }
+        public DbSet<Item_Order> item_order { get; set; }
+        public DbSet<Suppliers> suppliers { get; set; }
+        public DbSet<Mapping> mapping { get; set; }
+        public DbSet<RestaurantType> RestaurantType { get; set; }
+        public DbSet<AccessControl> AccessControl { get; set; }
+        public DbSet<Category> category { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Staff>().ToTable("staff");
+            modelBuilder.Entity<Account>()
+                .ToTable("account");
+
+            modelBuilder.Entity<Staff>()
+                .ToTable("staff");
+
+            modelBuilder.Entity<Dept>()
+                .ToTable("dept");
+
+            modelBuilder.Entity<Position>()
+                .ToTable("position");
+
+            modelBuilder.Entity<item>()
+                .ToTable("item");
+
+            modelBuilder.Entity<Order>()
+                .ToTable("order");
+
+            modelBuilder.Entity<Restaurant>()
+                .ToTable("restaurant");
+
+            modelBuilder.Entity<Item_Order>()
+                .ToTable("item_order");
+
+            modelBuilder.Entity<Suppliers>()
+                .ToTable("suppliers");
+
+            modelBuilder.Entity<Mapping>()
+                .ToTable("mapping");
+
+            modelBuilder.Entity<RestaurantType>()
+                .ToTable("RestaurantType");
+
+            modelBuilder.Entity<AccessControl>()
+                .ToTable("AccessControl").HasNoKey();
+
+            modelBuilder.Entity<Category>()
+                .ToTable("category");
         }
     }
 }

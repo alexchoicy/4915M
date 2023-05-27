@@ -18,7 +18,7 @@ namespace Server.Model.Entity
         [Required]
         public String LastName { get; set; }
         [Column(TypeName = "char(1)")]
-        public sexEnum sex { get; set; }
+        public string sex { get; set; }
         [Required]
         public String Phone { get; set; }
         [Required]
@@ -33,8 +33,4 @@ namespace Server.Model.Entity
         public virtual Dept Dept { get; set; }
     }
 
-    public enum sexEnum
-    {
-        M,F
-    }
 }

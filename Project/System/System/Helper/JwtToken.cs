@@ -19,8 +19,8 @@ namespace Server.Helper
         {
             var claims = new List<Claim>
             {
-                new Claim("customStaffId", staffId),
-                new Claim("customPositionName", PositionName)
+                new Claim(ClaimTypes.Name, staffId),
+                new Claim(ClaimTypes.Role, PositionName)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:KEY"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
