@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Server.Controllers.Input;
 using Server.Model.Entity;
 
 namespace Server.Model.Dto
@@ -8,6 +9,15 @@ namespace Server.Model.Dto
         public ItemMap()
         {
             CreateMap<item, ItemDto>();
+
+
+            CreateMap<ItemModel, item>()
+                .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.itemName));
+
+
+            CreateMap<ItemModel, Restaurant_item>()
+                .ForMember(dest => dest.restaurantID,
+                    opt => opt.MapFrom(src => "WH000"));
         }
     }
 
@@ -18,5 +28,18 @@ namespace Server.Model.Dto
         public string name { get; set; }
         public double price { get; set; }
         public string VirtualID { get; set; }
+        public int quantity { get; set; }
+
+    }
+
+    public class EditItemDto
+    {
+        public string itemID { get; set; }
+        public string? CategoryID { get; set; }
+        public string? ContactID { get; set; }
+        public string? VirtualID { get; set; }
+        public string? name { get; set; }
+        public double? price { get; set; }
+
     }
 }

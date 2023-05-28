@@ -30,6 +30,7 @@ namespace Server.Model.Dto
                 .ForMember(dest => dest.date, opt => opt.MapFrom(src => DateTime.Now.Date))
                 .ForMember(dest => dest.time, opt => opt.MapFrom(src => DateTime.Now.TimeOfDay))
                 .ForMember(dest => dest.remark, opt => opt.MapFrom(src => src.remark));
+
         }
     }
     public class OrderDto
@@ -42,21 +43,19 @@ namespace Server.Model.Dto
         public bool MapLocked { get; set; }
     }
 
-    // public class MappingIDResolver : IValueResolver<OrderModel, Order, string>
-    // {
-    //     private readonly DataContext _dataContext;
-
-    //     public MappingIDResolver(DataContext dataContext)
-    //     {
-    //         _dataContext = dataContext;
-    //     }
-
-    //     public string Resolve(OrderModel source, Order destination, string destMember, ResolutionContext context)
-    //     {
-    //         // Check if there is an available (not Locked) mapping in the database
-    //         var availableMapping = _dataContext.mapping.FirstOrDefault(m => !m.Locked);
-
-    //         return availableMapping.MappingId.ToString();
-    //     }
-    // }
+    public class OrderDtoWithItems
+    {
+        public string OrderID { get; set; }
+        public string status { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public TimeSpan CreateTime { get; set; }
+        public bool emergency { get; set; }
+        public List<OrderDtoWithItemsData> OrderItems { get; set; }
+    }
+    public class OrderDtoWithItemsData
+    {
+        public string ItemID { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+    }
 }

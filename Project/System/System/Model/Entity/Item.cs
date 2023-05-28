@@ -6,27 +6,33 @@ namespace Server.Model.Entity
     public class item
     {
         [Required]
-        public string itemId { get; set; }
+        public string ItemID { get; set; }
         [Required]
         public string SupplierID { get; set; }
         public string CategoryID { get; set; }
+        public string ContactID { get; set; }
         [Required]
         public string name { get; set; }
         [Required]
         public double price { get; set; }
         [Required]
         public string VirtualID { get; set; }
+
+
+
         [ForeignKey("SupplierID")]
         public virtual Suppliers Suppliers { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Category Category { get; set; }
+        [ForeignKey("ContactID")]
+        public virtual Contact contact { get; set; }
     }
 
     public class Category
     {
         public string CategoryID { get; set; }
-        public string name { get; set; }
-        public string remark { get; set; }
+        public string? name { get; set; }
+        public string? remark { get; set; }
     }
     
     public class AccessControl
@@ -40,5 +46,22 @@ namespace Server.Model.Entity
         [ForeignKey("typeID")]
         public virtual RestaurantType RestaurantType { get; set; }
     }
+
+    public class Restaurant_item
+    {
+        [Key]
+        public string restaurantID { get; set; }
+        [Key]
+        public string itemID { get; set; }
+        public int Quantity { get; set; }
+        [ForeignKey("restaurantID")]
+        public virtual Restaurant restaurant { get; set; }
+        [ForeignKey("itemID")]
+        public virtual item Item { get; set; }
+
+    }
+
+
+
 
 }

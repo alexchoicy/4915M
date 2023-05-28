@@ -41,6 +41,7 @@ builder.Services.AddAutoMapper(typeof(Program));
     services.AddScoped<ITestServices, TestServices>();
     services.AddScoped<IItemServices, ItemServices>();
     services.AddScoped<IOrderServices, OrderServices>();
+    services.AddScoped<ICategoryServices,CategoryServices>();
 }
 builder.Services.AddScoped<JwtToken>();
 

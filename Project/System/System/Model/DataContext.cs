@@ -32,6 +32,7 @@ namespace Server.Model
         public DbSet<RestaurantType> RestaurantType { get; set; }
         public DbSet<AccessControl> AccessControl { get; set; }
         public DbSet<Category> category { get; set; } 
+        public DbSet<Restaurant_item> restaurant_item { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -73,6 +74,8 @@ namespace Server.Model
 
             modelBuilder.Entity<Category>()
                 .ToTable("category");
+            modelBuilder.Entity<Restaurant_item>()
+                .ToTable("restaurant_item").HasKey("restaurantID", "itemID");
         }
     }
 }

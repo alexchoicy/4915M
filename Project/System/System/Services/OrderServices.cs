@@ -15,6 +15,7 @@ namespace Server.Services
         public bool CreateOrder(string staffid, OrderModel orderData);
         public bool EditOrder(string staffid, OrderModel orderData);
         public DelReturn DeleteOrder(string staffid, string orderid);
+        public OrderDtoWithItems GetOrderInfo(string orderID);
     }
     public class OrderServices : IOrderServices
     {
@@ -38,6 +39,37 @@ namespace Server.Services
             orderData = query;
             return true;
         }
+
+        public OrderDtoWithItems GetOrderInfo(string orderID)
+        {
+            var orderData = (from orderItems in _dataContext.item_order
+                join order in _dataContext.order on orderItems.orderID equals order.orderID
+                join item in _dataContext.item on orderItems.itemID equals item.ItemID
+                where order.orderID == orderID
+                select new OrderDtoWithItemsData
+                {
+                    ItemID = item.ItemID,
+                    Name = item.name,
+                    Quantity = orderItems.quantity
+                }).ToList();
+            var orderInfo = _dataContext.order.Find(orderID);
+            var orderDataDto = new OrderDtoWithItems
+            {
+                OrderID = orderInfo.orderID,
+                status = orderInfo.status,
+                CreateTime = orderInfo.time,
+                CreatedDate = orderInfo.date,
+                OrderItems = orderData
+            };
+            return orderDataDto;
+        }
+
+
+
+
+
+
+
 
         public bool CreateOrder(string staffid, OrderModel orderData)
         {

@@ -28,10 +28,13 @@ namespace Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetOrderInfo()
+        public IActionResult GetOrderInfo(string id)
         {
-            return Ok();
+            var info = _orderServices.GetOrderInfo(id);
+            return Ok(info);
         }
+
+
         [HttpPost]
         public IActionResult CreateOrder([FromBody] OrderModel orderdata)
         {
@@ -39,7 +42,7 @@ namespace Server.Controllers
             _orderServices.CreateOrder(userID, orderdata);
             return Ok();
         }
-
+        
         [HttpPut("{id}")]
         public IActionResult EditOrder([FromBody] OrderModel orderdata)
         {

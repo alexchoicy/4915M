@@ -5,7 +5,7 @@ namespace Server.Model.Entity
     public class Suppliers
     {
         [Key]
-        public string SupId { get; set; }
+        public string SupplierID { get; set; }
 
         public string SupName { get; set; }
 
