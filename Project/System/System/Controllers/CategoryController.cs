@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Server.Controllers.Input;
 using Server.Model.Dto;
 using Server.Model.Entity;
 using Server.Services;
@@ -46,6 +47,24 @@ namespace Server.Controllers
             _ = _categoryServices.EditCate(category);
             return Ok();
         }
+        [HttpPut("item")]
+        public IActionResult EditCateItem([FromBody] List<CategoryModel> itemdata)
+        {
 
+            _ = _categoryServices.EditCateItem(itemdata);
+            return Ok();
+        }
+
+        [HttpDelete("item/{id}")]
+        public IActionResult DeleteCateItem(string id)
+        {
+
+            _ = _categoryServices.DeleteCateItem(id);
+
+
+
+
+            return Ok();
+        }
     }
 }

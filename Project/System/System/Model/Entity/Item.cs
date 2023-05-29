@@ -9,7 +9,7 @@ namespace Server.Model.Entity
         public string ItemID { get; set; }
         [Required]
         public string SupplierID { get; set; }
-        public string CategoryID { get; set; }
+        public string? CategoryID { get; set; }
         public string ContactID { get; set; }
         [Required]
         public string name { get; set; }

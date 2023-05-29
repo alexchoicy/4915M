@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Server.Controllers.Input;
 using Server.Model;
 using Server.Model.Dto;
 using Server.Model.Entity;
@@ -13,6 +14,8 @@ namespace Server.Services
         public CategoryItemDto GetByID(string id);
         public bool CreateCate(Category category);
         public bool EditCate(Category category);
+        public bool EditCateItem(List<CategoryModel> itemdata);
+        public bool DeleteCateItem(string id);
     }
 
 
@@ -99,8 +102,41 @@ namespace Server.Services
             }
         }
 
+        public bool EditCateItem(List<CategoryModel> itemdata)
+        {
+            try
+            {
+                foreach(var item in itemdata)
+                {
+                    var iteminfo = _dataContext.item.Find(item.ItemID);
+                    iteminfo.CategoryID = item.CategoryID;
+                    _dataContext.item.Update(iteminfo);
+                }
 
+                _dataContext.SaveChanges ();
+                return true;
 
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+        public bool DeleteCateItem(string id)
+        {
+            try
+            {   
+                var iteminfo = _dataContext.item.Find(id);
+                iteminfo.CategoryID = null;
+                _dataContext.item.Update(iteminfo);
+                _dataContext.SaveChanges();
+            return true;
+            }catch( Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
     }
 }
