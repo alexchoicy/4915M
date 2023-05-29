@@ -48,7 +48,7 @@ namespace Server.Controllers
             return Ok();
         }
         [HttpPut("item")]
-        public IActionResult EditCateItem([FromBody] List<CategoryModel> itemdata)
+        public IActionResult EditCateItem([FromBody] List<CategoryItemModel> itemdata)
         {
 
             _ = _categoryServices.EditCateItem(itemdata);
@@ -60,10 +60,20 @@ namespace Server.Controllers
         {
 
             _ = _categoryServices.DeleteCateItem(id);
+            return Ok();
+        }
 
+        [HttpPost("Type")]
+        public IActionResult Add([FromBody] CategoryAccessControlModel accessControl)
+        {
+            _ = _categoryServices.AddCateType(accessControl);
+            return Ok();
+        }
 
-
-
+        [HttpDelete("Type")]
+        public IActionResult Remove([FromBody] CategoryAccessControlModel accessControl)
+        {
+            _ = _categoryServices.AddCateType(accessControl); ;
             return Ok();
         }
     }

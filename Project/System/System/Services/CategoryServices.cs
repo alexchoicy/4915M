@@ -14,8 +14,11 @@ namespace Server.Services
         public CategoryItemDto GetByID(string id);
         public bool CreateCate(Category category);
         public bool EditCate(Category category);
-        public bool EditCateItem(List<CategoryModel> itemdata);
+        public bool EditCateItem(List<CategoryItemModel> itemdata);
         public bool DeleteCateItem(string id);
+
+        public bool AddCateType(CategoryAccessControlModel accessControl);
+        public bool RemoveCateType(CategoryAccessControlModel accessControl);
     }
 
 
@@ -102,7 +105,7 @@ namespace Server.Services
             }
         }
 
-        public bool EditCateItem(List<CategoryModel> itemdata)
+        public bool EditCateItem(List<CategoryItemModel> itemdata)
         {
             try
             {
@@ -137,6 +140,37 @@ namespace Server.Services
                 return false;
             }
         }
+
+        public bool AddCateType(CategoryAccessControlModel accessControl)
+        {
+            try
+            {
+                var ac = _mapper.Map<AccessControl>(accessControl);
+                _dataContext.AccessControl.Add(ac);
+                _dataContext.SaveChanges();
+                return true;
+            }catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool RemoveCateType(CategoryAccessControlModel accessControl)
+        {
+            try
+            {
+                var ac = _mapper.Map<AccessControl>(accessControl);
+                _dataContext.AccessControl.Remove(ac);
+                _dataContext.SaveChanges();
+                return true;
+            }catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
 
     }
 }
