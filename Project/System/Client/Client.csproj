@@ -85,6 +85,12 @@
     <Compile Include="Model\Receive\UserInfoModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Agreement\ShowAgreement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Agreement\ShowAgreement.Designer.cs">
+      <DependentUpon>ShowAgreement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,8 +132,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Agreement\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
