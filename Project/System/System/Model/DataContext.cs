@@ -70,7 +70,7 @@ namespace Server.Model
                 .ToTable("RestaurantType");
 
             modelBuilder.Entity<AccessControl>()
-                .ToTable("AccessControl").HasNoKey();
+                .ToTable("AccessControl").HasKey("categoryID","typeID");
 
             modelBuilder.Entity<Category>()
                 .ToTable("category");

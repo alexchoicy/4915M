@@ -145,7 +145,11 @@ namespace Server.Services
         {
             try
             {
-                var ac = _mapper.Map<AccessControl>(accessControl);
+                var ac = new AccessControl
+                {
+                    categoryID = accessControl.CategoryID,
+                    typeID = accessControl.TypeID
+                };
                 _dataContext.AccessControl.Add(ac);
                 _dataContext.SaveChanges();
                 return true;
@@ -160,7 +164,11 @@ namespace Server.Services
         {
             try
             {
-                var ac = _mapper.Map<AccessControl>(accessControl);
+                var ac = new AccessControl
+                {
+                    categoryID = accessControl.CategoryID,
+                    typeID = accessControl.TypeID
+                };
                 _dataContext.AccessControl.Remove(ac);
                 _dataContext.SaveChanges();
                 return true;

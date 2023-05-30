@@ -25,7 +25,7 @@ namespace Server.Helper.CornJob
             int newMappingId = GenerateNewMappingId();
 
             // Save the new mapping in the database
-            var newMapping = new Mapping { MappingId = newMappingId, Locked = false };
+            var newMapping = new Mapping { MappingId = newMappingId, Locked = false,status = "P"};
             _dataContext.mapping.Add(newMapping);
             _dataContext.SaveChanges();
             Console.WriteLine("i run");

@@ -73,7 +73,7 @@ namespace Server.Controllers
         [HttpDelete("Type")]
         public IActionResult Remove([FromBody] CategoryAccessControlModel accessControl)
         {
-            _ = _categoryServices.AddCateType(accessControl); ;
+            _ = _categoryServices.RemoveCateType(accessControl); ;
             return Ok();
         }
     }
