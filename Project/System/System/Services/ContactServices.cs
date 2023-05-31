@@ -9,7 +9,7 @@ namespace Server.Services
     public interface IContractServices
     {
         public List<ContractDto> GetAll();
-        public ContractDto GetById(string id);
+        public ContractDtoWithItem GetById(string id);
 
         public bool MakeNewRec(MakeNewContractModel data);
 
@@ -34,11 +34,32 @@ namespace Server.Services
             return ontractmapData;
         }
 
-        public ContractDto GetById(string id)
+        public ContractDtoWithItem GetById(string id)
         {
             var contractdata = _dataContext.contract.Find(id);
             var contractmapData = _mapper.Map<ContractDto>(contractdata);
-            return contractmapData;
+            var contractItemData = _dataContext.item.Where(x => x.ContractID == id).ToList();
+            var itemsData = new List<ContractDtoItem>();
+            var data = new ContractDtoWithItem();
+            data.Contract = contractmapData;
+            if (contractItemData != null)
+            {
+                foreach (var itemData in contractItemData)
+                {
+                    var itemq = _dataContext.restaurant_item.Where(x => x.itemID == itemData.ItemID && x.restaurantID == "WH000").FirstOrDefault();
+                    var contractItem = new ContractDtoItem
+                    {
+                        itemID = itemData.ItemID,
+                        name = itemData.name,
+                        price = itemData.price,
+                        CategoryID = itemData.CategoryID,
+                        quantity = itemq.Quantity
+                    };
+                    itemsData.Add(contractItem);
+                }
+                data.items = itemsData;
+            };
+            return data;
         }
 
         public bool MakeNewRec(MakeNewContractModel data)

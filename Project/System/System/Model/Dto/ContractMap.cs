@@ -24,4 +24,19 @@ namespace Server.Model.Dto
         public string SupplierID { get; set; }
         public string? StaffID { get; set; }
     }
+
+    public class ContractDtoWithItem
+    {
+        public ContractDto Contract { get; set; }
+        public List<ContractDtoItem>? items { get; set; }
+    }
+
+    public class ContractDtoItem
+    {
+        public string itemID { get; set; }
+        public string? name { get; set; }
+        public double? price { get; set; }
+        public int quantity { get; set; }
+        public string? CategoryID { get; set; }
+    }
 }

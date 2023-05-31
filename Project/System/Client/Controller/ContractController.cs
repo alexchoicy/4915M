@@ -67,7 +67,7 @@ namespace Client.Controller
             return true;
         }
 
-        public async Task<ContractModel> GetDetail(string id)
+        public async Task<ContractModelWithItem> GetDetail(string id)
         {
             var request = new RestRequest("/api/contract/" + id)
                 .AddHeader("Authorization", GlobalData.UserInfo.Token);
@@ -76,7 +76,7 @@ namespace Client.Controller
                 var response = await ApiClient.client.ExecuteAsync(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    var detail = JsonConvert.DeserializeObject<ContractModel>(response.Content);
+                    var detail = JsonConvert.DeserializeObject<ContractModelWithItem>(response.Content);
                     return detail;
                 }
             }

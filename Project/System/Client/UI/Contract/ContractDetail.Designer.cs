@@ -42,12 +42,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cdDownBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.itemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // itemGridView
             // 
             this.itemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemID,
+            this.itemCategoryID,
+            this.itemName,
+            this.itemQuantity,
+            this.itemPrice});
             this.itemGridView.Location = new System.Drawing.Point(39, 146);
             this.itemGridView.Name = "itemGridView";
             this.itemGridView.ReadOnly = true;
@@ -167,6 +178,36 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Download Docs";
             // 
+            // itemID
+            // 
+            this.itemID.HeaderText = "ID";
+            this.itemID.Name = "itemID";
+            this.itemID.ReadOnly = true;
+            // 
+            // itemCategoryID
+            // 
+            this.itemCategoryID.HeaderText = "Category ID";
+            this.itemCategoryID.Name = "itemCategoryID";
+            this.itemCategoryID.ReadOnly = true;
+            // 
+            // itemName
+            // 
+            this.itemName.HeaderText = "Name";
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
+            // 
+            // itemQuantity
+            // 
+            this.itemQuantity.HeaderText = "Quantity";
+            this.itemQuantity.Name = "itemQuantity";
+            this.itemQuantity.ReadOnly = true;
+            // 
+            // itemPrice
+            // 
+            this.itemPrice.HeaderText = "Price";
+            this.itemPrice.Name = "itemPrice";
+            this.itemPrice.ReadOnly = true;
+            // 
             // ContractDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,5 +251,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button cdDownBtn;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemCategoryID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemPrice;
     }
 }

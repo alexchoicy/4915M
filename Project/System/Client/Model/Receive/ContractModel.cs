@@ -16,7 +16,18 @@ namespace Client.Model.Receive
         public string StaffID { get; set; }
     }
 
+    public class ContractModelWithItem
+    {
+        public ContractModel Contract { get; set; }
+        public List<ContractModelItem> items { get; set; }
+    }
 
-
-
+    public class ContractModelItem
+    {
+        public string itemID { get; set; }
+        public string name { get; set; }
+        public double? price { get; set; }
+        public int quantity { get; set; }
+        public string CategoryID { get; set; }
+    }
 }
