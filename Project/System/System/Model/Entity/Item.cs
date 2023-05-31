@@ -10,7 +10,7 @@ namespace Server.Model.Entity
         [Required]
         public string SupplierID { get; set; }
         public string? CategoryID { get; set; }
-        public string ContactID { get; set; }
+        public string ContractID { get; set; }
         [Required]
         public string name { get; set; }
         [Required]
@@ -24,8 +24,8 @@ namespace Server.Model.Entity
         public virtual Suppliers Suppliers { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Category Category { get; set; }
-        [ForeignKey("ContactID")]
-        public virtual Contact contact { get; set; }
+        [ForeignKey("ContractID")]
+        public virtual Contract Contract { get; set; }
     }
 
     public class Category

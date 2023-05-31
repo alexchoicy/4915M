@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.UI;
+using Client.UI.Agreement;
+using Client.UI.Contract;
 
 namespace Client
 {

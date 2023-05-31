@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Helper;
+using Client.UI.Agreement;
 
 namespace Client.UI
 {
@@ -30,6 +31,13 @@ namespace Client.UI
         private void Main_Load(object sender, EventArgs e)
         {
             userName.Text = GlobalData.UserInfo.Name.ToString();
+        }
+
+        private void ShowContract_Click(object sender, EventArgs e)
+        {
+            var contractForm = new ShowContract(this);
+            this.Hide();
+            contractForm.ShowDialog();
         }
     }
 }

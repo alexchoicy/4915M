@@ -138,7 +138,7 @@ namespace Server.Services
                 ItemID = cur.ItemID,
                 SupplierID = cur.SupplierID,
                 CategoryID = !string.IsNullOrEmpty(item.CategoryID) ? item.CategoryID : cur.CategoryID,
-                ContactID = !string.IsNullOrEmpty(item.ContactID) ? item.ContactID : cur.ContactID,
+                ContractID = !string.IsNullOrEmpty(item.ContractID) ? item.ContractID : cur.ContractID,
                 VirtualID = !string.IsNullOrEmpty(item.VirtualID) ? item.VirtualID : cur.VirtualID,
                 name = !string.IsNullOrEmpty(item.name) ? item.name : cur.name,
                 price = (double)(item.price != null ? item.price : cur.price)

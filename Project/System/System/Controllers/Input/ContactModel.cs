@@ -2,7 +2,7 @@
 {
     public class ContactModel
     {
-        public string ContactID { get; set; }
+        public string ContractID { get; set; }
         public DateTime SignDate { get; set; }
         public string supplierID { get; set; }
         public string staffID { get; set; }

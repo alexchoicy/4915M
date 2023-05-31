@@ -9,7 +9,7 @@ namespace Server.Controllers.Input
         public string ItemID { get; set; }
         public string? SupplierID { get; set; }
         public string? CategoryID { get; set; }
-        public string? ContactID { get; set; }
+        public string? ContractID { get; set; }
         public string? itemName { get; set; }
         public double? price { get; set; }
         public string? virtualID { get; set; }

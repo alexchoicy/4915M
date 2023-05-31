@@ -28,7 +28,7 @@ namespace Client.Controller
                     var data = JsonDocument.Parse(userInfo.Content);
                     UserInformation userInfoData = new UserInformation
                     {
-                        Token = data.RootElement.GetProperty("userToken").GetProperty("token").GetString(),
+                        Token = "bearer " + data.RootElement.GetProperty("userToken").GetProperty("token").GetString(),
                         ExpireTime = data.RootElement.GetProperty("userToken").GetProperty("expire_time").GetDateTime(),
                         Name = data.RootElement.GetProperty("userData").GetProperty("name").GetString(),
                         StaffID = data.RootElement.GetProperty("userData").GetProperty("staffID").GetString(),

@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Server.Model.Entity;
+using System.Diagnostics.Contracts;
+using Contract = Server.Model.Entity.Contract;
 
 namespace Server.Model
 {
@@ -33,6 +35,7 @@ namespace Server.Model
         public DbSet<AccessControl> AccessControl { get; set; }
         public DbSet<Category> category { get; set; } 
         public DbSet<Restaurant_item> restaurant_item { get; set; }
+        public DbSet<Contract> contract { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -76,6 +79,9 @@ namespace Server.Model
                 .ToTable("category");
             modelBuilder.Entity<Restaurant_item>()
                 .ToTable("restaurant_item").HasKey("restaurantID", "itemID");
+
+            modelBuilder.Entity<Contract>()
+                .ToTable("contract");
         }
     }
 }
