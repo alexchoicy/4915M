@@ -42,7 +42,7 @@ namespace Server.Services
             var itemsData = new List<ContractDtoItem>();
             var data = new ContractDtoWithItem();
             data.Contract = contractmapData;
-            if(contractdata.ContractType == "P")
+            if(contractdata.ContractType == "PC")
             {
                 var planContract = _dataContext.planContracts.Where(x => x.ContractID == id).FirstOrDefault();
                 data.Contract.RepeatDate = planContract.RepeatDate;
@@ -111,17 +111,40 @@ namespace Server.Services
 
                 var newcontract = new Contract
                 {
-                    ContractID = data.contractData.ContractID,
-                    SignDate = data.contractData.SignDate,
-                    ExpireTime = data.contractData.ExpireTime,
-                    ContractType = data.contractData.ContractType,
-                    SupplierID = data.contractData.SupplierID,
-                    StaffID = data.contractData.StaffID
+                    ContractID = data.contractData.data.ContractID,
+                    SignDate = data.contractData.data.SignDate,
+                    ExpireTime = data.contractData.data.ExpireTime,
+                    ContractType = data.contractData.data.ContractType,
+                    SupplierID = data.contractData.data.SupplierID,
+                    StaffID = data.contractData.data.StaffID
                 };
 
-
-
                 _dataContext.contract.Add(newcontract);
+                _dataContext.SaveChanges();
+                Console.WriteLine(data.contractData.data.ContractID);
+                Console.WriteLine(data.contractData.data.RepeatDate);
+                if (newcontract.ContractType == "PC")
+                {
+                    var planContract = new PlanContract
+                    {
+                        ContractID = data.contractData.data.ContractID,
+                        RepeatDate = (int)data.contractData.data.RepeatDate
+                    };
+                    _dataContext.planContracts.Add(planContract);
+                    _dataContext.SaveChanges();
+                    int planContractID = planContract.planContractID ?? 0;
+
+                    foreach (var dataitems in data.contractData.ContractItems)
+                    {
+                        var planItem = new PlanContract_Item
+                        {
+                            planContractID = planContractID,
+                            ItemID = dataitems.itemID,
+                            Quantity = dataitems.quantity
+                        };
+                        _dataContext.planContract_Items.Add(planItem);
+                    }
+                }
                 _dataContext.SaveChanges();
 
                 return true;

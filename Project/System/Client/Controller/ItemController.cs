@@ -17,12 +17,12 @@ namespace Client.Controller
     {
         public async Task<List<ItemModel>> getAll()
         {
-            var request = new RestRequest("/api/Item/")
+            var request = new RestRequest("/api/Item/", Method.Get)
                 .AddHeader("Authorization", GlobalData.UserInfo.Token);
             try
             {
                 MessageBox.Show("start");
-                var respone = await ApiClient.client.DeleteAsync(request);
+                var respone = await ApiClient.client.ExecuteAsync(request);
                 Debug.WriteLine(respone);
                 if(respone.StatusCode == HttpStatusCode.OK)
                 {

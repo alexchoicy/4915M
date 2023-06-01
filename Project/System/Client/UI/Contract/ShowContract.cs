@@ -15,6 +15,7 @@ namespace Client.UI.Agreement
 {
     public partial class ShowContract : Form
     {
+        private List<ContractModel> data;
         private ContractController contractController = new ContractController();
         private Main mainForm;
         public ShowContract(Main mainForm)
@@ -23,6 +24,7 @@ namespace Client.UI.Agreement
             //InitializeContractDataView();
             this.mainForm = mainForm;
             LoadData();
+            searchTxt.TextChanged += searchTxt_TextChanged;
         }
 
         private void InitializeContractDataView()
@@ -37,7 +39,7 @@ namespace Client.UI.Agreement
         }
         private async void LoadData()
         {
-            var data = await GetAllContract();
+            data = await GetAllContract();
             if (data == null)
             {
                 MessageBox.Show("NoData");
@@ -52,6 +54,7 @@ namespace Client.UI.Agreement
         }
         private void PopulateContractDataView(List<ContractModel> contracts)
         {
+            ContractDataView.Rows.Clear();
             ContractDataView.AutoGenerateColumns = false;
             BindDataView(contracts);
         }
@@ -85,10 +88,12 @@ namespace Client.UI.Agreement
         private void createContractBtn_Click(object sender, EventArgs e)
         {
             var CreateForm = new CreateContract();
+            CreateForm.FormClosed += CreateForm_FormClosed;
             var state = CreateForm.ShowDialog();
             if (state == DialogResult.OK)
             {
                 this.Show();
+                LoadData();
             }
         }
 
@@ -106,6 +111,21 @@ namespace Client.UI.Agreement
             conDetail.ShowDialog();
 
 
+        }
+        private void CreateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadData();
+        }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = searchTxt.Text.Trim().ToLower();
+            List<ContractModel> filteredContracts = data
+                .Where(contract =>
+                    contract.ContractID.ToLower().Contains(searchText) ||
+                    contract.SupplierID.ToLower().Contains(searchText))
+                .ToList();
+            PopulateContractDataView(filteredContracts);
         }
     }
 }

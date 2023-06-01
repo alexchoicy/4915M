@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Controller;
 using Client.Helper;
+using Client.Model.Submit;
 
 namespace Client.UI.Contract
 {
@@ -19,17 +20,18 @@ namespace Client.UI.Contract
     {
         private string filePath;
         private ContractController contractController = new ContractController();
+        private List<ContractSumbitItemShowModel> ListItem;
         public CreateContract()
         {
             InitializeComponent();
             ccDropType.SelectedIndex = 1;
         }
 
-        private void subBtn_Click(object sender, EventArgs e)
+        private async void subBtn_Click(object sender, EventArgs e)
         {
             DateTime signDate = DateTime.ParseExact(signTimePick.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
             DateTime expDate = DateTime.ParseExact(expireTimePick.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
+            int repeatDate;
             if (signDate == expDate || expDate < DateTime.Now.Date)
             {
                 MessageBox.Show("The Date is incorrect");
@@ -41,28 +43,66 @@ namespace Client.UI.Contract
                 MessageBox.Show("Please Upload a Docs");
                 return;
             }
-
             var ContractID = contractTxt.Text;
-            var staffID = staffTxt.Text == null ? GlobalData.UserInfo.StaffID : staffTxt.Text;
-
+            var staffID = string.IsNullOrEmpty(staffTxt.Text)? GlobalData.UserInfo.StaffID : staffTxt.Text;
             var supplierID = supplierTxt.Text;
+            
+            int.TryParse(ccRepDateTxt.Text, out repeatDate);
+            var contractType = "";
+            switch (ccDropType.SelectedIndex)
+            {
+                case 0:
+                    contractType = "PC";
+                    break;
+                case 1:
+                    contractType = "IC";
+                    break;
+            }
 
-            var jsonData = new
+            var data = new ContractDataModel
             {
                 ContractID = ContractID,
                 SignDate = signDate,
                 ExpireTime = expDate,
-                ContractType = "",
+                ContractType = contractType,
                 StaffID = staffID,
                 SupplierID = supplierID,
+                RepeatDate = repeatDate
             };
-            string jsonString = JsonSerializer.Serialize(jsonData);
+            var ContractData = new ContractSumbitModel
+            {
+                data = data
+            };
+            if (contractType == "PC")
+            {
+                if (!int.TryParse(ccRepDateTxt.Text, out repeatDate) && ccRepDateTxt.Text != null)
+                {
+                    MessageBox.Show("Error Days");
+                    return;
+                }
+                var items = new List<ContractSumbitItemModel>();
+                foreach (DataGridViewRow row in supDataView.Rows)
+                {
+                    var itemIDCell = row.Cells["itemID"];
+                    var quantityCell = row.Cells["quantity"];
+                    if (itemIDCell.Value != null && quantityCell.Value != null)
+                    {
+                        var itemID = itemIDCell.Value.ToString();
+                        var quantity = int.Parse(quantityCell.Value.ToString());
+                        var sumbitData = new ContractSumbitItemModel
+                        {
+                            itemID = itemID,
+                            quantity = quantity
+                        };
+                        items.Add(sumbitData);
+                    }
+                }
+                ContractData.ContractItems = items;
+            }
 
-            var status = contractController.CreateNewContract(jsonString, filePath);
-            status.Wait();
-            bool result = status.Result;
-            //var status = true;
-            if (result)
+            string jsonString = JsonSerializer.Serialize(ContractData);
+            var status = await contractController.CreateNewContract(jsonString, filePath);
+            if (status)
             {
                 MessageBox.Show("Success");
                 DialogResult = DialogResult.Cancel;
@@ -92,20 +132,51 @@ namespace Client.UI.Contract
             if(ccDropType.SelectedIndex == 0)
             {
                 ccAddBtn.Enabled = true;
-                ccRmBtn.Enabled = true;
+                ccRepDateTxt.Enabled = true;
             }
             if (ccDropType.SelectedIndex == 1)
             {
                 ccAddBtn.Enabled = false;
-                ccRmBtn.Enabled = false;
+                ccRepDateTxt.Enabled = false;
             }
         }
 
         private void ccAddBtn_Click(object sender, EventArgs e)
         {
-            Form addconform = new AddContractItem();
+            Form addconform;
+            if (ListItem == null)
+            {
+                addconform = new AddContractItem(this);
+            }
+            else
+            {
+                addconform = new AddContractItem(this, ListItem);
+            }
+
             addconform.ShowDialog();
-            this.Hide();
         }
+
+        public void ReceiveDataFromAddControlItem(List<ContractSumbitItemShowModel> data)
+        {
+            supDataView.Rows.Clear();
+            if (data == null)
+            {
+                Console.WriteLine("No items");
+                return;
+            }
+            foreach (var item in data)
+            {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(supDataView,
+                        item.itemID,
+                        item.itemName,
+                        item.quantity
+                    );
+                    supDataView.Rows.Add(row);
+            }
+
+            ListItem = data;
+        }
+
     }
 }

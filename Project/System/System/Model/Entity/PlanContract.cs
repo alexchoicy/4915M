@@ -4,7 +4,7 @@ namespace Server.Model.Entity
 {
     public class PlanContract
     {
-        public int planContractID { get; set; }
+        public int? planContractID { get; set; }
         public string ContractID { get; set; }
         public int RepeatDate { get; set; }
         [ForeignKey("ContractID")]

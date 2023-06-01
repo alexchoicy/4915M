@@ -31,21 +31,22 @@
             this.components = new System.ComponentModel.Container();
             this.createContractBtn = new System.Windows.Forms.Button();
             this.ContractDataView = new System.Windows.Forms.DataGridView();
-            this.userInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.backBtn = new System.Windows.Forms.Button();
             this.ContractID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SignDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpireTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InfoDGBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.userInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.backBtn = new System.Windows.Forms.Button();
+            this.searchTxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ContractDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // createContractBtn
             // 
-            this.createContractBtn.Location = new System.Drawing.Point(106, 12);
+            this.createContractBtn.Location = new System.Drawing.Point(628, 12);
             this.createContractBtn.Name = "createContractBtn";
             this.createContractBtn.Size = new System.Drawing.Size(143, 44);
             this.createContractBtn.TabIndex = 1;
@@ -55,6 +56,8 @@
             // 
             // ContractDataView
             // 
+            this.ContractDataView.AllowUserToAddRows = false;
+            this.ContractDataView.AllowUserToDeleteRows = false;
             this.ContractDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ContractDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ContractID,
@@ -68,20 +71,6 @@
             this.ContractDataView.Size = new System.Drawing.Size(741, 336);
             this.ContractDataView.TabIndex = 0;
             this.ContractDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContractDataView_CellContentClick);
-            // 
-            // userInformationBindingSource
-            // 
-            //this.userInformationBindingSource.DataSource = typeof(Client.Model.Receive.UserInformation);
-            // 
-            // backBtn
-            // 
-            this.backBtn.Location = new System.Drawing.Point(628, 404);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(150, 34);
-            this.backBtn.TabIndex = 2;
-            this.backBtn.Text = "Back To Main";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // ContractID
             // 
@@ -119,11 +108,29 @@
             this.InfoDGBtn.Name = "InfoDGBtn";
             this.InfoDGBtn.ReadOnly = true;
             // 
+            // backBtn
+            // 
+            this.backBtn.Location = new System.Drawing.Point(628, 404);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(150, 34);
+            this.backBtn.TabIndex = 2;
+            this.backBtn.Text = "Back To Main";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // searchTxt
+            // 
+            this.searchTxt.Location = new System.Drawing.Point(53, 25);
+            this.searchTxt.Name = "searchTxt";
+            this.searchTxt.Size = new System.Drawing.Size(128, 20);
+            this.searchTxt.TabIndex = 3;
+            // 
             // ShowContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.createContractBtn);
             this.Controls.Add(this.ContractDataView);
@@ -132,6 +139,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ContractDataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -146,5 +154,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractType;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierID;
         private System.Windows.Forms.DataGridViewButtonColumn InfoDGBtn;
+        private System.Windows.Forms.TextBox searchTxt;
     }
 }

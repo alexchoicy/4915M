@@ -14,11 +14,22 @@ namespace Server.Controllers.Input
 
     public class ContractData
     {
+        public ContractDataModel data { get; set; }
+        public List<ContractSumbitItemModel>? ContractItems { get; set; }
+    }
+    public class ContractDataModel
+    {
         public string ContractID { get; set; }
         public DateTime SignDate { get; set; }
         public DateTime ExpireTime { get; set; }
         public string ContractType { get; set; }
         public string SupplierID { get; set; }
-        public string? StaffID { get; set; }
+        public string StaffID { get; set; }
+        public int? RepeatDate { get; set; }
+    }
+    public class ContractSumbitItemModel
+    {
+        public string itemID { get; set; }
+        public int quantity { get; set; }
     }
 }

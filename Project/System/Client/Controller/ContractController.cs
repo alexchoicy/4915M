@@ -43,6 +43,7 @@ namespace Client.Controller
 
         public async Task<bool> CreateNewContract(string jsonData, string path)
         {
+            Debug.WriteLine(jsonData);
             MessageBox.Show("start");
             byte[] file = File.ReadAllBytes(path);
             var request = new RestRequest("/api/contract/", Method.Post)
@@ -55,16 +56,16 @@ namespace Client.Controller
                 if (respone.StatusCode == HttpStatusCode.OK)
                 {
                     MessageBox.Show("OK");
+                    return true;
                 }
-
                 MessageBox.Show(respone.StatusCode.ToString());
+                return false;
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
                 throw;
             }
-            return true;
         }
 
         public async Task<ContractModelWithItem> GetDetail(string id)

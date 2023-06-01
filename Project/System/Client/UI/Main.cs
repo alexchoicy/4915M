@@ -16,7 +16,7 @@ namespace Client.UI
     {
         public Main()
         {
-            var loginForm = new Login();
+            var loginForm = new LoginSystem();
             DialogResult result = loginForm.ShowDialog();
             if (result == DialogResult.OK)
             {
