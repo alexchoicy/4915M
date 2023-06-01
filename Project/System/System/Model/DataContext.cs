@@ -36,7 +36,8 @@ namespace Server.Model
         public DbSet<Category> category { get; set; } 
         public DbSet<Restaurant_item> restaurant_item { get; set; }
         public DbSet<Contract> contract { get; set; }
-
+        public DbSet<PlanContract> planContracts { get; set; }
+        public DbSet<PlanContract_Item> planContract_Items { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>()
@@ -82,6 +83,11 @@ namespace Server.Model
 
             modelBuilder.Entity<Contract>()
                 .ToTable("contract");
+
+            modelBuilder.Entity<PlanContract>()
+                .ToTable("PlanContract");
+            modelBuilder.Entity<PlanContract_Item>()
+                .ToTable("PlanContract_Item").HasKey("planContractID", "ItemID");
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Client.UI.Contract
         public CreateContract()
         {
             InitializeComponent();
+            ccDropType.SelectedIndex = 1;
         }
 
         private void subBtn_Click(object sender, EventArgs e)
@@ -84,6 +85,27 @@ namespace Client.UI.Contract
                 filePath = fileDialog.FileName;
                 uploadTxt.Text = Path.GetFileName(filePath);
             }
+        }
+
+        private void ccDropType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ccDropType.SelectedIndex == 0)
+            {
+                ccAddBtn.Enabled = true;
+                ccRmBtn.Enabled = true;
+            }
+            if (ccDropType.SelectedIndex == 1)
+            {
+                ccAddBtn.Enabled = false;
+                ccRmBtn.Enabled = false;
+            }
+        }
+
+        private void ccAddBtn_Click(object sender, EventArgs e)
+        {
+            Form addconform = new AddContractItem();
+            addconform.ShowDialog();
+            this.Hide();
         }
     }
 }

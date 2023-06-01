@@ -71,7 +71,7 @@
             // 
             // userInformationBindingSource
             // 
-            this.userInformationBindingSource.DataSource = typeof(Client.Model.Receive.UserInformation);
+            //this.userInformationBindingSource.DataSource = typeof(Client.Model.Receive.UserInformation);
             // 
             // backBtn
             // 

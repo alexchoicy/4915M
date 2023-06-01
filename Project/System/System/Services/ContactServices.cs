@@ -38,12 +38,38 @@ namespace Server.Services
         {
             var contractdata = _dataContext.contract.Find(id);
             var contractmapData = _mapper.Map<ContractDto>(contractdata);
-            var contractItemData = _dataContext.item.Where(x => x.ContractID == id).ToList();
+
             var itemsData = new List<ContractDtoItem>();
             var data = new ContractDtoWithItem();
             data.Contract = contractmapData;
+            if(contractdata.ContractType == "P")
+            {
+                var planContract = _dataContext.planContracts.Where(x => x.ContractID == id).FirstOrDefault();
+                data.Contract.RepeatDate = planContract.RepeatDate;
+                var planContractItemData = _dataContext.planContract_Items.Where(x=> x.planContractID == planContract.planContractID).ToList();
+                foreach (var itemData in planContractItemData)
+                {
+                    var itemInfo = _dataContext.item.Where(x=> x.ItemID == itemData.ItemID).FirstOrDefault(); 
+                    var contractItem = new ContractDtoItem
+                    {
+                        itemID = itemData.ItemID,
+                        name = itemInfo.name,
+                        price = itemInfo.price,
+                        CategoryID = itemInfo.CategoryID,
+                        quantity = itemData.Quantity
+                    };
+                    itemsData.Add(contractItem);
+                }
+                data.items = itemsData;
+                return data;
+            }
+
+
+
+            var contractItemData = _dataContext.item.Where(x => x.ContractID == id).ToList();
             if (contractItemData != null)
             {
+
                 foreach (var itemData in contractItemData)
                 {
                     var itemq = _dataContext.restaurant_item.Where(x => x.itemID == itemData.ItemID && x.restaurantID == "WH000").FirstOrDefault();

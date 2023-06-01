@@ -23,6 +23,7 @@ namespace Server.Model.Dto
         public string ContractType { get; set; }
         public string SupplierID { get; set; }
         public string? StaffID { get; set; }
+        public int? RepeatDate { get; set; }
     }
 
     public class ContractDtoWithItem
