@@ -4,31 +4,29 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Client.Controller
 {
-    public class ItemController
+    public class SupplierController
     {
-        public async Task<List<ItemModel>> getAll()
+        public async Task<List<SupplierModel>> getAll()
         {
-            var request = new RestRequest("/api/Item/", Method.Get)
+            var request =new RestRequest("/api/Supplier")
                 .AddHeader("Authorization", GlobalData.UserInfo.Token);
             try
             {
                 var respone = await ApiClient.client.ExecuteAsync(request);
-                Debug.WriteLine(respone);
-                if(respone.StatusCode == HttpStatusCode.OK)
+                if (respone.StatusCode == HttpStatusCode.OK)
                 {
-                    var itemList = JsonConvert.DeserializeObject<List<ItemModel>>(respone.Content);
-                    return itemList;
+                    var data = JsonConvert.DeserializeObject<List<SupplierModel>>(respone.Content);
+                    return data;
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

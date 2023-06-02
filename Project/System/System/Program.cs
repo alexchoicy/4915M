@@ -43,6 +43,7 @@ builder.Services.AddAutoMapper(typeof(Program));
     services.AddScoped<IOrderServices, OrderServices>();
     services.AddScoped<ICategoryServices,CategoryServices>();
     services.AddScoped<IContractServices, ContractServices>();
+    services.AddScoped<ISupplierServices,SupplierServices>();
 }
 builder.Services.AddScoped<JwtToken>();
 

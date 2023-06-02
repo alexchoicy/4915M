@@ -34,8 +34,8 @@ namespace Client.UI.Contract
             BindContractItem(data);
         }
 
-        public async void LoadData()
-        {
+        public async void LoadData() {
+       
             acItemTxt.TextChanged += acItemTxt_TextChanged;
             data = await ItemController.getAll();
             if (data == null)

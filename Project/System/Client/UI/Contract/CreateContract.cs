@@ -8,10 +8,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Controller;
 using Client.Helper;
+using Client.Model.Receive;
 using Client.Model.Submit;
 
 namespace Client.UI.Contract
@@ -20,13 +22,34 @@ namespace Client.UI.Contract
     {
         private string filePath;
         private ContractController contractController = new ContractController();
+        private SupplierController suppliercontroller = new SupplierController();
+
         private List<ContractSumbitItemShowModel> ListItem;
+        private List<SupplierModel> suppliers;
         public CreateContract()
         {
             InitializeComponent();
             ccDropType.SelectedIndex = 1;
-        }
+            SupplierText();
 
+        }
+        private async void SupplierText()
+        {
+            suppliers = await suppliercontroller.getAll();
+            if(suppliers != null)
+            {
+                AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
+                foreach (var item in suppliers)
+                {
+                    ac.Add(item.SupplierID+ $" ({item.SupName})");
+                    ccCBSupID.Items.Add(item.SupplierID + $" ({item.SupName})");
+                }
+                ccCBSupID.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                ccCBSupID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                ccCBSupID.AutoCompleteCustomSource = ac;
+                
+            }
+        }
         private async void subBtn_Click(object sender, EventArgs e)
         {
             DateTime signDate = DateTime.ParseExact(signTimePick.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -45,8 +68,27 @@ namespace Client.UI.Contract
             }
             var ContractID = contractTxt.Text;
             var staffID = string.IsNullOrEmpty(staffTxt.Text)? GlobalData.UserInfo.StaffID : staffTxt.Text;
-            var supplierID = supplierTxt.Text;
-            
+            String rawsupplierID = ccCBSupID.Text;
+            Regex regex = new Regex("\\s");
+            string[] supID = regex.Split(rawsupplierID);
+            String supplierID = supID[0].Trim();
+            MessageBox.Show(supID[0]);
+            bool correct = false;
+
+            foreach (var item in suppliers)
+            {
+                if(supplierID == item.SupplierID)
+                {
+                    correct = true;
+                    return;
+                }
+            }
+
+            if (!correct)
+            {
+                MessageBox.Show("Incorrect Supplier ID");
+                return;
+            }
             int.TryParse(ccRepDateTxt.Text, out repeatDate);
             var contractType = "";
             switch (ccDropType.SelectedIndex)

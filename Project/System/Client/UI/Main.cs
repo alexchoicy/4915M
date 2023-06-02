@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Helper;
 using Client.UI.Agreement;
+using Client.UI.Item;
 
 namespace Client.UI
 {
@@ -38,6 +39,13 @@ namespace Client.UI
             var contractForm = new ShowContract(this);
             this.Hide();
             contractForm.ShowDialog();
+        }
+
+        private void ItemControlBtn_Click(object sender, EventArgs e)
+        {
+            var itemForm = new showItem(this);
+            this.Hide();
+            itemForm.ShowDialog();
         }
     }
 }

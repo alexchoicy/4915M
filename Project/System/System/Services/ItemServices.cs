@@ -41,6 +41,7 @@ namespace Server.Services
                 {
                     itemId = items.ItemID,
                     SupplierID = items.SupplierID,
+                    CategoryID = items.CategoryID,
                     name = items.name,
                     price = items.price,
                     VirtualID = items.VirtualID,

@@ -9,10 +9,10 @@ namespace Server.Model.Entity
 
         public string SupName { get; set; }
 
-        public string ContactName { get; set; }
+        public string Contact_Name { get; set; }
 
-        public string ContactEmail { get; set; }
+        public string Contact_Email { get; set; }
 
-        public string ContactPhone { get; set; }
+        public string Contact_Phone { get; set; }
     }
 }
