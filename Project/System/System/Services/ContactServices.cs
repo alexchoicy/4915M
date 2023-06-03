@@ -10,7 +10,7 @@ namespace Server.Services
     {
         public List<ContractDto> GetAll();
         public ContractDtoWithItem GetById(string id);
-
+        public List<ContractIDDto> GetBySupplier(string id);
         public bool MakeNewRec(MakeNewContractModel data);
 
     }
@@ -87,6 +87,29 @@ namespace Server.Services
             };
             return data;
         }
+
+        public List<ContractIDDto> GetBySupplier(string id)
+        {
+            var contractdata = _dataContext.contract
+                .Where(item => item.SupplierID == id && item.ExpireTime > DateTime.Now)
+                .Select(Contract => new ContractIDDto
+                {
+                    ContractID = Contract.ContractID,
+                    SupplierID = Contract.SupplierID,
+                    ContractType = Contract.ContractType
+                }).ToList();
+            {
+                if (contractdata != null)
+                {
+                    return contractdata;
+                }
+
+                return null;
+            }
+        }
+
+
+
 
         public bool MakeNewRec(MakeNewContractModel data)
         {

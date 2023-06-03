@@ -10,13 +10,15 @@ using RestSharp;
 using Client.Helper;
 using Client.Model.Receive;
 using System.Xml.Linq;
+using BCrypt.Net;
 
 namespace Client.Controller
 {
     public class LoginController
     {
-        public async Task<bool> Login(string username, string password)
+        public async Task<bool> Login(string username, string rawpassword)
         {
+            string password = BCrypt.Net.BCrypt.HashPassword(rawpassword);
             var loginData = new {userID = username, password = password};
             var request = new RestRequest("/api/Login", Method.Post).AddJsonBody(loginData);
             Debug.WriteLine("Started," + username + " " + password);

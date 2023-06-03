@@ -31,4 +31,11 @@ namespace Client.Model.Receive
         public int quantity { get; set; }
         public string CategoryID { get; set; }
     }
+    public class ContractIDDto
+    {
+        public string ContractID { get; set; }
+        public DateTime ExpireTime { get; set; }
+        public string SupplierID { get; set; }
+        public string ContractType { get; set; }
+    }
 }

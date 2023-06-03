@@ -19,7 +19,16 @@ namespace Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            var loginForm = new LoginSystem();
+            DialogResult result = loginForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Application.Run(new Main());
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }

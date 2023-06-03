@@ -46,6 +46,12 @@ namespace Server.Controllers
             return NotFound();
         }
 
+        [HttpGet("bySupplier/{id}")]
+        public IActionResult GetBySupplier(string id)
+        {
+            var items = _ContractServices.GetBySupplier(id);
+            return Ok(items);
+        }
         [HttpPost]
         public IActionResult MakeNewRec([FromForm] MakeNewContractModel data)
         {

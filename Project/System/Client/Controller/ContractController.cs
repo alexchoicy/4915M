@@ -41,21 +41,19 @@ namespace Client.Controller
             return null;
         }
 
-        public async Task<bool> CreateNewContract(string jsonData, string path)
+        public async Task<bool> CreateNewContract(string jsonData, string path, string id)
         {
             Debug.WriteLine(jsonData);
-            MessageBox.Show("start");
             byte[] file = File.ReadAllBytes(path);
             var request = new RestRequest("/api/contract/", Method.Post)
                 .AddHeader("Authorization", GlobalData.UserInfo.Token)
                 .AddParameter("contractData", jsonData, ParameterType.RequestBody)
-                .AddFile("files", file, Path.GetFileName(path), "application/pdf");
+                .AddFile("files", file, id+".pdf" , "application/pdf");
             try
             {
                 var respone = await ApiClient.client.ExecuteAsync(request);
                 if (respone.StatusCode == HttpStatusCode.OK)
                 {
-                    MessageBox.Show("OK");
                     return true;
                 }
                 MessageBox.Show(respone.StatusCode.ToString());
@@ -93,17 +91,6 @@ namespace Client.Controller
         {
             var request = new RestRequest("/api/contract/" + id + "/Docs")
                 .AddHeader("Authorization", GlobalData.UserInfo.Token);
-
-        //          var response = ApiClient.client.ExecuteAsync(request);
-
-        // if (response.StatusCode == HttpStatusCode.OK)
-        // {
-        //     return response.RawBytes;
-        // }
-        // else
-        // {
-        //     throw new Exception("Error downloading file: " + response.ErrorMessage);
-        // }
             try
             {
                 var response = await ApiClient.client.ExecuteAsync(request);
@@ -128,6 +115,27 @@ namespace Client.Controller
                 throw;
             }
         }
+        public async Task<List<ContractIDDto>> getContractIDDto(string id)
+        {
+            var request = new RestRequest("/api/contract/bySupplier/" + id)
+                .AddHeader("Authorization", GlobalData.UserInfo.Token);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var itemList = JsonConvert.DeserializeObject<List<ContractIDDto>>(response.Content);
+                    return itemList;
+                }
 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return null;
+        }
     }
 }

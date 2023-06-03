@@ -13,7 +13,12 @@ namespace Server.Model.Dto
         }
     }
 
-
+    public class ContractIDDto
+    {
+        public string ContractID { get; set; }
+        public string SupplierID { get; set; }
+        public string ContractType { get; set; }
+    }
 
     public class ContractDto
     {

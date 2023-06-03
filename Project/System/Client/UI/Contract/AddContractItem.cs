@@ -18,17 +18,19 @@ namespace Client.UI.Contract
         private List<ItemModel> data;
         private ItemController ItemController = new ItemController();
         private CreateContract parentForm;
-
-        public AddContractItem(CreateContract parent)
+        private string supID;
+        public AddContractItem(CreateContract parent,string supId)
         {
             InitializeComponent();
-            LoadData();
             parentForm = parent;
+            supID = supId;
+            LoadData();
         }
 
-        public AddContractItem(CreateContract parent, List<ContractSumbitItemShowModel> data)
+        public AddContractItem(CreateContract parent, List<ContractSumbitItemShowModel> data, string supId)
         {
             InitializeComponent();
+            supID = supId;
             LoadData();
             parentForm = parent;
             BindContractItem(data);
@@ -36,19 +38,30 @@ namespace Client.UI.Contract
 
         public async void LoadData() {
        
-            acItemTxt.TextChanged += acItemTxt_TextChanged;
-            data = await ItemController.getAll();
-            if (data == null)
+            searchTxt.TextChanged += searchTxt_TextChanged;
+            List<ItemModel> rawdata = await ItemController.getAll();
+            if (rawdata == null)
             {
                 MessageBox.Show("NoData");
                 return;
             }
+            data = rawdata.Where(data => data.SupplierID == supID).ToList();
+            AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
+            foreach(var item in data)
+            {
+                acItemTxt.Items.Add(item.itemId);
+                ac.Add(item.itemId);
+            }
+            acItemTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            acItemTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            acItemTxt.AutoCompleteCustomSource = ac;
             BindItemDataView(data);
         }
 
         public void BindItemDataView(List<ItemModel> items)
         {
             itemDataGridView.Rows.Clear();
+
             foreach (var item in items)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -67,7 +80,8 @@ namespace Client.UI.Contract
                 row.CreateCells(acAddItemViewGrid,
                     items.itemID,
                     items.itemName,
-                    items.quantity);
+                    items.quantity,
+                    "Remove");
                 acAddItemViewGrid.Rows.Add(row);
             }
         }
@@ -138,7 +152,8 @@ namespace Client.UI.Contract
 
         private void acAddItemViewGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            acAddItemViewGrid.Rows.RemoveAt(e.RowIndex);
+            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+                acAddItemViewGrid.Rows.RemoveAt(e.RowIndex);
         }
 
         private void acSubmitBtn_Click(object sender, EventArgs e)
@@ -170,13 +185,14 @@ namespace Client.UI.Contract
             this.Close();
         }
 
-        private void acItemTxt_TextChanged(object sender, EventArgs e)
+        private void searchTxt_TextChanged(object sender, EventArgs e)
         {
-            string serachText = acItemTxt.Text.Trim().ToLower();
+            string serachText = searchTxt.Text.Trim().ToLower();
             List<ItemModel> filterItem = data
                 .Where(item =>
                     item.VirtualID.ToLower().Contains(serachText) ||
-                    item.itemId.ToLower().Contains(serachText))
+                    item.itemId.ToLower().Contains(serachText)||
+                    item.name.ToLower().Contains(serachText))
                 .ToList();
             BindItemDataView(filterItem);
         }

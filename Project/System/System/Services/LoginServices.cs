@@ -5,6 +5,7 @@ using Server.Model;
 using Server.Controllers.Input;
 using Server.Helper;
 using Server.Model.Dto;
+using BCrypt.Net;
 
 namespace Server.Services
 {
@@ -75,7 +76,7 @@ namespace Server.Services
                 }
                 return LoginResult.UserNotFound;
             }
-            if (!password.Equals(request.password))
+            if (BCrypt.Net.BCrypt.Verify(password,request.password))
             {
                 if (account != null)
                 {

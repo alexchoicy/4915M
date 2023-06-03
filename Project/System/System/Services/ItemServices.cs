@@ -42,6 +42,7 @@ namespace Server.Services
                     itemId = items.ItemID,
                     SupplierID = items.SupplierID,
                     CategoryID = items.CategoryID,
+                    ContractID = items.ContractID,
                     name = items.name,
                     price = items.price,
                     VirtualID = items.VirtualID,
@@ -149,12 +150,6 @@ namespace Server.Services
 
             return true;
         }
-
-
-
-
-
-
 
         public bool EditInv(string userid, List<ItemModel> items)
         {

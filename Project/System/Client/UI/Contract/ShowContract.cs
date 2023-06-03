@@ -70,7 +70,8 @@ namespace Client.UI.Agreement
                     data.ExpireTime.ToString("dd/MM/yyyy"),
                     data.ContractType,
                     data.SupplierID,
-                    data.StaffID);
+                    data.StaffID,
+                    "Detail");
                 ContractDataView.Rows.Add(row);
             }
         }
@@ -87,7 +88,7 @@ namespace Client.UI.Agreement
 
         private void createContractBtn_Click(object sender, EventArgs e)
         {
-            var CreateForm = new CreateContract();
+            var CreateForm = new CreateContract(data);
             CreateForm.FormClosed += CreateForm_FormClosed;
             var state = CreateForm.ShowDialog();
             if (state == DialogResult.OK)
@@ -105,10 +106,21 @@ namespace Client.UI.Agreement
 
         private void ContractDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string ContractID = ContractDataView.Rows[e.RowIndex].Cells["ContractID"].Value.ToString();
+            try
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == 6)
+                {
+                    string ContractID = ContractDataView.Rows[e.RowIndex].Cells["ContractID"].Value.ToString();
 
-            Form conDetail = new ContractDetail(ContractID);
-            conDetail.ShowDialog();
+                    Form conDetail = new ContractDetail(ContractID);
+                    conDetail.ShowDialog();
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                return;
+            }
 
 
         }
@@ -123,7 +135,8 @@ namespace Client.UI.Agreement
             List<ContractModel> filteredContracts = data
                 .Where(contract =>
                     contract.ContractID.ToLower().Contains(searchText) ||
-                    contract.SupplierID.ToLower().Contains(searchText))
+                    contract.SupplierID.ToLower().Contains(searchText)||
+                    contract.StaffID.ToLower().Contains(searchText))
                 .ToList();
             PopulateContractDataView(filteredContracts);
         }

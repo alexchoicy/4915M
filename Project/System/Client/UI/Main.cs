@@ -17,21 +17,16 @@ namespace Client.UI
     {
         public Main()
         {
-            var loginForm = new LoginSystem();
-            DialogResult result = loginForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                InitializeComponent();
-            }
-            else
-            {
-                this.Close();
-            }
+            InitializeComponent();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            userName.Text = GlobalData.UserInfo.Name.ToString();
+            userLabel.Text = GlobalData.UserInfo.Name.ToString();
+            idLabel.Text = GlobalData.UserInfo.StaffID;
+            deptLabel.Text = GlobalData.UserInfo.Department;
+            posLabel.Text = GlobalData.UserInfo.Position;
+
         }
 
         private void ShowContract_Click(object sender, EventArgs e)
@@ -46,6 +41,10 @@ namespace Client.UI
             var itemForm = new showItem(this);
             this.Hide();
             itemForm.ShowDialog();
+        }
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -36,10 +36,12 @@
             this.ExpireTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StaffID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InfoDGBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.userInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backBtn = new System.Windows.Forms.Button();
             this.searchTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ContractDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +67,7 @@
             this.ExpireTime,
             this.ContractType,
             this.SupplierID,
+            this.StaffID,
             this.InfoDGBtn});
             this.ContractDataView.Location = new System.Drawing.Point(37, 62);
             this.ContractDataView.Name = "ContractDataView";
@@ -98,9 +101,15 @@
             // 
             // SupplierID
             // 
-            this.SupplierID.HeaderText = "StaffID";
+            this.SupplierID.HeaderText = "Supplier ID";
             this.SupplierID.Name = "SupplierID";
             this.SupplierID.ReadOnly = true;
+            // 
+            // StaffID
+            // 
+            this.StaffID.HeaderText = "Staff ID";
+            this.StaffID.Name = "StaffID";
+            this.StaffID.ReadOnly = true;
             // 
             // InfoDGBtn
             // 
@@ -120,16 +129,26 @@
             // 
             // searchTxt
             // 
-            this.searchTxt.Location = new System.Drawing.Point(53, 25);
+            this.searchTxt.Location = new System.Drawing.Point(97, 25);
             this.searchTxt.Name = "searchTxt";
             this.searchTxt.Size = new System.Drawing.Size(128, 20);
             this.searchTxt.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Search";
             // 
             // ShowContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.createContractBtn);
@@ -148,12 +167,14 @@
         private System.Windows.Forms.Button createContractBtn;
         private System.Windows.Forms.DataGridView ContractDataView;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.TextBox searchTxt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SignDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpireTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractType;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StaffID;
         private System.Windows.Forms.DataGridViewButtonColumn InfoDGBtn;
-        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.Label label1;
     }
 }

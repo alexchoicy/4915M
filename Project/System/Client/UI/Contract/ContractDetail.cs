@@ -27,8 +27,8 @@ namespace Client.UI.Contract
             cdcontractIdTxt.Text = respone.Contract.ContractID;
             cdSupIDTxt.Text = respone.Contract.SupplierID;
             cdStaffIDTxt.Text = respone.Contract.StaffID;
-            cdexpTxt.Text = respone.Contract.ExpireTime.Date.ToShortDateString();
-            cdsignTxt.Text = respone.Contract.SignDate.Date.ToShortDateString();
+            cdexpTxt.Text = respone.Contract.ExpireTime.Date.ToString("dd/MM/yyyy");
+            cdsignTxt.Text = respone.Contract.SignDate.Date.ToString("dd/MM/yyyy");
             cdRepDate.Text = respone.Contract.RepeatDate.ToString();
             PopulateitemGridView(respone.items);
 

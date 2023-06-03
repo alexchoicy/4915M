@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -26,13 +27,38 @@ namespace Client.UI.Contract
 
         private List<ContractSumbitItemShowModel> ListItem;
         private List<SupplierModel> suppliers;
+        private List<ContractModel> contracts;
+        public CreateContract(List<ContractModel> item)
+        {
+            contracts = item;
+            InitializeComponent();
+            ccDropType.SelectedIndex = 1;
+            SupplierText();
+            StaffLock.CheckedChanged += StaffLock_CheckedChanged;
+            setUpComponent();
+        }
         public CreateContract()
         {
             InitializeComponent();
             ccDropType.SelectedIndex = 1;
             SupplierText();
-
+            StaffLock.CheckedChanged += StaffLock_CheckedChanged;
+            getContractData();
+            setUpComponent();
         }
+
+        private void setUpComponent()
+        {
+            signTimePick.CustomFormat = "dd/MM/yyyy";
+            expireTimePick.CustomFormat = "dd/MM/yyyy";
+        }
+
+
+        private async void getContractData()
+        {
+            contracts = await contractController.getAll();
+        }
+
         private async void SupplierText()
         {
             suppliers = await suppliercontroller.getAll();
@@ -80,7 +106,7 @@ namespace Client.UI.Contract
                 if(supplierID == item.SupplierID)
                 {
                     correct = true;
-                    return;
+                    break;
                 }
             }
 
@@ -143,7 +169,7 @@ namespace Client.UI.Contract
             }
 
             string jsonString = JsonSerializer.Serialize(ContractData);
-            var status = await contractController.CreateNewContract(jsonString, filePath);
+            var status = await contractController.CreateNewContract(jsonString, filePath, ContractID);
             if (status)
             {
                 MessageBox.Show("Success");
@@ -185,14 +211,24 @@ namespace Client.UI.Contract
 
         private void ccAddBtn_Click(object sender, EventArgs e)
         {
+            string rawsupplierID = ccCBSupID.Text;
+            Regex regex = new Regex("\\s");
+            string[] supID = regex.Split(rawsupplierID);
+            string supplierID = supID[0].Trim();
+
+            if (string.IsNullOrEmpty(supplierID))
+            {
+                MessageBox.Show("Please Select a supplier first");
+                return;
+            }
             Form addconform;
             if (ListItem == null)
             {
-                addconform = new AddContractItem(this);
+                addconform = new AddContractItem(this, supplierID);
             }
             else
             {
-                addconform = new AddContractItem(this, ListItem);
+                addconform = new AddContractItem(this, ListItem, supplierID);
             }
 
             addconform.ShowDialog();
@@ -220,5 +256,64 @@ namespace Client.UI.Contract
             ListItem = data;
         }
 
+        private void AutoCreateItemID(string supID)
+        {
+            int biggest = -1;
+            foreach (var item in contracts.Where(item => item.SupplierID == supID))
+            {
+                int id = int.Parse(item.ContractID.Substring(supID.Length));
+                if (id > biggest)
+                {
+                    biggest = id;
+                    Debug.WriteLine(biggest + " " + id);
+                }
+            }
+            if (biggest == -1)
+            {
+                biggest = 0;
+            }
+
+            int nextID = biggest + 1;
+            string newItemID = supID + nextID.ToString().PadLeft(3, '0');
+            contractTxt.Text = newItemID;
+        }
+
+
+
+
+        private void StaffLock_CheckedChanged(object sender, EventArgs e)
+        {
+            if (StaffLock.Checked)
+            {
+                staffTxt.ReadOnly = false;
+            }
+            else
+            {
+                staffTxt.ReadOnly = true;
+            }
+        }
+
+        private void ccCBSupID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String rawsupplierID = ccCBSupID.Text;
+            Regex regex = new Regex("\\s");
+            string[] regexData = regex.Split(rawsupplierID);
+            string supID = regexData[0].Trim();
+            bool subcheck = false;
+            foreach (var item in contracts)
+            {
+                if (supID == item.SupplierID)
+                {
+                    subcheck = true;
+                    break;
+                }
+            }
+            if (!subcheck)
+            {
+                MessageBox.Show("Incorrect Supplier ID");
+                return;
+            }
+            AutoCreateItemID(supID);
+        }
     }
 }

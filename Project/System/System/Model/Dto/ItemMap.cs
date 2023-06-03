@@ -12,7 +12,7 @@ namespace Server.Model.Dto
 
 
             CreateMap<ItemModel, item>()
-                .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.itemName));
+                .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.name));
 
 
             CreateMap<ItemModel, Restaurant_item>()
@@ -26,6 +26,7 @@ namespace Server.Model.Dto
         public string itemId { get; set; }
         public string SupplierID { get; set; }
         public string CategoryID { get; set; } 
+        public string? ContractID { get; set; }
         public string name { get; set; }
         public double price { get; set; }
         public string VirtualID { get; set; }

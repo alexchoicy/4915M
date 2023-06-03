@@ -10,7 +10,7 @@ namespace Server.Controllers.Input
         public string? SupplierID { get; set; }
         public string? CategoryID { get; set; }
         public string? ContractID { get; set; }
-        public string? itemName { get; set; }
+        public string? name { get; set; }
         public double? price { get; set; }
         public string? virtualID { get; set; }
         public int quantity { get; set; } = 0;

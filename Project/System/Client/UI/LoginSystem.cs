@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,7 @@ namespace Client.UI
         private async void LoginBtn_Click(object sender, EventArgs e)
         {
             var result = await loginController.Login(getPwTxt.Text, getIDxt.Text);
+            Debug.WriteLine(result);
             if (result)
             {
                 DialogResult = DialogResult.OK; // Set the DialogResult of the Login form
@@ -81,5 +83,6 @@ namespace Client.UI
         {
 
         }
+
     }
 }
