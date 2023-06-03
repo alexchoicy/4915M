@@ -196,5 +196,10 @@ namespace Client.UI.Contract
                 .ToList();
             BindItemDataView(filterItem);
         }
+
+        private void acCancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

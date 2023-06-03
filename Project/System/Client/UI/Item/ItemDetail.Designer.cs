@@ -32,6 +32,7 @@
             this.stockTxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.conIDTxt = new System.Windows.Forms.ComboBox();
             this.cateIDTxt = new System.Windows.Forms.ComboBox();
             this.priceTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.itemIdTxt = new System.Windows.Forms.TextBox();
             this.updateBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.conIDTxt = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,14 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Item Information";
+            // 
+            // conIDTxt
+            // 
+            this.conIDTxt.FormattingEnabled = true;
+            this.conIDTxt.Location = new System.Drawing.Point(371, 72);
+            this.conIDTxt.Name = "conIDTxt";
+            this.conIDTxt.Size = new System.Drawing.Size(121, 21);
+            this.conIDTxt.TabIndex = 15;
             // 
             // cateIDTxt
             // 
@@ -229,14 +237,6 @@
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // conIDTxt
-            // 
-            this.conIDTxt.FormattingEnabled = true;
-            this.conIDTxt.Location = new System.Drawing.Point(371, 72);
-            this.conIDTxt.Name = "conIDTxt";
-            this.conIDTxt.Size = new System.Drawing.Size(121, 21);
-            this.conIDTxt.TabIndex = 15;
             // 
             // ItemDetail
             // 

@@ -30,21 +30,21 @@
         {
             this.itemDataGridView = new System.Windows.Forms.DataGridView();
             this.acAddItemViewGrid = new System.Windows.Forms.DataGridView();
+            this.addItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addqty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acRmBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.acAddBtn = new System.Windows.Forms.Button();
             this.acQtyTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.acCancelBtn = new System.Windows.Forms.Button();
             this.acSubmitBtn = new System.Windows.Forms.Button();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addqty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.acRmBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.acItemTxt = new System.Windows.Forms.ComboBox();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.acAddItemViewGrid)).BeginInit();
             this.SuspendLayout();
@@ -86,83 +86,6 @@
             this.acAddItemViewGrid.TabIndex = 1;
             this.acAddItemViewGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.acAddItemViewGrid_CellContentClick);
             // 
-            // acAddBtn
-            // 
-            this.acAddBtn.Location = new System.Drawing.Point(634, 158);
-            this.acAddBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.acAddBtn.Name = "acAddBtn";
-            this.acAddBtn.Size = new System.Drawing.Size(97, 40);
-            this.acAddBtn.TabIndex = 3;
-            this.acAddBtn.Text = "Add";
-            this.acAddBtn.UseVisualStyleBackColor = true;
-            this.acAddBtn.Click += new System.EventHandler(this.acAddBtn_Click);
-            // 
-            // acQtyTxt
-            // 
-            this.acQtyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acQtyTxt.Location = new System.Drawing.Point(533, 167);
-            this.acQtyTxt.Margin = new System.Windows.Forms.Padding(2);
-            this.acQtyTxt.Name = "acQtyTxt";
-            this.acQtyTxt.Size = new System.Drawing.Size(88, 23);
-            this.acQtyTxt.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(211, 167);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 26);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Item ID\r\n(virtual ID support)\r\n";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(462, 170);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Quantity";
-            // 
-            // acCancelBtn
-            // 
-            this.acCancelBtn.Location = new System.Drawing.Point(533, 389);
-            this.acCancelBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.acCancelBtn.Name = "acCancelBtn";
-            this.acCancelBtn.Size = new System.Drawing.Size(97, 43);
-            this.acCancelBtn.TabIndex = 8;
-            this.acCancelBtn.Text = "Cancel";
-            this.acCancelBtn.UseVisualStyleBackColor = true;
-            // 
-            // acSubmitBtn
-            // 
-            this.acSubmitBtn.Location = new System.Drawing.Point(634, 389);
-            this.acSubmitBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.acSubmitBtn.Name = "acSubmitBtn";
-            this.acSubmitBtn.Size = new System.Drawing.Size(97, 43);
-            this.acSubmitBtn.TabIndex = 9;
-            this.acSubmitBtn.Text = "Sumbit";
-            this.acSubmitBtn.UseVisualStyleBackColor = true;
-            this.acSubmitBtn.Click += new System.EventHandler(this.acSubmitBtn_Click);
-            // 
-            // ItemID
-            // 
-            this.ItemID.HeaderText = "Item ID";
-            this.ItemID.MinimumWidth = 8;
-            this.ItemID.Name = "ItemID";
-            this.ItemID.ReadOnly = true;
-            this.ItemID.Width = 150;
-            // 
-            // itemName
-            // 
-            this.itemName.HeaderText = "ItemName";
-            this.itemName.MinimumWidth = 8;
-            this.itemName.Name = "itemName";
-            this.itemName.ReadOnly = true;
-            this.itemName.Width = 150;
-            // 
             // addItemID
             // 
             this.addItemID.HeaderText = "Item ID";
@@ -193,6 +116,68 @@
             this.acRmBtn.ReadOnly = true;
             this.acRmBtn.Text = "Remove";
             // 
+            // acAddBtn
+            // 
+            this.acAddBtn.Location = new System.Drawing.Point(634, 158);
+            this.acAddBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.acAddBtn.Name = "acAddBtn";
+            this.acAddBtn.Size = new System.Drawing.Size(97, 40);
+            this.acAddBtn.TabIndex = 3;
+            this.acAddBtn.Text = "Add";
+            this.acAddBtn.UseVisualStyleBackColor = true;
+            this.acAddBtn.Click += new System.EventHandler(this.acAddBtn_Click);
+            // 
+            // acQtyTxt
+            // 
+            this.acQtyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acQtyTxt.Location = new System.Drawing.Point(533, 167);
+            this.acQtyTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.acQtyTxt.Name = "acQtyTxt";
+            this.acQtyTxt.Size = new System.Drawing.Size(88, 23);
+            this.acQtyTxt.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(259, 173);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Item ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(473, 173);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Quantity";
+            // 
+            // acCancelBtn
+            // 
+            this.acCancelBtn.Location = new System.Drawing.Point(533, 389);
+            this.acCancelBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.acCancelBtn.Name = "acCancelBtn";
+            this.acCancelBtn.Size = new System.Drawing.Size(97, 43);
+            this.acCancelBtn.TabIndex = 8;
+            this.acCancelBtn.Text = "Cancel";
+            this.acCancelBtn.UseVisualStyleBackColor = true;
+            this.acCancelBtn.Click += new System.EventHandler(this.acCancelBtn_Click);
+            // 
+            // acSubmitBtn
+            // 
+            this.acSubmitBtn.Location = new System.Drawing.Point(634, 389);
+            this.acSubmitBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.acSubmitBtn.Name = "acSubmitBtn";
+            this.acSubmitBtn.Size = new System.Drawing.Size(97, 43);
+            this.acSubmitBtn.TabIndex = 9;
+            this.acSubmitBtn.Text = "Sumbit";
+            this.acSubmitBtn.UseVisualStyleBackColor = true;
+            this.acSubmitBtn.Click += new System.EventHandler(this.acSubmitBtn_Click);
+            // 
             // acItemTxt
             // 
             this.acItemTxt.FormattingEnabled = true;
@@ -205,7 +190,7 @@
             // 
             this.searchTxt.Location = new System.Drawing.Point(72, 170);
             this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(122, 20);
+            this.searchTxt.Size = new System.Drawing.Size(146, 20);
             this.searchTxt.TabIndex = 11;
             // 
             // label3
@@ -217,6 +202,22 @@
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Search";
+            // 
+            // ItemID
+            // 
+            this.ItemID.HeaderText = "Item ID";
+            this.ItemID.MinimumWidth = 8;
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Width = 150;
+            // 
+            // itemName
+            // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemName.HeaderText = "ItemName";
+            this.itemName.MinimumWidth = 8;
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
             // 
             // AddContractItem
             // 
@@ -254,8 +255,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button acCancelBtn;
         private System.Windows.Forms.Button acSubmitBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn addItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn AddItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn addqty;
@@ -263,5 +262,7 @@
         private System.Windows.Forms.ComboBox acItemTxt;
         private System.Windows.Forms.TextBox searchTxt;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
     }
 }

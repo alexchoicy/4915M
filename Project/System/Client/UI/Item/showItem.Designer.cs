@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.ItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.gvitemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vgCateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.siSearchBox = new System.Windows.Forms.TextBox();
             this.siCateBox = new System.Windows.Forms.ComboBox();
             this.siCreateBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backBtn = new System.Windows.Forms.Button();
+            this.openCateBtn = new System.Windows.Forms.Button();
+            this.gvitemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vgCateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ItemDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,55 +65,6 @@
             this.ItemDataGridView.Size = new System.Drawing.Size(909, 402);
             this.ItemDataGridView.TabIndex = 0;
             this.ItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemDataGridView_CellContentClick);
-            // 
-            // gvitemID
-            // 
-            this.gvitemID.HeaderText = "Item ID";
-            this.gvitemID.MinimumWidth = 8;
-            this.gvitemID.Name = "gvitemID";
-            this.gvitemID.ReadOnly = true;
-            this.gvitemID.Width = 150;
-            // 
-            // gvSupplierID
-            // 
-            this.gvSupplierID.HeaderText = "Supplier ID";
-            this.gvSupplierID.MinimumWidth = 8;
-            this.gvSupplierID.Name = "gvSupplierID";
-            this.gvSupplierID.ReadOnly = true;
-            this.gvSupplierID.Width = 150;
-            // 
-            // gvItemName
-            // 
-            this.gvItemName.HeaderText = "Item Name";
-            this.gvItemName.MinimumWidth = 8;
-            this.gvItemName.Name = "gvItemName";
-            this.gvItemName.ReadOnly = true;
-            this.gvItemName.Width = 150;
-            // 
-            // gvQuantity
-            // 
-            this.gvQuantity.HeaderText = "Current Quantity";
-            this.gvQuantity.MinimumWidth = 8;
-            this.gvQuantity.Name = "gvQuantity";
-            this.gvQuantity.ReadOnly = true;
-            this.gvQuantity.Width = 150;
-            // 
-            // vgCateID
-            // 
-            this.vgCateID.HeaderText = "Category ID";
-            this.vgCateID.MinimumWidth = 8;
-            this.vgCateID.Name = "vgCateID";
-            this.vgCateID.ReadOnly = true;
-            this.vgCateID.Width = 150;
-            // 
-            // gvDetailBtn
-            // 
-            this.gvDetailBtn.HeaderText = "Detail";
-            this.gvDetailBtn.MinimumWidth = 8;
-            this.gvDetailBtn.Name = "gvDetailBtn";
-            this.gvDetailBtn.ReadOnly = true;
-            this.gvDetailBtn.Text = "Detail";
-            this.gvDetailBtn.Width = 150;
             // 
             // siSearchBox
             // 
@@ -170,11 +122,76 @@
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // openCateBtn
+            // 
+            this.openCateBtn.Location = new System.Drawing.Point(592, 12);
+            this.openCateBtn.Name = "openCateBtn";
+            this.openCateBtn.Size = new System.Drawing.Size(167, 49);
+            this.openCateBtn.TabIndex = 8;
+            this.openCateBtn.Text = "Category";
+            this.openCateBtn.UseVisualStyleBackColor = true;
+            this.openCateBtn.Click += new System.EventHandler(this.openCateBtn_Click);
+            // 
+            // gvitemID
+            // 
+            this.gvitemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvitemID.HeaderText = "Item ID";
+            this.gvitemID.MinimumWidth = 8;
+            this.gvitemID.Name = "gvitemID";
+            this.gvitemID.ReadOnly = true;
+            this.gvitemID.Width = 66;
+            // 
+            // gvSupplierID
+            // 
+            this.gvSupplierID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvSupplierID.HeaderText = "Supplier ID";
+            this.gvSupplierID.MinimumWidth = 8;
+            this.gvSupplierID.Name = "gvSupplierID";
+            this.gvSupplierID.ReadOnly = true;
+            this.gvSupplierID.Width = 84;
+            // 
+            // gvItemName
+            // 
+            this.gvItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gvItemName.HeaderText = "Item Name";
+            this.gvItemName.MinimumWidth = 8;
+            this.gvItemName.Name = "gvItemName";
+            this.gvItemName.ReadOnly = true;
+            // 
+            // gvQuantity
+            // 
+            this.gvQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvQuantity.HeaderText = "Current Quantity";
+            this.gvQuantity.MinimumWidth = 8;
+            this.gvQuantity.Name = "gvQuantity";
+            this.gvQuantity.ReadOnly = true;
+            this.gvQuantity.Width = 108;
+            // 
+            // vgCateID
+            // 
+            this.vgCateID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vgCateID.HeaderText = "Category ID";
+            this.vgCateID.MinimumWidth = 8;
+            this.vgCateID.Name = "vgCateID";
+            this.vgCateID.ReadOnly = true;
+            this.vgCateID.Width = 88;
+            // 
+            // gvDetailBtn
+            // 
+            this.gvDetailBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvDetailBtn.HeaderText = "Detail";
+            this.gvDetailBtn.MinimumWidth = 8;
+            this.gvDetailBtn.Name = "gvDetailBtn";
+            this.gvDetailBtn.ReadOnly = true;
+            this.gvDetailBtn.Text = "Detail";
+            this.gvDetailBtn.Width = 40;
+            // 
             // showItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 588);
+            this.Controls.Add(this.openCateBtn);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -200,6 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Button openCateBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvitemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvSupplierID;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvItemName;

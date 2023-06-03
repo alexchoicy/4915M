@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.itemGridView = new System.Windows.Forms.DataGridView();
-            this.itemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cdcontractIdTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.supplierID = new System.Windows.Forms.Label();
@@ -49,6 +44,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cdRepDate = new System.Windows.Forms.TextBox();
+            this.itemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,46 +69,6 @@
             this.itemGridView.RowHeadersWidth = 62;
             this.itemGridView.Size = new System.Drawing.Size(739, 292);
             this.itemGridView.TabIndex = 0;
-            // 
-            // itemID
-            // 
-            this.itemID.HeaderText = "ID";
-            this.itemID.MinimumWidth = 8;
-            this.itemID.Name = "itemID";
-            this.itemID.ReadOnly = true;
-            this.itemID.Width = 150;
-            // 
-            // itemCategoryID
-            // 
-            this.itemCategoryID.HeaderText = "Category ID";
-            this.itemCategoryID.MinimumWidth = 8;
-            this.itemCategoryID.Name = "itemCategoryID";
-            this.itemCategoryID.ReadOnly = true;
-            this.itemCategoryID.Width = 150;
-            // 
-            // itemName
-            // 
-            this.itemName.HeaderText = "Name";
-            this.itemName.MinimumWidth = 8;
-            this.itemName.Name = "itemName";
-            this.itemName.ReadOnly = true;
-            this.itemName.Width = 150;
-            // 
-            // itemQuantity
-            // 
-            this.itemQuantity.HeaderText = "Quantity";
-            this.itemQuantity.MinimumWidth = 8;
-            this.itemQuantity.Name = "itemQuantity";
-            this.itemQuantity.ReadOnly = true;
-            this.itemQuantity.Width = 150;
-            // 
-            // itemPrice
-            // 
-            this.itemPrice.HeaderText = "Price";
-            this.itemPrice.MinimumWidth = 8;
-            this.itemPrice.Name = "itemPrice";
-            this.itemPrice.ReadOnly = true;
-            this.itemPrice.Width = 150;
             // 
             // cdcontractIdTxt
             // 
@@ -240,6 +200,50 @@
             this.cdRepDate.Size = new System.Drawing.Size(100, 20);
             this.cdRepDate.TabIndex = 15;
             // 
+            // itemID
+            // 
+            this.itemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.itemID.HeaderText = "ID";
+            this.itemID.MinimumWidth = 8;
+            this.itemID.Name = "itemID";
+            this.itemID.ReadOnly = true;
+            this.itemID.Width = 43;
+            // 
+            // itemCategoryID
+            // 
+            this.itemCategoryID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.itemCategoryID.HeaderText = "Category ID";
+            this.itemCategoryID.MinimumWidth = 8;
+            this.itemCategoryID.Name = "itemCategoryID";
+            this.itemCategoryID.ReadOnly = true;
+            this.itemCategoryID.Width = 88;
+            // 
+            // itemName
+            // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemName.HeaderText = "Name";
+            this.itemName.MinimumWidth = 8;
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
+            // 
+            // itemQuantity
+            // 
+            this.itemQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.itemQuantity.HeaderText = "Quantity";
+            this.itemQuantity.MinimumWidth = 8;
+            this.itemQuantity.Name = "itemQuantity";
+            this.itemQuantity.ReadOnly = true;
+            this.itemQuantity.Width = 71;
+            // 
+            // itemPrice
+            // 
+            this.itemPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.itemPrice.HeaderText = "Price";
+            this.itemPrice.MinimumWidth = 8;
+            this.itemPrice.Name = "itemPrice";
+            this.itemPrice.ReadOnly = true;
+            this.itemPrice.Width = 56;
+            // 
             // ContractDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,12 +289,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button cdDownBtn;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox cdRepDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemCategoryID;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemPrice;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox cdRepDate;
     }
 }

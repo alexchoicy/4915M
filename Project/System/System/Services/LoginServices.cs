@@ -1,4 +1,5 @@
 using System.Configuration;
+using System.Diagnostics;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Server.Model;
@@ -20,6 +21,7 @@ namespace Server.Services
     public interface ILoginServices
     {
         LoginResult Login(string ID,string password, out LoginSuccModel data);
+        public string passwordHash(string password);
     }
     public class LoginServices : ILoginServices
     {
@@ -33,6 +35,11 @@ namespace Server.Services
             _jwtToken = jwtToken;
             _mapper = mapper;
 
+        }
+
+        public string passwordHash(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
         public LoginResult Login(string ID, string password, out LoginSuccModel data)
         {
@@ -76,7 +83,7 @@ namespace Server.Services
                 }
                 return LoginResult.UserNotFound;
             }
-            if (BCrypt.Net.BCrypt.Verify(password,request.password))
+            if (!BCrypt.Net.BCrypt.Verify(password,request.password))
             {
                 if (account != null)
                 {
@@ -88,6 +95,7 @@ namespace Server.Services
                 }
                 return LoginResult.UserNotFound;
             }
+            Debug.WriteLine(password + " " + request.password);
             //reset the account Lockdown
             account.LoginCount = 0;
             account.AccountLock = null;

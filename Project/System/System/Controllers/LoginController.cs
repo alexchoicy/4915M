@@ -49,5 +49,11 @@ namespace Server.Controllers
                 throw;
             }
         }
+
+        [HttpPost("/Pw")]
+        public string password([FromBody] string password)
+        {
+            return _loginServices.passwordHash(password);
+        }
     }
 }

@@ -49,19 +49,6 @@ namespace Client.UI
 
         private async void SubmitBtn_Click(object sender, EventArgs e)
         {
-            var result = await loginController.Login(getIDTxt.Text, NewPwTxt.Text);
-            if (result)
-            {
-                DialogResult = DialogResult.OK; // Set the DialogResult of the Login form
-                this.Hide();
-                Form LoginSystem = new LoginSystem();
-                LoginSystem.ShowDialog();
-                MessageBox.Show("Successful");
-            }
-            else
-            {
-                MessageBox.Show("ERROR");
-            }
         }
 
         private void reconfirmPwTxt_TextChanged(object sender, EventArgs e)

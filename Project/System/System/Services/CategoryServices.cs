@@ -46,12 +46,21 @@ namespace Server.Services
                 where item.CategoryID == id
                 select _mapper.Map<CateItemInfo>(itemsData)).AsNoTracking().ToList();
             var cateInfo = _dataContext.category.Find(id);
+            var resturantInfo = (from ac in _dataContext.AccessControl
+                join restType in _dataContext.RestaurantType on ac.typeID equals restType.TypeId
+                                 where ac.categoryID == id
+                                     select new CateResturant
+                                     {
+                                         TypeID = restType.TypeId,
+                                         name = restType.name
+                                     }).AsNoTracking().ToList();
             var CateItemDto = new CategoryItemDto
             {
                 CateId = id,
                 CateName = cateInfo.name,
                 remark = cateInfo.remark,
-                cateItemInfo = result
+                cateItemInfo = result,
+                resturantInfo = resturantInfo
             };
 
             return CateItemDto;

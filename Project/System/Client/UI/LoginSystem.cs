@@ -36,16 +36,21 @@ namespace Client.UI
 
         private async void LoginBtn_Click(object sender, EventArgs e)
         {
-            var result = await loginController.Login(getPwTxt.Text, getIDxt.Text);
+            if (string.IsNullOrEmpty(getIdTxt.Text) || string.IsNullOrEmpty(getPwTxt.Text))
+            {
+                MessageBox.Show("Please input user Data");
+                return;
+            };
+            var result = await loginController.Login(getIdTxt.Text,getPwTxt.Text);
             Debug.WriteLine(result);
-            if (result)
+            if (result == "Ok")
             {
                 DialogResult = DialogResult.OK; // Set the DialogResult of the Login form
                 this.Close();
             }
             else
             {
-                MessageBox.Show("ERROR");
+                MessageBox.Show(result);
             }
         }
 

@@ -84,19 +84,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\ContractController.cs" />
     <Compile Include="Controller\InvController.cs" />
     <Compile Include="Controller\ItemController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\RestaurantController.cs" />
+    <Compile Include="Controller\ResturantController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Helper\ApiClient.cs" />
     <Compile Include="Helper\AutoMapperConfig.cs" />
     <Compile Include="Helper\BasicClose.cs" />
     <Compile Include="Helper\GlobalData.cs" />
+    <Compile Include="Model\Receive\CategoryModel.cs" />
     <Compile Include="Model\Receive\ContractModel.cs" />
     <Compile Include="Model\Receive\ItemModel.cs" />
+    <Compile Include="Model\Receive\RestaurantModel.cs" />
     <Compile Include="Model\Receive\SupplierModel.cs" />
     <Compile Include="Model\Receive\UserInfoModel.cs" />
+    <Compile Include="Model\Submit\CategoryModel.cs" />
     <Compile Include="Model\Submit\ContractSumbitModel.cs" />
     <Compile Include="Model\Submit\ItemCreateModel.cs" />
     <Compile Include="Model\Submit\ItemEditModel.cs" />
@@ -125,6 +131,24 @@
     </Compile>
     <Compile Include="UI\Contract\ShowContract.Designer.cs">
       <DependentUpon>ShowContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Item\Category\cateDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Item\Category\cateDetail.Designer.cs">
+      <DependentUpon>cateDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Item\Category\CreateCate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Item\Category\CreateCate.Designer.cs">
+      <DependentUpon>CreateCate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Item\Category\ShowCate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Item\Category\ShowCate.Designer.cs">
+      <DependentUpon>ShowCate.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Item\ItemCreate.cs">
       <SubType>Form</SubType>
@@ -182,6 +206,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Contract\ShowContract.resx">
       <DependentUpon>ShowContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Item\Category\cateDetail.resx">
+      <DependentUpon>cateDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Item\Category\CreateCate.resx">
+      <DependentUpon>CreateCate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Item\Category\ShowCate.resx">
+      <DependentUpon>ShowCate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Item\ItemCreate.resx">
       <DependentUpon>ItemCreate.cs</DependentUpon>

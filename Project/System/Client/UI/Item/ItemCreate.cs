@@ -22,7 +22,7 @@ namespace Client.UI.Item
         private ContractController contractController = new ContractController();
         private SupplierController suppliercontroller = new SupplierController();
         private ItemController itemcontroller = new ItemController();
-
+        private CategoryController categoryController = new CategoryController();
         private List<SupplierModel> suppliersData;
         private List<ContractIDDto> contractData;
         private List<ItemModel> itemData;
@@ -85,15 +85,15 @@ namespace Client.UI.Item
             virtIDTxt.AutoCompleteCustomSource = acVID;
 
             //setup suggestion of Category ID
-
+            var cateData =await categoryController.getAll();
             AutoCompleteStringCollection acCate = new AutoCompleteStringCollection();
             cateIDTxt.Items.Clear();
-            foreach (var item in itemData)
+            foreach (var item in cateData)
             {
                 if (!acCate.Contains(item.CategoryID))
                 {
                     acCate.Add(item.CategoryID);
-                    cateIDTxt.Items.Add(item.CategoryID);
+                    cateIDTxt.Items.Add(item.CategoryID + $" {item.name}");
                 }
             }
             cateIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -173,15 +173,21 @@ namespace Client.UI.Item
             string rawSupplierID = SupIDTxt.Text;
             string rawContractID = contactIDTxt.Text;
             string itemname = itemNameTxt.Text;
-            string cateID = cateIDTxt.Text;
+            string rawcateID = cateIDTxt.Text;
             // only get ID
             Regex regex = new Regex("\\s");
             string[] supID = regex.Split(rawSupplierID);
             string SupplierID = supID[0].Trim();
             string[] contID = regex.Split(rawContractID);
             string contractID = contID[0].Trim();
-            if(string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(cateID) 
-               || string.IsNullOrEmpty(itemname) || string.IsNullOrEmpty(cateID) || string.IsNullOrEmpty(virtIDTxt.Text))
+            string[] cateID = regex.Split(rawcateID);
+            string CategoryID = contID[0].Trim();
+
+
+
+
+            if (string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(CategoryID) 
+               || string.IsNullOrEmpty(itemname) || string.IsNullOrEmpty(CategoryID) || string.IsNullOrEmpty(virtIDTxt.Text))
             {
                 MessageBox.Show("Please input all item");
                 return;
@@ -200,7 +206,7 @@ namespace Client.UI.Item
                 SupplierID = SupplierID,
                 ContractID = contractID,
                 name = itemname,
-                CategoryID = cateID,
+                CategoryID = CategoryID,
                 price = itemprice,
                 VirtualID = virtIDTxt.Text
             };
@@ -231,6 +237,11 @@ namespace Client.UI.Item
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void cateBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

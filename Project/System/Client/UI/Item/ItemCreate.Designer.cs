@@ -40,14 +40,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cateIDTxt = new System.Windows.Forms.ComboBox();
-            this.cnewSupBtn = new System.Windows.Forms.Button();
-            this.cnewConBtn = new System.Windows.Forms.Button();
             this.contactIDTxt = new System.Windows.Forms.ComboBox();
             this.SupIDTxt = new System.Windows.Forms.ComboBox();
+            this.cnewSupBtn = new System.Windows.Forms.Button();
+            this.cnewConBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.virtIDTxt = new System.Windows.Forms.ComboBox();
             this.sumBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.cateBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -140,8 +141,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cateIDTxt);
-            this.groupBox1.Controls.Add(this.cnewSupBtn);
-            this.groupBox1.Controls.Add(this.cnewConBtn);
             this.groupBox1.Controls.Add(this.contactIDTxt);
             this.groupBox1.Controls.Add(this.SupIDTxt);
             this.groupBox1.Controls.Add(this.itemIDTxt);
@@ -151,7 +150,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(666, 145);
+            this.groupBox1.Size = new System.Drawing.Size(497, 145);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ID";
@@ -163,25 +162,6 @@
             this.cateIDTxt.Name = "cateIDTxt";
             this.cateIDTxt.Size = new System.Drawing.Size(121, 21);
             this.cateIDTxt.TabIndex = 15;
-            // 
-            // cnewSupBtn
-            // 
-            this.cnewSupBtn.Location = new System.Drawing.Point(514, 19);
-            this.cnewSupBtn.Name = "cnewSupBtn";
-            this.cnewSupBtn.Size = new System.Drawing.Size(133, 45);
-            this.cnewSupBtn.TabIndex = 11;
-            this.cnewSupBtn.Text = "Create New Supplier";
-            this.cnewSupBtn.UseVisualStyleBackColor = true;
-            // 
-            // cnewConBtn
-            // 
-            this.cnewConBtn.Location = new System.Drawing.Point(514, 81);
-            this.cnewConBtn.Name = "cnewConBtn";
-            this.cnewConBtn.Size = new System.Drawing.Size(133, 45);
-            this.cnewConBtn.TabIndex = 10;
-            this.cnewConBtn.Text = "Create New Contract";
-            this.cnewConBtn.UseVisualStyleBackColor = true;
-            this.cnewConBtn.Click += new System.EventHandler(this.cnewConBtn_Click);
             // 
             // contactIDTxt
             // 
@@ -200,6 +180,25 @@
             this.SupIDTxt.TabIndex = 8;
             this.SupIDTxt.SelectedIndexChanged += new System.EventHandler(this.SupIDTxt_SelectedIndexChanged);
             // 
+            // cnewSupBtn
+            // 
+            this.cnewSupBtn.Location = new System.Drawing.Point(558, 12);
+            this.cnewSupBtn.Name = "cnewSupBtn";
+            this.cnewSupBtn.Size = new System.Drawing.Size(133, 45);
+            this.cnewSupBtn.TabIndex = 11;
+            this.cnewSupBtn.Text = "Create New Supplier";
+            this.cnewSupBtn.UseVisualStyleBackColor = true;
+            // 
+            // cnewConBtn
+            // 
+            this.cnewConBtn.Location = new System.Drawing.Point(558, 69);
+            this.cnewConBtn.Name = "cnewConBtn";
+            this.cnewConBtn.Size = new System.Drawing.Size(133, 45);
+            this.cnewConBtn.TabIndex = 10;
+            this.cnewConBtn.Text = "Create New Contract";
+            this.cnewConBtn.UseVisualStyleBackColor = true;
+            this.cnewConBtn.Click += new System.EventHandler(this.cnewConBtn_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.virtIDTxt);
@@ -210,7 +209,7 @@
             this.groupBox2.Controls.Add(this.itemPriceTxt);
             this.groupBox2.Location = new System.Drawing.Point(25, 179);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(475, 186);
+            this.groupBox2.Size = new System.Drawing.Size(497, 186);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Item Info";
@@ -243,13 +242,26 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
+            // cateBtn
+            // 
+            this.cateBtn.Location = new System.Drawing.Point(558, 129);
+            this.cateBtn.Name = "cateBtn";
+            this.cateBtn.Size = new System.Drawing.Size(133, 45);
+            this.cateBtn.TabIndex = 18;
+            this.cateBtn.Text = "Create New Category";
+            this.cateBtn.UseVisualStyleBackColor = true;
+            this.cateBtn.Click += new System.EventHandler(this.cateBtn_Click);
+            // 
             // ItemCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 488);
+            this.Controls.Add(this.cateBtn);
             this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.cnewSupBtn);
             this.Controls.Add(this.sumBtn);
+            this.Controls.Add(this.cnewConBtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ItemCreate";
@@ -284,5 +296,6 @@
         private System.Windows.Forms.Button cnewConBtn;
         private System.Windows.Forms.ComboBox cateIDTxt;
         private System.Windows.Forms.ComboBox virtIDTxt;
+        private System.Windows.Forms.Button cateBtn;
     }
 }

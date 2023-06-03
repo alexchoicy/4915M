@@ -16,9 +16,8 @@ namespace Client.Controller
 {
     public class LoginController
     {
-        public async Task<bool> Login(string username, string rawpassword)
+        public async Task<string> Login(string username, string password)
         {
-            string password = BCrypt.Net.BCrypt.HashPassword(rawpassword);
             var loginData = new {userID = username, password = password};
             var request = new RestRequest("/api/Login", Method.Post).AddJsonBody(loginData);
             Debug.WriteLine("Started," + username + " " + password);
@@ -40,14 +39,14 @@ namespace Client.Controller
                     };
                     GlobalData.UserInfo = userInfoData;
                     Debug.WriteLine(data.RootElement.GetProperty("userData").GetProperty("name").GetString());
-                    return true;
+                    return "Ok";
                 }
-                return false;
+                return userInfo.Content;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return false;
+                return "Error";
             }
 
         }

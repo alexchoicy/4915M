@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Client.UI.Item.Category;
 
 namespace Client.UI.Item
 {
@@ -160,6 +161,13 @@ namespace Client.UI.Item
                 Console.WriteLine(exception);
                 return;
             }
+        }
+
+        private void openCateBtn_Click(object sender, EventArgs e)
+        {
+            Form showCate = new ShowCate();
+            showCate.ShowDialog();
+            LoadData();
         }
     }
 }
