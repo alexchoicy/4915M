@@ -9,6 +9,6 @@ namespace Client.Helper
 {
     internal class ApiClient
     {
-        public static readonly RestClient client = new RestClient("https://localhost:5001/");
+        public static readonly RestClient client = new RestClient("http://localhost:5000/");
     }
 }

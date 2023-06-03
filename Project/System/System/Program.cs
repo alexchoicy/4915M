@@ -147,7 +147,7 @@ var app = builder.Build();
 app.UseAuthentication();
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

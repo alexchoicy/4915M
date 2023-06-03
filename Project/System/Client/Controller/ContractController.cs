@@ -25,7 +25,6 @@ namespace Client.Controller
             try
             {
                 var response = await ApiClient.client.ExecuteAsync(request);
-
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var contractList = JsonConvert.DeserializeObject<List<ContractModel>>(response.Content);
