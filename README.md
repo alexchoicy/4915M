@@ -4,4 +4,4 @@ change the Server/appsettings.json
 
 conDB
 
-change to user & password to the one you login to your mySQL
+change the user & password to the one you login to your mySQL
