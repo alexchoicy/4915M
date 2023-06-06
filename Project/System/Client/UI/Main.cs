@@ -18,6 +18,10 @@ namespace Client.UI
         public Main()
         {
             InitializeComponent();
+            if (GlobalData.UserInfo.Department == "Restaurant")
+            {
+                showContractBtn.Hide();
+            }
         }
 
         private void Main_Load(object sender, EventArgs e)

@@ -105,6 +105,7 @@
     <Compile Include="Model\Submit\CategoryModel.cs" />
     <Compile Include="Model\Submit\ContractSumbitModel.cs" />
     <Compile Include="Model\Submit\ItemCreateModel.cs" />
+    <Compile Include="Model\Submit\ItemEditInv.cs" />
     <Compile Include="Model\Submit\ItemEditModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

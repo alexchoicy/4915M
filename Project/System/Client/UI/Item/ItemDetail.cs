@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Security;
 using System.Windows.Forms;
 using Client.Controller;
+using Client.Helper;
 using Client.Model.Receive;
 using Client.Model.Submit;
 
@@ -29,6 +30,14 @@ namespace Client.UI.Item
             this.categoryItems = categoryItems;
             BindDataViewItem();
             BindBox();
+            if (GlobalData.UserInfo.Department == "Restaurant")
+            {
+                conIDTxt.DropDownStyle = ComboBoxStyle.DropDownList;
+                cateIDTxt.DropDownStyle = ComboBoxStyle.DropDownList;
+                virtualIDTxt.ReadOnly = true;
+                itemNameTxt.ReadOnly=true;
+                priceTxt.ReadOnly=true;
+            }
         }
 
         private void BindBox()
@@ -54,21 +63,25 @@ namespace Client.UI.Item
         }
         private async void getContractBysup(string id)
         {
-            contractData = await contractController.getContractIDDto(id);
-            if (contractData != null)
+            if (GlobalData.UserInfo.Department != "Restaurant")
             {
-                conIDTxt.Items.Clear();
-                AutoCompleteStringCollection acContract = new AutoCompleteStringCollection();
-                foreach (var item in contractData)
+                contractData = await contractController.getContractIDDto(id);
+                if (contractData != null)
                 {
-                    acContract.Add(item.ContractID + $" ({item.ContractType})");
-                    conIDTxt.Items.Add(item.ContractID + $" ({item.ContractType})");
+                    conIDTxt.Items.Clear();
+                    AutoCompleteStringCollection acContract = new AutoCompleteStringCollection();
+                    foreach (var item in contractData)
+                    {
+                        acContract.Add(item.ContractID + $" ({item.ContractType})");
+                        conIDTxt.Items.Add(item.ContractID + $" ({item.ContractType})");
+                    }
+                    conIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    conIDTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    conIDTxt.AutoCompleteCustomSource = acContract;
                 }
-                conIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                conIDTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                conIDTxt.AutoCompleteCustomSource = acContract;
             }
         }
+
         private async void updateBtn_Click(object sender, EventArgs e)
         {
 
@@ -81,6 +94,35 @@ namespace Client.UI.Item
             string rawprice = priceTxt.Text;
             string rawstock = stockTxt.Text;
 
+            int stock;
+            if (!int.TryParse(rawstock, out stock))
+            {
+                MessageBox.Show("Incorrect data of Stock");
+                return;
+            }
+
+            if (GlobalData.UserInfo.Department == "Restaurant")
+            {
+                List<UpdateItem> updateRestInvsList = new List<UpdateItem>();
+                UpdateItem updateRestInv = new UpdateItem
+                {
+                    itemID = itemID,
+                    quantity = stock
+                };
+                updateRestInvsList.Add(updateRestInv);
+                bool editRestInv = await invController.EditItemStock(updateRestInvsList);
+                
+                if (!editRestInv)
+                {
+                    MessageBox.Show("Error while Edit the inventory stock");
+                }
+                else
+                {
+                    MessageBox.Show("Update Success");
+                }
+                return;
+            }
+
             double price;
             if (!double.TryParse(rawprice, out price))
             {
@@ -88,12 +130,7 @@ namespace Client.UI.Item
                 return;
             }
 
-            int stock;
-            if (!int.TryParse(rawstock, out stock))
-            {
-                MessageBox.Show("Incorrect data of Stock");
-                return;
-            }
+
             //check cateID
             bool catIDcheck = false;
 

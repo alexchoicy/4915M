@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Controller;
+using Client.Helper;
 using Client.Model.Receive;
 
 namespace Client.UI.Item.Category
@@ -21,6 +22,11 @@ namespace Client.UI.Item.Category
             InitializeComponent();
             BindData();
             cateBox.Items.Add("All");
+            if (GlobalData.UserInfo.Department == "Restaurant")
+            {
+                createCateBtn.Hide();
+                CateView.Columns["btnView"].Visible = false;
+            }
         }
 
         public async void BindData()

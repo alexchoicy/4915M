@@ -70,6 +70,7 @@ namespace Server.Services
                     itemId = items.ItemID,
                     SupplierID = items.SupplierID,
                     name = items.name,
+                    CategoryID = items.CategoryID,
                     price = items.price,
                     VirtualID = items.VirtualID,
                     quantity = inv != null ? inv.Quantity : 0
@@ -160,13 +161,21 @@ namespace Server.Services
 
             foreach (var item in items)
             {
+                var existingItem = _dataContext.restaurant_item.FirstOrDefault(i => i.itemID == item.ItemID && i.restaurantID == restID);
                 var itemData = new Restaurant_item
                 {
                     itemID = item.ItemID,
                     restaurantID = restID,
                     Quantity = item.quantity
                 };
-                _dataContext.restaurant_item.Update(itemData);
+                if (existingItem !=null)
+                {
+                    _dataContext.restaurant_item.Update(itemData);
+                }
+                else
+                {
+                    _dataContext.restaurant_item.Add(itemData);
+                }
             }
             _dataContext.SaveChanges();
             return true;

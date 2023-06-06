@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.showContractBtn = new System.Windows.Forms.Button();
             this.ItemControlBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.userLabel = new System.Windows.Forms.Label();
@@ -41,15 +41,15 @@
             this.logoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // showContractBtn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 107);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 85);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ShowContract_Click);
+            this.showContractBtn.Location = new System.Drawing.Point(12, 107);
+            this.showContractBtn.Name = "showContractBtn";
+            this.showContractBtn.Size = new System.Drawing.Size(139, 85);
+            this.showContractBtn.TabIndex = 1;
+            this.showContractBtn.Text = "Contract";
+            this.showContractBtn.UseVisualStyleBackColor = true;
+            this.showContractBtn.Click += new System.EventHandler(this.ShowContract_Click);
             // 
             // ItemControlBtn
             // 
@@ -57,7 +57,7 @@
             this.ItemControlBtn.Name = "ItemControlBtn";
             this.ItemControlBtn.Size = new System.Drawing.Size(139, 85);
             this.ItemControlBtn.TabIndex = 2;
-            this.ItemControlBtn.Text = "button2";
+            this.ItemControlBtn.Text = "Item";
             this.ItemControlBtn.UseVisualStyleBackColor = true;
             this.ItemControlBtn.Click += new System.EventHandler(this.ItemControlBtn_Click);
             // 
@@ -166,7 +166,7 @@
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ItemControlBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.showContractBtn);
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -176,7 +176,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button showContractBtn;
         private System.Windows.Forms.Button ItemControlBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label userLabel;

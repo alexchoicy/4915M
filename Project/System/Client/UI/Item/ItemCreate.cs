@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.UI.Contract;
+using Client.UI.Item.Category;
 
 namespace Client.UI.Item
 {
@@ -241,7 +242,11 @@ namespace Client.UI.Item
 
         private void cateBtn_Click(object sender, EventArgs e)
         {
-
+            Form createCate = new CreateCate();
+            createCate.ShowDialog();
+            getItemData();
+            getStartData();
+            
         }
     }
 

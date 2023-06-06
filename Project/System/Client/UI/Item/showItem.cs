@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.UI.Item.Category;
+using Client.Helper;
 
 namespace Client.UI.Item
 {
@@ -29,6 +31,12 @@ namespace Client.UI.Item
             LoadData();
             siCateBox.SelectedIndexChanged += siCateBox_SelectedIndexChanged;
             siSearchBox.TextChanged += siSearchBox_TextChanged;
+            if (GlobalData.UserInfo.Department == "Restaurant")
+            {
+                siCateBox.Hide();
+                siCreateBtn.Hide();
+                openCateBtn.Hide();
+            }
         }
 
         private async void LoadData()
@@ -68,6 +76,7 @@ namespace Client.UI.Item
                     item.CategoryID,
                     "Detail");
                 //setup category suggestion
+                Debug.WriteLine(item.CategoryID);
                 ItemDataGridView.Rows.Add(row);
                 if(!siCateBox.Items.Contains(item.CategoryID)) {
                     siCateBox.Items.Add(item.CategoryID);

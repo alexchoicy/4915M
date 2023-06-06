@@ -85,6 +85,5 @@ namespace Client.Controller
             return false;
         }
 
-
     }
 }
