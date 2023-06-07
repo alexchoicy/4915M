@@ -181,36 +181,6 @@
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NHS\CreateOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\NHS\CreateOrder.Designer.cs">
-      <DependentUpon>CreateOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\NHS\RestaurantManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\NHS\RestaurantManager.Designer.cs">
-      <DependentUpon>RestaurantManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\NHS\RestaurantManager_Requestform.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\NHS\RestaurantManager_Requestform.Designer.cs">
-      <DependentUpon>RestaurantManager_Requestform.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\NHS\Stock_DeliverForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\NHS\Stock_DeliverForm.Designer.cs">
-      <DependentUpon>Stock_DeliverForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\NHS\Stock_editform.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\NHS\Stock_editform.Designer.cs">
-      <DependentUpon>Stock_editform.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\resetPw.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,21 +231,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\CreateOrder.resx">
-      <DependentUpon>CreateOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\RestaurantManager.resx">
-      <DependentUpon>RestaurantManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\RestaurantManager_Requestform.resx">
-      <DependentUpon>RestaurantManager_Requestform.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\Stock_DeliverForm.resx">
-      <DependentUpon>Stock_DeliverForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\Stock_editform.resx">
-      <DependentUpon>Stock_editform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\resetPw.resx">
       <DependentUpon>resetPw.cs</DependentUpon>

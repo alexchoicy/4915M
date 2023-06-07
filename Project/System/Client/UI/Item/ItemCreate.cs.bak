@@ -182,7 +182,7 @@ namespace Client.UI.Item
             string[] contID = regex.Split(rawContractID);
             string contractID = contID[0].Trim();
             string[] cateID = regex.Split(rawcateID);
-            string CategoryID = cateID[0].Trim();
+            string CategoryID = contID[0].Trim();
 
 
 

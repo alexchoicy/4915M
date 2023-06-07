@@ -92,11 +92,7 @@ namespace Client.UI.Item.Category
         private void createCateBtn_Click(object sender, EventArgs e)
         {
             Form createCate = new CreateCate();
-            DialogResult cate = createCate.ShowDialog();
-            if (cate == DialogResult.OK)
-            {
-                BindData();
-            }
+            createCate.ShowDialog();
         }
     }
 }

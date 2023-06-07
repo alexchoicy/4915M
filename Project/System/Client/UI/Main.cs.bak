@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using Client.Helper;
 using Client.UI.Agreement;
 using Client.UI.Item;
-using test;
 
 namespace Client.UI
 {
@@ -50,12 +49,6 @@ namespace Client.UI
         private void logoutBtn_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
-        }
-
-        private void restBtn_Click(object sender, EventArgs e)
-        {
-            var restForm = new RestaurantManager(this);
-            restForm.ShowDialog();
         }
     }
 }

@@ -37,7 +37,6 @@ namespace Client.UI.Item.Category
             {
                 MessageBox.Show("Success");
                 this.Close();
-                DialogResult = DialogResult.OK;
                 return;
             }
 

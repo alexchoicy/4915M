@@ -39,7 +39,6 @@
             this.deptLabel = new System.Windows.Forms.Label();
             this.posLabel = new System.Windows.Forms.Label();
             this.logoutBtn = new System.Windows.Forms.Button();
-            this.restBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // showContractBtn
@@ -152,22 +151,11 @@
             this.logoutBtn.UseVisualStyleBackColor = true;
             this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
-            // restBtn
-            // 
-            this.restBtn.Location = new System.Drawing.Point(15, 317);
-            this.restBtn.Name = "restBtn";
-            this.restBtn.Size = new System.Drawing.Size(136, 81);
-            this.restBtn.TabIndex = 12;
-            this.restBtn.Text = "Restaurant Order";
-            this.restBtn.UseVisualStyleBackColor = true;
-            this.restBtn.Click += new System.EventHandler(this.restBtn_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.restBtn);
             this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.posLabel);
             this.Controls.Add(this.deptLabel);
@@ -199,6 +187,5 @@
         private System.Windows.Forms.Label deptLabel;
         private System.Windows.Forms.Label posLabel;
         private System.Windows.Forms.Button logoutBtn;
-        private System.Windows.Forms.Button restBtn;
     }
 }
