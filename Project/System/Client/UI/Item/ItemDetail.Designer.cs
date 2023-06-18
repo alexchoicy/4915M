@@ -32,7 +32,6 @@
             this.stockTxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.conIDTxt = new System.Windows.Forms.ComboBox();
             this.cateIDTxt = new System.Windows.Forms.ComboBox();
             this.priceTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -40,7 +39,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.virtualIDTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.supplierIDTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -81,7 +79,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.conIDTxt);
             this.groupBox2.Controls.Add(this.cateIDTxt);
             this.groupBox2.Controls.Add(this.priceTxt);
             this.groupBox2.Controls.Add(this.label8);
@@ -89,7 +86,6 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.virtualIDTxt);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.supplierIDTxt);
             this.groupBox2.Controls.Add(this.label2);
@@ -101,14 +97,6 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Item Information";
-            // 
-            // conIDTxt
-            // 
-            this.conIDTxt.FormattingEnabled = true;
-            this.conIDTxt.Location = new System.Drawing.Point(371, 72);
-            this.conIDTxt.Name = "conIDTxt";
-            this.conIDTxt.Size = new System.Drawing.Size(121, 21);
-            this.conIDTxt.TabIndex = 15;
             // 
             // cateIDTxt
             // 
@@ -165,15 +153,6 @@
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Virtual ID";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(285, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Contract ID";
             // 
             // label3
             // 
@@ -268,7 +247,6 @@
         private System.Windows.Forms.TextBox supplierIDTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox virtualIDTxt;
         private System.Windows.Forms.TextBox itemNameTxt;
@@ -278,6 +256,5 @@
         private System.Windows.Forms.TextBox priceTxt;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cateIDTxt;
-        private System.Windows.Forms.ComboBox conIDTxt;
     }
 }

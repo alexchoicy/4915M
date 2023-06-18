@@ -25,8 +25,7 @@ namespace Server.Model.Dto
     {
         public string itemId { get; set; }
         public string SupplierID { get; set; }
-        public string CategoryID { get; set; } 
-        public string? ContractID { get; set; }
+        public string CategoryID { get; set; }
         public string name { get; set; }
         public double price { get; set; }
         public string VirtualID { get; set; }
@@ -38,7 +37,6 @@ namespace Server.Model.Dto
     {
         public string itemID { get; set; }
         public string? CategoryID { get; set; }
-        public string? ContractID { get; set; }
         public string? VirtualID { get; set; }
         public string? name { get; set; }
         public double? price { get; set; }

@@ -64,9 +64,7 @@ namespace Server.Services
                 return data;
             }
 
-
-
-            var contractItemData = _dataContext.item.Where(x => x.ContractID == id).ToList();
+            var contractItemData = _dataContext.item.Where(x => x.ItemID == id).ToList();
             if (contractItemData != null)
             {
 

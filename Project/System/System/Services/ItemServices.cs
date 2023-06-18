@@ -42,7 +42,6 @@ namespace Server.Services
                     itemId = items.ItemID,
                     SupplierID = items.SupplierID,
                     CategoryID = items.CategoryID,
-                    ContractID = items.ContractID,
                     name = items.name,
                     price = items.price,
                     VirtualID = items.VirtualID,
@@ -141,7 +140,6 @@ namespace Server.Services
                 ItemID = cur.ItemID,
                 SupplierID = cur.SupplierID,
                 CategoryID = !string.IsNullOrEmpty(item.CategoryID) ? item.CategoryID : cur.CategoryID,
-                ContractID = !string.IsNullOrEmpty(item.ContractID) ? item.ContractID : cur.ContractID,
                 VirtualID = !string.IsNullOrEmpty(item.VirtualID) ? item.VirtualID : cur.VirtualID,
                 name = !string.IsNullOrEmpty(item.name) ? item.name : cur.name,
                 price = (double)(item.price != null ? item.price : cur.price)

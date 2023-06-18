@@ -10,7 +10,6 @@ namespace Client.Model.Submit
     {
         public string itemID { get; set; }
         public string CategoryID { get; set; }
-        public string ContractID { get; set; }
         public string VirtualID { get; set; }
         public string name { get; set; }
         public double price { get; set; }

@@ -32,7 +32,6 @@ namespace Client.UI.Item
             BindBox();
             if (GlobalData.UserInfo.Department == "Restaurant")
             {
-                conIDTxt.DropDownStyle = ComboBoxStyle.DropDownList;
                 cateIDTxt.DropDownStyle = ComboBoxStyle.DropDownList;
                 virtualIDTxt.ReadOnly = true;
                 itemNameTxt.ReadOnly=true;
@@ -53,7 +52,6 @@ namespace Client.UI.Item
             itemIdTxt.Text = data.itemId;
             supplierIDTxt.Text = data.SupplierID;
             cateIDTxt.Text = data.CategoryID;
-            conIDTxt.Text = data.ContractID;
             virtualIDTxt.Text = data.VirtualID;
             itemNameTxt.Text = data.name;
             priceTxt.Text = data.price.ToString();
@@ -63,23 +61,6 @@ namespace Client.UI.Item
         }
         private async void getContractBysup(string id)
         {
-            if (GlobalData.UserInfo.Department != "Restaurant")
-            {
-                contractData = await contractController.getContractIDDto(id);
-                if (contractData != null)
-                {
-                    conIDTxt.Items.Clear();
-                    AutoCompleteStringCollection acContract = new AutoCompleteStringCollection();
-                    foreach (var item in contractData)
-                    {
-                        acContract.Add(item.ContractID + $" ({item.ContractType})");
-                        conIDTxt.Items.Add(item.ContractID + $" ({item.ContractType})");
-                    }
-                    conIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    conIDTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    conIDTxt.AutoCompleteCustomSource = acContract;
-                }
-            }
         }
 
         private async void updateBtn_Click(object sender, EventArgs e)
@@ -88,7 +69,6 @@ namespace Client.UI.Item
             string itemID = itemIdTxt.Text;
             string supID = supplierIDTxt.Text;
             string cateID = cateIDTxt.Text;
-            string conID = conIDTxt.Text;
             string virtualID = virtualIDTxt.Text;
             string name = itemNameTxt.Text;
             string rawprice = priceTxt.Text;
@@ -148,37 +128,7 @@ namespace Client.UI.Item
                 MessageBox.Show("Incorrect CateItem ID");
                 return;
             }
-            //check contractID
-            bool contractIDcheck = false;
 
-            foreach (var item in contractData)
-            {
-                if (conID == item.ContractID)
-                {
-                    contractIDcheck = true;
-                    break;
-                }
-            }
-
-            if (!contractIDcheck)
-            {
-                MessageBox.Show("Incorrect Contract ID");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(conID))
-            {
-                conID = data.ContractID;
-            }
-
-            if (conID != data.ContractID)
-            {
-                DialogResult dialogResult = MessageBox.Show( "Are you sure to change the contractID to " + conID,"Confirm Box",MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-            }
 
             if (string.IsNullOrEmpty(virtualID))
             {
@@ -244,7 +194,6 @@ namespace Client.UI.Item
             ItemEditModel editData = new ItemEditModel
             {
                 CategoryID = cateID,
-                ContractID = conID,
                 itemID = itemID,
                 name = name,
                 price = price,

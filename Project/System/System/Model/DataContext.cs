@@ -93,7 +93,7 @@ namespace Server.Model
             modelBuilder.Entity<Buy>()
                 .ToTable("Buy");
             modelBuilder.Entity<item_buy>()
-                .ToTable("item_table").HasKey("BuyID", "itemID");
+                .ToTable("item_table").HasKey("BuyID", "ItemID");
         }
     }
 }

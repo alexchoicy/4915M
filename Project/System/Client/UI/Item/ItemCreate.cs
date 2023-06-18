@@ -106,20 +106,6 @@ namespace Client.UI.Item
 
         private async void getContractBysup(string id)
         {
-            contractData = await contractController.getContractIDDto(id);
-            if (contractData != null)
-            {
-                contactIDTxt.Items.Clear();
-                AutoCompleteStringCollection acContract = new AutoCompleteStringCollection();
-                foreach (var item in contractData)
-                {
-                    acContract.Add(item.ContractID + $" ({item.ContractType})");
-                    contactIDTxt.Items.Add(item.ContractID + $" ({item.ContractType})");
-                }
-                contactIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                contactIDTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                contactIDTxt.AutoCompleteCustomSource = acContract;
-            }
         }
         private void SupIDTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -172,15 +158,12 @@ namespace Client.UI.Item
         {
             string itemID = itemIDTxt.Text;
             string rawSupplierID = SupIDTxt.Text;
-            string rawContractID = contactIDTxt.Text;
             string itemname = itemNameTxt.Text;
             string rawcateID = cateIDTxt.Text;
             // only get ID
             Regex regex = new Regex("\\s");
             string[] supID = regex.Split(rawSupplierID);
             string SupplierID = supID[0].Trim();
-            string[] contID = regex.Split(rawContractID);
-            string contractID = contID[0].Trim();
             string[] cateID = regex.Split(rawcateID);
             string CategoryID = cateID[0].Trim();
 
@@ -205,7 +188,6 @@ namespace Client.UI.Item
             {
                 itemId = itemID,
                 SupplierID = SupplierID,
-                ContractID = contractID,
                 name = itemname,
                 CategoryID = CategoryID,
                 price = itemprice,
