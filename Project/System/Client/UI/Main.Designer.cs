@@ -48,7 +48,7 @@
             this.showContractBtn.Name = "showContractBtn";
             this.showContractBtn.Size = new System.Drawing.Size(139, 85);
             this.showContractBtn.TabIndex = 1;
-            this.showContractBtn.Text = "Contract";
+            this.showContractBtn.Text = "Agreement";
             this.showContractBtn.UseVisualStyleBackColor = true;
             this.showContractBtn.Click += new System.EventHandler(this.ShowContract_Click);
             // 

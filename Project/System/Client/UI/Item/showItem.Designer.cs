@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.ItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.gvitemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vgCateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.siSearchBox = new System.Windows.Forms.TextBox();
             this.siCateBox = new System.Windows.Forms.ComboBox();
             this.siCreateBtn = new System.Windows.Forms.Button();
@@ -36,12 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.backBtn = new System.Windows.Forms.Button();
             this.openCateBtn = new System.Windows.Forms.Button();
-            this.gvitemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vgCateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ItemDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +65,60 @@
             this.ItemDataGridView.Size = new System.Drawing.Size(909, 402);
             this.ItemDataGridView.TabIndex = 0;
             this.ItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemDataGridView_CellContentClick);
+            // 
+            // gvitemID
+            // 
+            this.gvitemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvitemID.HeaderText = "Item ID";
+            this.gvitemID.MinimumWidth = 8;
+            this.gvitemID.Name = "gvitemID";
+            this.gvitemID.ReadOnly = true;
+            this.gvitemID.Width = 52;
+            // 
+            // gvSupplierID
+            // 
+            this.gvSupplierID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvSupplierID.HeaderText = "Supplier ID";
+            this.gvSupplierID.MinimumWidth = 8;
+            this.gvSupplierID.Name = "gvSupplierID";
+            this.gvSupplierID.ReadOnly = true;
+            this.gvSupplierID.Width = 78;
+            // 
+            // gvItemName
+            // 
+            this.gvItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gvItemName.HeaderText = "Item Name";
+            this.gvItemName.MinimumWidth = 8;
+            this.gvItemName.Name = "gvItemName";
+            this.gvItemName.ReadOnly = true;
+            // 
+            // gvQuantity
+            // 
+            this.gvQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvQuantity.HeaderText = "Current Quantity";
+            this.gvQuantity.MinimumWidth = 8;
+            this.gvQuantity.Name = "gvQuantity";
+            this.gvQuantity.ReadOnly = true;
+            this.gvQuantity.Width = 99;
+            // 
+            // vgCateID
+            // 
+            this.vgCateID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vgCateID.HeaderText = "Category ID";
+            this.vgCateID.MinimumWidth = 8;
+            this.vgCateID.Name = "vgCateID";
+            this.vgCateID.ReadOnly = true;
+            this.vgCateID.Width = 81;
+            // 
+            // gvDetailBtn
+            // 
+            this.gvDetailBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvDetailBtn.HeaderText = "Detail";
+            this.gvDetailBtn.MinimumWidth = 8;
+            this.gvDetailBtn.Name = "gvDetailBtn";
+            this.gvDetailBtn.ReadOnly = true;
+            this.gvDetailBtn.Text = "Detail";
+            this.gvDetailBtn.Width = 40;
             // 
             // siSearchBox
             // 
@@ -131,60 +185,6 @@
             this.openCateBtn.Text = "Category";
             this.openCateBtn.UseVisualStyleBackColor = true;
             this.openCateBtn.Click += new System.EventHandler(this.openCateBtn_Click);
-            // 
-            // gvitemID
-            // 
-            this.gvitemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvitemID.HeaderText = "Item ID";
-            this.gvitemID.MinimumWidth = 8;
-            this.gvitemID.Name = "gvitemID";
-            this.gvitemID.ReadOnly = true;
-            this.gvitemID.Width = 66;
-            // 
-            // gvSupplierID
-            // 
-            this.gvSupplierID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvSupplierID.HeaderText = "Supplier ID";
-            this.gvSupplierID.MinimumWidth = 8;
-            this.gvSupplierID.Name = "gvSupplierID";
-            this.gvSupplierID.ReadOnly = true;
-            this.gvSupplierID.Width = 84;
-            // 
-            // gvItemName
-            // 
-            this.gvItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.gvItemName.HeaderText = "Item Name";
-            this.gvItemName.MinimumWidth = 8;
-            this.gvItemName.Name = "gvItemName";
-            this.gvItemName.ReadOnly = true;
-            // 
-            // gvQuantity
-            // 
-            this.gvQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvQuantity.HeaderText = "Current Quantity";
-            this.gvQuantity.MinimumWidth = 8;
-            this.gvQuantity.Name = "gvQuantity";
-            this.gvQuantity.ReadOnly = true;
-            this.gvQuantity.Width = 108;
-            // 
-            // vgCateID
-            // 
-            this.vgCateID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vgCateID.HeaderText = "Category ID";
-            this.vgCateID.MinimumWidth = 8;
-            this.vgCateID.Name = "vgCateID";
-            this.vgCateID.ReadOnly = true;
-            this.vgCateID.Width = 88;
-            // 
-            // gvDetailBtn
-            // 
-            this.gvDetailBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvDetailBtn.HeaderText = "Detail";
-            this.gvDetailBtn.MinimumWidth = 8;
-            this.gvDetailBtn.Name = "gvDetailBtn";
-            this.gvDetailBtn.ReadOnly = true;
-            this.gvDetailBtn.Text = "Detail";
-            this.gvDetailBtn.Width = 40;
             // 
             // showItem
             // 

@@ -211,6 +211,18 @@
     <Compile Include="UI\NHS\Stock_editform.Designer.cs">
       <DependentUpon>Stock_editform.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Purchase\PurchaseItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\PurchaseItem.Designer.cs">
+      <DependentUpon>PurchaseItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchase\ViewPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\ViewPurchase.Designer.cs">
+      <DependentUpon>ViewPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\resetPw.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +288,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NHS\Stock_editform.resx">
       <DependentUpon>Stock_editform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\PurchaseItem.resx">
+      <DependentUpon>PurchaseItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\ViewPurchase.resx">
+      <DependentUpon>ViewPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\resetPw.resx">
       <DependentUpon>resetPw.cs</DependentUpon>

@@ -38,6 +38,8 @@ namespace Server.Model
         public DbSet<Contract> contract { get; set; }
         public DbSet<PlanContract> planContracts { get; set; }
         public DbSet<PlanContract_Item> planContract_Items { get; set; }
+        public DbSet<Buy> buy { get; set; }
+        public DbSet<item_buy> item_buy { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>()
@@ -88,6 +90,10 @@ namespace Server.Model
                 .ToTable("PlanContract");
             modelBuilder.Entity<PlanContract_Item>()
                 .ToTable("PlanContract_Item").HasKey("planContractID", "ItemID");
+            modelBuilder.Entity<Buy>()
+                .ToTable("Buy");
+            modelBuilder.Entity<item_buy>()
+                .ToTable("item_table").HasKey("BuyID", "itemID");
         }
     }
 }

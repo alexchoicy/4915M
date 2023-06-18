@@ -10,7 +10,7 @@ namespace Server.Model.Entity
         [Required]
         public string SupplierID { get; set; }
         public string? CategoryID { get; set; }
-        public string ContractID { get; set; }
+        public string? ContractID { get; set; }
         [Required]
         public string name { get; set; }
         [Required]
