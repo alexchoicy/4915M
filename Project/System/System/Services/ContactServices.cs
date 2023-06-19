@@ -54,7 +54,7 @@ namespace Server.Services
                     {
                         itemID = itemData.ItemID,
                         name = itemInfo.name,
-                        price = itemInfo.price,
+                        price = itemData.price,
                         CategoryID = itemInfo.CategoryID,
                         quantity = itemData.Quantity
                     };
@@ -161,10 +161,13 @@ namespace Server.Services
                         {
                             planContractID = planContractID,
                             ItemID = dataitems.itemID,
-                            Quantity = dataitems.quantity
+                            Quantity = dataitems.quantity,
+                            price = dataitems.price
                         };
                         _dataContext.planContract_Items.Add(planItem);
                     }
+                }else if(newcontract.ContractType == "BPA"){
+                    
                 }
                 _dataContext.SaveChanges();
 

@@ -17,8 +17,6 @@ namespace Server.Model.Entity
         [Required]
         public string VirtualID { get; set; }
 
-
-
         [ForeignKey("SupplierID")]
         public virtual Suppliers Suppliers { get; set; }
         [ForeignKey("CategoryID")]

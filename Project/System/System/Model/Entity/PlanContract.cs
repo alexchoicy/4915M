@@ -16,6 +16,8 @@ namespace Server.Model.Entity
         public int planContractID { get; set; }
         public string ItemID { get; set; }
         public int Quantity { get; set; }
+
+        public double price {get;set;}
         [ForeignKey("planContractID")]
         public virtual PlanContract planContract { get; set; }
         [ForeignKey("ItemID")]

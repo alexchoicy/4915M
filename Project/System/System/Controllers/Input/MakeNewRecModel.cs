@@ -31,5 +31,7 @@ namespace Server.Controllers.Input
     {
         public string itemID { get; set; }
         public int quantity { get; set; }
+        public double price {get;set;}
+        public double? MoQ {get;set;}
     }
 }
