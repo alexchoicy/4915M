@@ -13,6 +13,7 @@ namespace Client.Model.Submit
         public string VirtualID { get; set; }
         public string name { get; set; }
         public double price { get; set; }
+        public string uom { get; set; }
     }
 
     public class UpdateItem

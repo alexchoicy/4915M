@@ -30,7 +30,7 @@ namespace Server.Model.Dto
         public double price { get; set; }
         public string VirtualID { get; set; }
         public int quantity { get; set; }
-
+        public string UOM {get;set;}
     }
 
     public class EditItemDto
@@ -40,6 +40,7 @@ namespace Server.Model.Dto
         public string? VirtualID { get; set; }
         public string? name { get; set; }
         public double? price { get; set; }
+        public string? UOM {get;set;}
 
     }
 }

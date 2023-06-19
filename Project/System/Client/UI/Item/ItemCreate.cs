@@ -160,6 +160,7 @@ namespace Client.UI.Item
             string rawSupplierID = SupIDTxt.Text;
             string itemname = itemNameTxt.Text;
             string rawcateID = cateIDTxt.Text;
+            string UOM = UomList.Text;
             // only get ID
             Regex regex = new Regex("\\s");
             string[] supID = regex.Split(rawSupplierID);
@@ -169,9 +170,8 @@ namespace Client.UI.Item
 
 
 
-
             if (string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(CategoryID) 
-               || string.IsNullOrEmpty(itemname) || string.IsNullOrEmpty(CategoryID) || string.IsNullOrEmpty(virtIDTxt.Text))
+               || string.IsNullOrEmpty(itemname) || string.IsNullOrEmpty(CategoryID) || string.IsNullOrEmpty(virtIDTxt.Text) || string.IsNullOrEmpty(UOM))
             {
                 MessageBox.Show("Please input all item");
                 return;
@@ -191,7 +191,8 @@ namespace Client.UI.Item
                 name = itemname,
                 CategoryID = CategoryID,
                 price = itemprice,
-                VirtualID = virtIDTxt.Text
+                VirtualID = virtIDTxt.Text,
+                UOM = UOM
             };
             itemDatas.Add(itemData);
 
@@ -205,15 +206,6 @@ namespace Client.UI.Item
             }
 
             MessageBox.Show("Error");
-        }
-
-        private void cnewConBtn_Click(object sender, EventArgs e)
-        {
-            Form createForm = new CreateContract();
-            createForm.ShowDialog();
-
-            getItemData();
-            getStartData();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

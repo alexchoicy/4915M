@@ -15,5 +15,6 @@ namespace Client.Model.Submit
         public double price { get; set; }
         public string VirtualID { get; set; }
         public int? quantity { get; set; } = 0;
+        public string UOM { get; set; }
     }
 }

@@ -73,6 +73,7 @@ namespace Client.UI.Item
                     item.SupplierID,
                     item.name,
                     item.quantity,
+                    item.UOM,
                     item.CategoryID,
                     "Detail");
                 //setup category suggestion
@@ -145,7 +146,7 @@ namespace Client.UI.Item
         {
             try
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == 5)
+                if (e.RowIndex >= 0 && e.ColumnIndex == 6)
                 { 
                     //set the category combobox item
                     List<string> categoryItems = new List<string>();

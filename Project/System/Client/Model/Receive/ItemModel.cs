@@ -16,5 +16,6 @@ namespace Client.Model.Receive
         public string VirtualID { get; set; }
         public int quantity { get; set; }
 
+        public string UOM { get; set; }
     }
 }

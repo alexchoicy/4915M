@@ -79,7 +79,8 @@ namespace Client.UI.Item.Category
             RestTypeBox.Items.Clear();
             var notinview = resturantType
                 .Where(rt => !RestView.Rows.Cast<DataGridViewRow>()
-                    .Any(row => row.Cells["TypeID"].Value.ToString() == rt.typeId));
+                    .Any(row => row.Cells["TypeID"].Value.ToString() == rt.typeId))
+                .Where(rt => rt.typeId != "000");
             foreach (var data in notinview)
             {
                 RestTypeBox.Items.Add(data.typeId + $" {data.name}");

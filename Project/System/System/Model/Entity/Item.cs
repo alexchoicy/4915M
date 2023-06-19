@@ -16,7 +16,8 @@ namespace Server.Model.Entity
         public double price { get; set; }
         [Required]
         public string VirtualID { get; set; }
-
+        [Required]
+        public string UOM {get;set;}
         [ForeignKey("SupplierID")]
         public virtual Suppliers Suppliers { get; set; }
         [ForeignKey("CategoryID")]

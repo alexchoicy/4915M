@@ -43,6 +43,7 @@ namespace Server.Services
                     SupplierID = items.SupplierID,
                     CategoryID = items.CategoryID,
                     name = items.name,
+                    UOM = items.UOM,
                     price = items.price,
                     VirtualID = items.VirtualID,
                     quantity = inv.Quantity
@@ -70,6 +71,7 @@ namespace Server.Services
                     SupplierID = items.SupplierID,
                     name = items.name,
                     CategoryID = items.CategoryID,
+                    UOM = items.UOM,
                     price = items.price,
                     VirtualID = items.VirtualID,
                     quantity = inv != null ? inv.Quantity : 0
@@ -142,7 +144,8 @@ namespace Server.Services
                 CategoryID = !string.IsNullOrEmpty(item.CategoryID) ? item.CategoryID : cur.CategoryID,
                 VirtualID = !string.IsNullOrEmpty(item.VirtualID) ? item.VirtualID : cur.VirtualID,
                 name = !string.IsNullOrEmpty(item.name) ? item.name : cur.name,
-                price = (double)(item.price != null ? item.price : cur.price)
+                price = (double)(item.price != null ? item.price : cur.price),
+                UOM = !string.IsNullOrEmpty(item.UOM) ? item.UOM : cur.UOM,
             };
             _dataContext.item.Update(newinfo);
             _dataContext.SaveChanges();
@@ -156,22 +159,24 @@ namespace Server.Services
                 where staff.StaffID == userid
                 select staff.RestaurantID;
             var restID = query.FirstOrDefault();
-
+            
             foreach (var item in items)
             {
-                var existingItem = _dataContext.restaurant_item.FirstOrDefault(i => i.itemID == item.ItemID && i.restaurantID == restID);
+                var existingItem = _dataContext.restaurant_item
+            .FirstOrDefault(i => i.itemID == item.ItemID && i.restaurantID == restID);
+                if (existingItem !=null)
+                {
+                    existingItem.Quantity = item.quantity;
+                    _dataContext.restaurant_item.Update(existingItem);
+                }
+                else
+                {
                 var itemData = new Restaurant_item
                 {
                     itemID = item.ItemID,
                     restaurantID = restID,
                     Quantity = item.quantity
                 };
-                if (existingItem !=null)
-                {
-                    _dataContext.restaurant_item.Update(itemData);
-                }
-                else
-                {
                     _dataContext.restaurant_item.Add(itemData);
                 }
             }

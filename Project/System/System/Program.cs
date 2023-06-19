@@ -21,9 +21,14 @@ using Quartz.Spi;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseMySql
-    (builder.Configuration.GetConnectionString("conDB"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("conDB"))));
+    options =>
+    {
+        options.UseMySql(
+            builder.Configuration.GetConnectionString("conDB"),
+            ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("conDB")));
+
+        options.EnableDetailedErrors();
+    });
 // Add services to the container.
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
@@ -49,6 +54,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<JwtToken>();
 
 builder.Logging.AddConsole();
+
 
 
 Console.WriteLine(builder.Configuration["JWT:KEY"]);

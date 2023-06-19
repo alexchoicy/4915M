@@ -56,6 +56,7 @@ namespace Client.UI.Item
             itemNameTxt.Text = data.name;
             priceTxt.Text = data.price.ToString();
             stockTxt.Text = data.quantity.ToString();
+            UOMList.Text = data.UOM;
 
             getContractBysup(data.SupplierID);
         }
@@ -73,6 +74,7 @@ namespace Client.UI.Item
             string name = itemNameTxt.Text;
             string rawprice = priceTxt.Text;
             string rawstock = stockTxt.Text;
+            string UOM = UOMList.Text;
 
             int stock;
             if (!int.TryParse(rawstock, out stock))
@@ -158,6 +160,20 @@ namespace Client.UI.Item
                 }
             }
 
+            if (string.IsNullOrEmpty(UOM))
+            {
+                UOM = data.UOM;
+            }
+
+            if (name != data.name)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure to change the UOM to " + UOM, "Confirm Box", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
             if (string.IsNullOrEmpty(name))
             {
                 name = data.name;
@@ -190,14 +206,18 @@ namespace Client.UI.Item
                     return;
                 }
             }
-
+            if(cateID == "All")
+            {
+                cateID = "MC";
+            }
             ItemEditModel editData = new ItemEditModel
             {
                 CategoryID = cateID,
                 itemID = itemID,
                 name = name,
                 price = price,
-                VirtualID = virtualID
+                VirtualID = virtualID,
+                uom = UOM
             };
 
             UpdateItem updateInv = new UpdateItem
@@ -238,5 +258,6 @@ namespace Client.UI.Item
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
     }
 }
