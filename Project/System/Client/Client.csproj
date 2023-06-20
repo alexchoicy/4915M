@@ -109,11 +109,23 @@
     <Compile Include="Model\Submit\ItemEditModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Contract\AddBPAitem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Contract\AddBPAitem.Designer.cs">
+      <DependentUpon>AddBPAitem.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Contract\AddContractItem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Contract\AddContractItem.Designer.cs">
       <DependentUpon>AddContractItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Contract\BPADetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Contract\BPADetail.Designer.cs">
+      <DependentUpon>BPADetail.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Contract\ContractDetail.cs">
       <SubType>Form</SubType>
@@ -238,8 +250,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Contract\AddBPAitem.resx">
+      <DependentUpon>AddBPAitem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Contract\AddContractItem.resx">
       <DependentUpon>AddContractItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Contract\BPADetail.resx">
+      <DependentUpon>BPADetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Contract\ContractDetail.resx">
       <DependentUpon>ContractDetail.cs</DependentUpon>

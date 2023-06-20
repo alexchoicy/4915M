@@ -30,6 +30,7 @@ namespace Client.Model.Receive
         public double? price { get; set; }
         public int quantity { get; set; }
         public string CategoryID { get; set; }
+        public double? moq { get; set; }
     }
     public class ContractIDDto
     {

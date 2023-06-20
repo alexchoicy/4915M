@@ -63,6 +63,26 @@ namespace Server.Services
                 data.items = itemsData;
                 return data;
             }
+            else if(contractdata.ContractType == "BPA")
+            {
+                var BPAID = _dataContext.bpa.Where(x => x.ContractID == id).FirstOrDefault();
+                var planContractItemData = _dataContext.item_BPA.Where(x => x.BPAID == BPAID.BPAID).ToList();
+                foreach (var itemData in planContractItemData)
+                {
+                    var itemInfo = _dataContext.item.Where(x => x.ItemID == itemData.ItemID).FirstOrDefault();
+                    var contractItem = new ContractDtoItem
+                    {
+                        itemID = itemData.ItemID,
+                        name = itemInfo.name,
+                        price = itemData.price,
+                        CategoryID = itemInfo.CategoryID,
+                        MOQ = itemData.MOQ
+                    };
+                    itemsData.Add(contractItem);
+                }
+                data.items = itemsData;
+                return data;
+            }
 
             var contractItemData = _dataContext.item.Where(x => x.ItemID == id).ToList();
             if (contractItemData != null)
@@ -161,13 +181,32 @@ namespace Server.Services
                         {
                             planContractID = planContractID,
                             ItemID = dataitems.itemID,
-                            Quantity = dataitems.quantity,
+                            Quantity =(int)(dataitems.quantity == null ? 0: dataitems.quantity),
                             price = dataitems.price
                         };
                         _dataContext.planContract_Items.Add(planItem);
                     }
                 }else if(newcontract.ContractType == "BPA"){
-                    
+                    BPA bpa = new BPA
+                    {
+                        ContractID = data.contractData.data.ContractID
+                    };
+                    _dataContext.bpa.Add(bpa);
+                    _dataContext.SaveChanges();
+                    int bpaID = bpa.BPAID;
+
+                    foreach(var dataitems in data.contractData.ContractItems)
+                    {
+                        Console.WriteLine(dataitems.MOQ);
+                        item_BPA BpaItem = new item_BPA
+                        {
+                            ItemID = dataitems.itemID,
+                            BPAID = bpaID,
+                            price = dataitems.price,
+                            MOQ = (double)(dataitems.MOQ == null ? 0:dataitems.MOQ),
+                        };
+                        _dataContext.item_BPA.Add(BpaItem);
+                    }
                 }
                 _dataContext.SaveChanges();
 

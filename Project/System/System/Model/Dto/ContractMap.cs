@@ -44,5 +44,6 @@ namespace Server.Model.Dto
         public double? price { get; set; }
         public int quantity { get; set; }
         public string? CategoryID { get; set; }
+        public double? MOQ { get; set; }
     }
 }

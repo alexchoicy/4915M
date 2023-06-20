@@ -15,14 +15,16 @@ namespace Client.Model.Submit
     public class ContractSumbitItemModel
     {
         public string itemID { get; set; }
-        public int quantity { get; set; }
+        public int? quantity { get; set; }
+        public double? MOQ { get; set; }
     }
 
     public class ContractSumbitItemShowModel
     {
         public string itemID { get; set; }
         public string itemName { get; set; }
-        public int quantity { get; set; }
+        public int? quantity { get; set; }
+        public double? MOQ { get; set; }
     }
 
     public class ContractDataModel

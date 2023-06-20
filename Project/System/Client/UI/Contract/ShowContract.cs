@@ -113,9 +113,22 @@ namespace Client.UI.Agreement
                 if (e.RowIndex >= 0 && e.ColumnIndex == 6)
                 {
                     string ContractID = ContractDataView.Rows[e.RowIndex].Cells["ContractID"].Value.ToString();
-
-                    Form conDetail = new ContractDetail(ContractID);
-                    conDetail.ShowDialog();
+                    string Type = ContractDataView.Rows[e.RowIndex].Cells["ContractType"].Value.ToString();
+                    if(Type == "PC")
+                    {
+                        Form conDetail = new ContractDetail(ContractID);
+                        conDetail.ShowDialog();
+                    }
+                    else if(Type == "BPA")
+                    {
+                        Form bpaForm = new BPADetail(ContractID);
+                        bpaForm.ShowDialog();
+                    }
+                    else
+                    {
+                        Form conDetail = new ContractDetail(ContractID);
+                        conDetail.ShowDialog();
+                    }
                 }
             }
             catch (Exception exception)

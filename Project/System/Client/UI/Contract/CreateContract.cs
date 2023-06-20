@@ -123,7 +123,7 @@ namespace Client.UI.Contract
                     contractType = "PC";
                     break;
                 case 1:
-                    contractType = "IC";
+                    contractType = "BPA";
                     break;
             }
 
@@ -141,15 +141,15 @@ namespace Client.UI.Contract
             {
                 data = data
             };
+            var items = new List<ContractSumbitItemModel>();
+
             if (contractType == "PC")
             {
                 if (!int.TryParse(ccRepDateTxt.Text, out repeatDate) && ccRepDateTxt.Text != null)
                 {
                     MessageBox.Show("Error Days");
                     return;
-                }
-                var items = new List<ContractSumbitItemModel>();
-                foreach (DataGridViewRow row in supDataView.Rows)
+                }                foreach (DataGridViewRow row in supDataView.Rows)
                 {
                     var itemIDCell = row.Cells["itemID"];
                     var quantityCell = row.Cells["quantity"];
@@ -166,9 +166,28 @@ namespace Client.UI.Contract
                     }
                 }
                 ContractData.ContractItems = items;
+            }else if(contractType == "BPA"){
+                foreach (DataGridViewRow row in supDataView.Rows)
+                {
+                    var itemIDCell = row.Cells["itemID"];
+                    var quantityCell = row.Cells["moqData"];
+                    if (itemIDCell.Value != null && quantityCell.Value != null)
+                    {
+                        var itemID = itemIDCell.Value.ToString();
+                        var quantity = double.Parse(quantityCell.Value.ToString());
+                        var sumbitData = new ContractSumbitItemModel
+                        {
+                            itemID = itemID,
+                            MOQ = quantity
+                        };
+                        items.Add(sumbitData);
+                    }
+                }
+                ContractData.ContractItems = items;
             }
 
             string jsonString = JsonSerializer.Serialize(ContractData);
+            Console.WriteLine(jsonString);
             var status = await contractController.CreateNewContract(jsonString, filePath, ContractID);
             if (status)
             {
@@ -204,8 +223,8 @@ namespace Client.UI.Contract
             }
             if (ccDropType.SelectedIndex == 1)
             {
-                ccAddBtn.Enabled = false;
-                ccRepDateTxt.Enabled = false;
+                ccAddBtn.Enabled = true;
+                ccRepDateTxt.Enabled = true;
             }
         }
 
@@ -221,17 +240,40 @@ namespace Client.UI.Contract
                 MessageBox.Show("Please Select a supplier first");
                 return;
             }
-            Form addconform;
-            if (ListItem == null)
+            if(ccDropType.SelectedIndex == 0)
             {
-                addconform = new AddContractItem(this, supplierID);
+                Form addconform;
+                if (ListItem == null)
+                {
+                    addconform = new AddContractItem(this, supplierID);
+                }
+                else
+                {
+                    addconform = new AddContractItem(this, ListItem, supplierID);
+                }
+                DialogResult addConFrom = addconform.ShowDialog();
+                if(addConFrom == DialogResult.OK)
+                {
+                    ccDropType.Enabled = false;
+                }
             }
             else
             {
-                addconform = new AddContractItem(this, ListItem, supplierID);
+                Form addBpaFrom; ;
+                if (ListItem == null)
+                {
+                    addBpaFrom = new AddBPAitem(this, supplierID);
+                }
+                else
+                {
+                    addBpaFrom = new AddBPAitem(this, ListItem, supplierID);
+                }
+                DialogResult bpaForm = addBpaFrom.ShowDialog();
+                if (bpaForm == DialogResult.OK)
+                {
+                    ccDropType.Enabled = false;
+                }
             }
-
-            addconform.ShowDialog();
         }
 
         public void ReceiveDataFromAddControlItem(List<ContractSumbitItemShowModel> data)
@@ -242,8 +284,12 @@ namespace Client.UI.Contract
                 Console.WriteLine("No items");
                 return;
             }
-            foreach (var item in data)
+            if(ccDropType.SelectedIndex == 0)
             {
+                supDataView.Columns["moqData"].Visible = false;
+                supDataView.Columns["quantity"].Visible = true;
+                foreach (var item in data)
+                {
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(supDataView,
                         item.itemID,
@@ -251,9 +297,28 @@ namespace Client.UI.Contract
                         item.quantity
                     );
                     supDataView.Rows.Add(row);
-            }
+                }
 
-            ListItem = data;
+                ListItem = data;
+            }
+            else
+            {
+                supDataView.Columns["moqData"].Visible = true;
+                supDataView.Columns["quantity"].Visible = false;
+                foreach (var item in data)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(supDataView,
+                        item.itemID,
+                        item.itemName,
+                        "",
+                        item.MOQ
+                    );
+                    supDataView.Rows.Add(row);
+                }
+
+                ListItem = data;
+            }
         }
 
         private void AutoCreateItemID(string supID)
