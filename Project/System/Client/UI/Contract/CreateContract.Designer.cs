@@ -54,6 +54,7 @@
             this.itemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moqData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.supDataView)).BeginInit();
             this.SuspendLayout();
@@ -164,13 +165,14 @@
             this.itemID,
             this.itemName,
             this.quantity,
+            this.priceDataGrid,
             this.moqData});
             this.supDataView.Location = new System.Drawing.Point(734, 48);
             this.supDataView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.supDataView.Name = "supDataView";
             this.supDataView.RowHeadersVisible = false;
             this.supDataView.RowHeadersWidth = 62;
-            this.supDataView.Size = new System.Drawing.Size(440, 548);
+            this.supDataView.Size = new System.Drawing.Size(659, 603);
             this.supDataView.TabIndex = 11;
             // 
             // exitBtn
@@ -258,7 +260,7 @@
             // 
             // ccAddBtn
             // 
-            this.ccAddBtn.Location = new System.Drawing.Point(1052, 605);
+            this.ccAddBtn.Location = new System.Drawing.Point(1272, 702);
             this.ccAddBtn.Name = "ccAddBtn";
             this.ccAddBtn.Size = new System.Drawing.Size(122, 66);
             this.ccAddBtn.TabIndex = 20;
@@ -310,27 +312,38 @@
             // 
             // quantity
             // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.quantity.HeaderText = "Quantity";
             this.quantity.MinimumWidth = 8;
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
             this.quantity.Visible = false;
-            this.quantity.Width = 96;
+            this.quantity.Width = 104;
+            // 
+            // priceDataGrid
+            // 
+            this.priceDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.priceDataGrid.HeaderText = "Price";
+            this.priceDataGrid.MinimumWidth = 8;
+            this.priceDataGrid.Name = "priceDataGrid";
+            this.priceDataGrid.ReadOnly = true;
+            this.priceDataGrid.Width = 80;
             // 
             // moqData
             // 
+            this.moqData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.moqData.HeaderText = "MOQ";
             this.moqData.MinimumWidth = 8;
             this.moqData.Name = "moqData";
             this.moqData.ReadOnly = true;
             this.moqData.Visible = false;
-            this.moqData.Width = 150;
+            this.moqData.Width = 82;
             // 
             // CreateContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(1406, 780);
             this.Controls.Add(this.ccCBSupID);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ccRepDateTxt);
@@ -391,6 +404,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn moqData;
     }
 }

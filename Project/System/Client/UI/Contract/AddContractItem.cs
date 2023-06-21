@@ -81,6 +81,7 @@ namespace Client.UI.Contract
                     items.itemID,
                     items.itemName,
                     items.quantity,
+                    items.price,
                     "Remove");
                 acAddItemViewGrid.Rows.Add(row);
             }
@@ -147,7 +148,18 @@ namespace Client.UI.Contract
                 MessageBox.Show("qty need > 0");
                 return;
             }
-            acAddItemViewGrid.Rows.Add(acItemTxt.Text, name, qty);
+            double price;
+            if (!double.TryParse(priceTxt.Text, out price))
+            {
+                MessageBox.Show("please input number");
+                return;
+            }
+            if (qty < 0)
+            {
+                MessageBox.Show("price need > 0");
+                return;
+            }
+            acAddItemViewGrid.Rows.Add(acItemTxt.Text, name, qty, price);
         }
 
         private void acAddItemViewGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -165,17 +177,20 @@ namespace Client.UI.Contract
                 var itemIDCell = row.Cells["addItemID"];
                 var itemNameCell = row.Cells["AddItemName"];
                 var quantityCell = row.Cells["addqty"];
+                var priceCell = row.Cells["priceDataView"];
 
                 if (itemIDCell.Value != null && itemNameCell.Value != null && quantityCell.Value != null)
                 {
                     var itemID = itemIDCell.Value.ToString();
                     var itemName = itemNameCell.Value.ToString();
                     var quantity = int.Parse(quantityCell.Value.ToString());
+                    var price = double.Parse(priceCell.Value.ToString());
                         var sumbitData = new ContractSumbitItemShowModel
                         {
                             itemID = itemID,
                             itemName = itemName,
-                            quantity = quantity
+                            quantity = quantity,
+                            price = price
                         };
                         data.Add(sumbitData);
                 }

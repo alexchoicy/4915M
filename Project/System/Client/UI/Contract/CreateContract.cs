@@ -149,18 +149,22 @@ namespace Client.UI.Contract
                 {
                     MessageBox.Show("Error Days");
                     return;
-                }                foreach (DataGridViewRow row in supDataView.Rows)
+                }               
+                foreach (DataGridViewRow row in supDataView.Rows)
                 {
                     var itemIDCell = row.Cells["itemID"];
                     var quantityCell = row.Cells["quantity"];
-                    if (itemIDCell.Value != null && quantityCell.Value != null)
+                    var priceCell = row.Cells["priceDataGrid"];
+                    if (itemIDCell.Value != null && quantityCell.Value != null && priceCell.Value != null)
                     {
                         var itemID = itemIDCell.Value.ToString();
                         var quantity = int.Parse(quantityCell.Value.ToString());
+                        var price = double.Parse(priceCell.Value.ToString());
                         var sumbitData = new ContractSumbitItemModel
                         {
                             itemID = itemID,
-                            quantity = quantity
+                            quantity = quantity,
+                            price = price
                         };
                         items.Add(sumbitData);
                     }
@@ -170,15 +174,18 @@ namespace Client.UI.Contract
                 foreach (DataGridViewRow row in supDataView.Rows)
                 {
                     var itemIDCell = row.Cells["itemID"];
+                    var priceCell = row.Cells["priceDataGrid"];
                     var quantityCell = row.Cells["moqData"];
-                    if (itemIDCell.Value != null && quantityCell.Value != null)
+                    if (itemIDCell.Value != null && quantityCell.Value != null && priceCell.Value != null)
                     {
                         var itemID = itemIDCell.Value.ToString();
                         var quantity = double.Parse(quantityCell.Value.ToString());
+                        var price = double.Parse(priceCell.Value.ToString());
                         var sumbitData = new ContractSumbitItemModel
                         {
                             itemID = itemID,
-                            MOQ = quantity
+                            MOQ = quantity,
+                            price = price
                         };
                         items.Add(sumbitData);
                     }
@@ -224,7 +231,7 @@ namespace Client.UI.Contract
             if (ccDropType.SelectedIndex == 1)
             {
                 ccAddBtn.Enabled = true;
-                ccRepDateTxt.Enabled = true;
+                ccRepDateTxt.Enabled = false;
             }
         }
 
@@ -294,14 +301,15 @@ namespace Client.UI.Contract
                     row.CreateCells(supDataView,
                         item.itemID,
                         item.itemName,
-                        item.quantity
+                        item.quantity,
+                        item.price
                     );
                     supDataView.Rows.Add(row);
                 }
 
                 ListItem = data;
             }
-            else
+            else if(ccDropType.SelectedIndex == 1)
             {
                 supDataView.Columns["moqData"].Visible = true;
                 supDataView.Columns["quantity"].Visible = false;
@@ -312,6 +320,7 @@ namespace Client.UI.Contract
                         item.itemID,
                         item.itemName,
                         "",
+                        item.price,
                         item.MOQ
                     );
                     supDataView.Rows.Add(row);

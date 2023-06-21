@@ -41,8 +41,11 @@
             this.acItemTxt = new System.Windows.Forms.ComboBox();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.priceTxt = new System.Windows.Forms.TextBox();
             this.addItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataView = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addqty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acRmBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
@@ -90,6 +93,7 @@
             this.acAddItemViewGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.addItemID,
             this.AddItemName,
+            this.priceDataView,
             this.addqty,
             this.acRmBtn});
             this.acAddItemViewGrid.Location = new System.Drawing.Point(44, 31);
@@ -113,7 +117,7 @@
             // acQtyTxt
             // 
             this.acQtyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acQtyTxt.Location = new System.Drawing.Point(727, 262);
+            this.acQtyTxt.Location = new System.Drawing.Point(727, 266);
             this.acQtyTxt.Name = "acQtyTxt";
             this.acQtyTxt.Size = new System.Drawing.Size(130, 30);
             this.acQtyTxt.TabIndex = 5;
@@ -121,7 +125,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(478, 235);
+            this.label1.Location = new System.Drawing.Point(362, 236);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 6;
@@ -159,7 +163,7 @@
             // acItemTxt
             // 
             this.acItemTxt.FormattingEnabled = true;
-            this.acItemTxt.Location = new System.Drawing.Point(482, 265);
+            this.acItemTxt.Location = new System.Drawing.Point(366, 266);
             this.acItemTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.acItemTxt.Name = "acItemTxt";
             this.acItemTxt.Size = new System.Drawing.Size(180, 28);
@@ -182,6 +186,24 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Search";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(567, 235);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Price";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // priceTxt
+            // 
+            this.priceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceTxt.Location = new System.Drawing.Point(571, 265);
+            this.priceTxt.Name = "priceTxt";
+            this.priceTxt.Size = new System.Drawing.Size(130, 30);
+            this.priceTxt.TabIndex = 13;
+            // 
             // addItemID
             // 
             this.addItemID.HeaderText = "Item ID";
@@ -198,6 +220,14 @@
             this.AddItemName.Name = "AddItemName";
             this.AddItemName.ReadOnly = true;
             this.AddItemName.Width = 123;
+            // 
+            // priceDataView
+            // 
+            this.priceDataView.HeaderText = "Price";
+            this.priceDataView.MinimumWidth = 8;
+            this.priceDataView.Name = "priceDataView";
+            this.priceDataView.ReadOnly = true;
+            this.priceDataView.Width = 150;
             // 
             // addqty
             // 
@@ -221,6 +251,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 677);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.priceTxt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.acItemTxt);
@@ -256,8 +288,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox priceTxt;
         private System.Windows.Forms.DataGridViewTextBoxColumn addItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn AddItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataView;
         private System.Windows.Forms.DataGridViewTextBoxColumn addqty;
         private System.Windows.Forms.DataGridViewButtonColumn acRmBtn;
     }
