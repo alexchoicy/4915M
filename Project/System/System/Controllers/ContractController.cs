@@ -59,5 +59,19 @@ namespace Server.Controllers
             return Ok();
         }
 
+        [HttpGet("getBPA/Docs/{BPAid}")]
+        public IActionResult GetBPADocs(string BPAid)
+        {
+            string id = _ContractServices.getConIDByBPA(BPAid);
+            var folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "Contract");
+            var filePath = Path.Combine(folderPath, id + ".pdf");
+            Console.WriteLine(filePath);
+            if (System.IO.File.Exists(filePath))
+            {
+                return File(System.IO.File.OpenRead(filePath), "application/pdf");
+
+            }
+            return NotFound();
+        }
     }
 }

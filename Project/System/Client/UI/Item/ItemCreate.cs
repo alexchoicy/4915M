@@ -161,13 +161,13 @@ namespace Client.UI.Item
             string itemname = itemNameTxt.Text;
             string rawcateID = cateIDTxt.Text;
             string UOM = UomList.Text;
+            string refSupID = refSupIDTxt.Text;
             // only get ID
             Regex regex = new Regex("\\s");
             string[] supID = regex.Split(rawSupplierID);
             string SupplierID = supID[0].Trim();
             string[] cateID = regex.Split(rawcateID);
             string CategoryID = cateID[0].Trim();
-
 
 
             if (string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(CategoryID) 
@@ -192,7 +192,8 @@ namespace Client.UI.Item
                 CategoryID = CategoryID,
                 price = itemprice,
                 VirtualID = virtIDTxt.Text,
-                UOM = UOM
+                UOM = UOM,
+                refSupID = refSupID
             };
             itemDatas.Add(itemData);
 

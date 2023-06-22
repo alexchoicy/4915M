@@ -40,6 +40,7 @@
             this.posLabel = new System.Windows.Forms.Label();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.restBtn = new System.Windows.Forms.Button();
+            this.showPurBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // showContractBtn
@@ -144,7 +145,7 @@
             // 
             // logoutBtn
             // 
-            this.logoutBtn.Location = new System.Drawing.Point(675, 394);
+            this.logoutBtn.Location = new System.Drawing.Point(683, 671);
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Size = new System.Drawing.Size(113, 44);
             this.logoutBtn.TabIndex = 11;
@@ -162,11 +163,22 @@
             this.restBtn.UseVisualStyleBackColor = true;
             this.restBtn.Click += new System.EventHandler(this.restBtn_Click);
             // 
+            // showPurBtn
+            // 
+            this.showPurBtn.Location = new System.Drawing.Point(15, 415);
+            this.showPurBtn.Name = "showPurBtn";
+            this.showPurBtn.Size = new System.Drawing.Size(139, 85);
+            this.showPurBtn.TabIndex = 13;
+            this.showPurBtn.Text = "Purchase";
+            this.showPurBtn.UseVisualStyleBackColor = true;
+            this.showPurBtn.Click += new System.EventHandler(this.showPurBtn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(808, 727);
+            this.Controls.Add(this.showPurBtn);
             this.Controls.Add(this.restBtn);
             this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.posLabel);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.Label posLabel;
         private System.Windows.Forms.Button logoutBtn;
         private System.Windows.Forms.Button restBtn;
+        private System.Windows.Forms.Button showPurBtn;
     }
 }

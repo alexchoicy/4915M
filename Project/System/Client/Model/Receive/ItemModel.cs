@@ -15,7 +15,7 @@ namespace Client.Model.Receive
         public double price { get; set; }
         public string VirtualID { get; set; }
         public int quantity { get; set; }
-
         public string UOM { get; set; }
+        public string refSupID { get; set; }
     }
 }

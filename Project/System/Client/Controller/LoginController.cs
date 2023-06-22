@@ -35,7 +35,8 @@ namespace Client.Controller
                         StaffID = data.RootElement.GetProperty("userData").GetProperty("staffID").GetString(),
                         Position = data.RootElement.GetProperty("userData").GetProperty("postion").GetString(),
                         Department = data.RootElement.GetProperty("userData").GetProperty("dept").GetString(),
-                        Remark = data.RootElement.GetProperty("userData").GetProperty("remark").GetString()
+                        Remark = data.RootElement.GetProperty("userData").GetProperty("remark").GetString(),
+                        address = data.RootElement.GetProperty("userData").GetProperty("address").GetString()
                     };
                     GlobalData.UserInfo = userInfoData;
                     Debug.WriteLine(data.RootElement.GetProperty("userData").GetProperty("name").GetString());

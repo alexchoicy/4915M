@@ -104,6 +104,7 @@
             // ContractID
             // 
             this.ContractID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ContractID.Frozen = true;
             this.ContractID.HeaderText = "ContractID";
             this.ContractID.Name = "ContractID";
             this.ContractID.ReadOnly = true;
@@ -112,6 +113,7 @@
             // SignDate
             // 
             this.SignDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SignDate.Frozen = true;
             this.SignDate.HeaderText = "SignDate";
             this.SignDate.Name = "SignDate";
             this.SignDate.ReadOnly = true;
@@ -120,6 +122,7 @@
             // ExpireTime
             // 
             this.ExpireTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ExpireTime.Frozen = true;
             this.ExpireTime.HeaderText = "ExpireTime";
             this.ExpireTime.Name = "ExpireTime";
             this.ExpireTime.ReadOnly = true;
@@ -128,6 +131,7 @@
             // ContractType
             // 
             this.ContractType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ContractType.Frozen = true;
             this.ContractType.HeaderText = "ContractType";
             this.ContractType.Name = "ContractType";
             this.ContractType.ReadOnly = true;
@@ -136,6 +140,7 @@
             // SupplierID
             // 
             this.SupplierID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SupplierID.Frozen = true;
             this.SupplierID.HeaderText = "Supplier ID";
             this.SupplierID.Name = "SupplierID";
             this.SupplierID.ReadOnly = true;
@@ -144,6 +149,7 @@
             // StaffID
             // 
             this.StaffID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.StaffID.Frozen = true;
             this.StaffID.HeaderText = "Staff ID";
             this.StaffID.Name = "StaffID";
             this.StaffID.ReadOnly = true;
@@ -151,10 +157,12 @@
             // 
             // InfoDGBtn
             // 
-            this.InfoDGBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.InfoDGBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.InfoDGBtn.Frozen = true;
             this.InfoDGBtn.HeaderText = "";
             this.InfoDGBtn.Name = "InfoDGBtn";
             this.InfoDGBtn.ReadOnly = true;
+            this.InfoDGBtn.Width = 207;
             // 
             // ShowContract
             // 

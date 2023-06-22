@@ -50,6 +50,7 @@ builder.Services.AddAutoMapper(typeof(Program));
     services.AddScoped<IContractServices, ContractServices>();
     services.AddScoped<ISupplierServices,SupplierServices>();
     services.AddScoped<IRestTypeServices,RestTypeServices>();
+    services.AddScoped<IPurchaseServices, PurchaseServices>();
 }
 builder.Services.AddScoped<JwtToken>();
 

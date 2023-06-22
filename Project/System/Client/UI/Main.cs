@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Client.Helper;
 using Client.UI.Agreement;
 using Client.UI.Item;
+using Client.UI.Purchase;
 using test;
 
 namespace Client.UI
@@ -22,6 +23,7 @@ namespace Client.UI
             if (GlobalData.UserInfo.Department == "Restaurant")
             {
                 showContractBtn.Hide();
+                showPurBtn.Hide();
             }
         }
 
@@ -37,7 +39,7 @@ namespace Client.UI
         private void ShowContract_Click(object sender, EventArgs e)
         {
             var contractForm = new ShowContract(this);
-            this.Hide();
+            this.Hide(); 
             contractForm.ShowDialog();
         }
 
@@ -56,6 +58,12 @@ namespace Client.UI
         {
             var restForm = new RestaurantManager(this);
             restForm.ShowDialog();
+        }
+
+        private void showPurBtn_Click(object sender, EventArgs e)
+        {
+            var purForm = new ViewPurchase(this);
+            purForm.ShowDialog();
         }
     }
 }

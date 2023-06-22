@@ -81,6 +81,7 @@ namespace Client.UI.Contract
             DateTime signDate = DateTime.ParseExact(signTimePick.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
             DateTime expDate = DateTime.ParseExact(expireTimePick.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
             int repeatDate;
+            string refid = refNumTxt.Text;
             if (signDate == expDate || expDate < DateTime.Now.Date)
             {
                 MessageBox.Show("The Date is incorrect");
@@ -90,6 +91,11 @@ namespace Client.UI.Contract
             if (uploadTxt.Text == "")
             {
                 MessageBox.Show("Please Upload a Docs");
+                return;
+            }
+            if (string.IsNullOrEmpty(refid))
+            {
+                MessageBox.Show("Please Input the ref Number");
                 return;
             }
             var ContractID = contractTxt.Text;
@@ -126,7 +132,6 @@ namespace Client.UI.Contract
                     contractType = "BPA";
                     break;
             }
-
             var data = new ContractDataModel
             {
                 ContractID = ContractID,
@@ -135,7 +140,8 @@ namespace Client.UI.Contract
                 ContractType = contractType,
                 StaffID = staffID,
                 SupplierID = supplierID,
-                RepeatDate = repeatDate
+                RepeatDate = repeatDate,
+                refsupNum = refid
             };
             var ContractData = new ContractSumbitModel
             {

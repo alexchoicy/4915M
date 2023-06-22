@@ -16,5 +16,6 @@ namespace Client.Model.Submit
         public string VirtualID { get; set; }
         public int? quantity { get; set; } = 0;
         public string UOM { get; set; }
+        public string refSupID { get; set; }
     }
 }

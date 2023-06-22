@@ -46,7 +46,8 @@ namespace Server.Services
                     UOM = items.UOM,
                     price = items.price,
                     VirtualID = items.VirtualID,
-                    quantity = inv.Quantity
+                    quantity = inv.Quantity,
+                    refSupID = items.refSupID
                 };
             itemsData = query;
             return true;
@@ -146,6 +147,7 @@ namespace Server.Services
                 name = !string.IsNullOrEmpty(item.name) ? item.name : cur.name,
                 price = (double)(item.price != null ? item.price : cur.price),
                 UOM = !string.IsNullOrEmpty(item.UOM) ? item.UOM : cur.UOM,
+                refSupID = !string.IsNullOrEmpty(item.refSupID) ? item.refSupID : cur.refSupID
             };
             _dataContext.item.Update(newinfo);
             _dataContext.SaveChanges();

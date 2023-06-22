@@ -14,6 +14,7 @@ namespace Client.Model.Submit
         public string name { get; set; }
         public double price { get; set; }
         public string uom { get; set; }
+        public string refSupID { get; set; }
     }
 
     public class UpdateItem

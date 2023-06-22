@@ -38,5 +38,6 @@ namespace Client.Model.Submit
         public string SupplierID { get; set; }
         public string StaffID { get; set; }
         public int? RepeatDate { get; set; }
+        public string refsupNum { get; set; }
     }
 }

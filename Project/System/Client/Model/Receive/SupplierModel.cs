@@ -12,10 +12,11 @@ namespace Client.Model.Receive
 
         public string SupName { get; set; }
 
-        public string ContactName { get; set; }
+        public string contact_Name { get; set; }
 
-        public string ContactEmail { get; set; }
+        public string contact_Email { get; set; }
 
-        public string ContactPhone { get; set; }
+        public string contact_Phone { get; set; }
+        public string address { get; set; }
     }
 }

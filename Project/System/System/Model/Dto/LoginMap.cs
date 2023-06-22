@@ -28,5 +28,7 @@ namespace Server.Model.Dto
         public string password { get; set; }
         public int LoginCount { get; set; }
         public DateTime? AccountLock { get; set; }
+        public string address { get; set; }
+        public string remark {get; set; }
     }
 }

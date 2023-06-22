@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Server.Model.Entity
 {
     public class item
     {
+        [Key]
         [Required]
         public string ItemID { get; set; }
         [Required]
@@ -18,6 +20,7 @@ namespace Server.Model.Entity
         public string VirtualID { get; set; }
         [Required]
         public string UOM {get;set;}
+        public string refSupID {get;set;}
         [ForeignKey("SupplierID")]
         public virtual Suppliers Suppliers { get; set; }
         [ForeignKey("CategoryID")]

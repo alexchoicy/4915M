@@ -96,7 +96,7 @@ namespace Server.Model
             modelBuilder.Entity<Buy>()
                 .ToTable("Buy");
             modelBuilder.Entity<item_buy>()
-                .ToTable("item_table").HasKey("BuyID", "ItemID");
+                .ToTable("item_buy").HasKey("BuyID", "ItemID");
             modelBuilder.Entity<BPA>()
                 .ToTable("bpa").HasKey("BPAID");
             modelBuilder.Entity<item_BPA>()

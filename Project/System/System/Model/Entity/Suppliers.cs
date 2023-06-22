@@ -14,5 +14,7 @@ namespace Server.Model.Entity
         public string Contact_Email { get; set; }
 
         public string Contact_Phone { get; set; }
+
+        public string address { get; set; }
     }
 }

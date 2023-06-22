@@ -57,7 +57,7 @@ namespace Client.UI.Item
             priceTxt.Text = data.price.ToString();
             stockTxt.Text = data.quantity.ToString();
             UOMList.Text = data.UOM;
-
+            refSupID.Text = data.refSupID;
             getContractBysup(data.SupplierID);
         }
         private async void getContractBysup(string id)
@@ -75,7 +75,7 @@ namespace Client.UI.Item
             string rawprice = priceTxt.Text;
             string rawstock = stockTxt.Text;
             string UOM = UOMList.Text;
-
+            string refSupID = this.refSupID.Text;
             int stock;
             if (!int.TryParse(rawstock, out stock))
             {
@@ -217,7 +217,8 @@ namespace Client.UI.Item
                 name = name,
                 price = price,
                 VirtualID = virtualID,
-                uom = UOM
+                uom = UOM,
+                refSupID = refSupID,
             };
 
             UpdateItem updateInv = new UpdateItem

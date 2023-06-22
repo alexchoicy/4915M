@@ -136,5 +136,25 @@ namespace Client.Controller
 
             return null;
         }
+
+
+        public async Task<byte[]> GetDocsinBytes(int BPAid)
+        {
+            var request = new RestRequest("/api/contract/getBPA/Docs/" + BPAid)
+                .AddHeader("Authorization", GlobalData.UserInfo.Token);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(response.RawBytes);
+                Debug.Write(response.ResponseStatus);
+                return response.RawBytes;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
     }
 }

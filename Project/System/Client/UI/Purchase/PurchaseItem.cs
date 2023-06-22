@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Client.Controller;
+using Client.Model.Receive;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,46 @@ namespace Client.UI.Purchase
 {
     public partial class PurchaseItem : Form
     {
-        public PurchaseItem()
+        private PurchaseController purchaseController = new PurchaseController();
+        private SupplierModel _suppliers;
+        private List<PurchaseItemModel> items;
+        public PurchaseItem(SupplierModel suppliers)
         {
             InitializeComponent();
+            _suppliers = suppliers;
+            GetItemData();
+        }
+
+        public async void GetItemData()
+        {
+            items = await purchaseController.getItem(_suppliers.SupplierID);
+            if (items == null)
+            {
+                MessageBox.Show("NoData");
+                return;
+            }
+            BindItemData();
+        }
+
+        public void BindItemData()
+        {
+            itemDataGrid.Rows.Clear();
+            foreach (PurchaseItemModel item in items)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(itemDataGrid,
+                    false,
+                    item.itemID,
+                    item.itemName,
+                    item.itemQty);
+                itemDataGrid.Rows.Add(row);
+            }
+        }
+
+        private void BPAcreateBtn_Click(object sender, EventArgs e)
+        {
+            Form bpaPurchase = new BPApurchase(_suppliers);
+            bpaPurchase.ShowDialog();
         }
     }
 }

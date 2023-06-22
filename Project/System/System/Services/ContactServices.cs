@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using NuGet.Protocol;
 using Server.Controllers.Input;
 using Server.Model;
 using Server.Model.Dto;
@@ -12,7 +13,8 @@ namespace Server.Services
         public ContractDtoWithItem GetById(string id);
         public List<ContractIDDto> GetBySupplier(string id);
         public bool MakeNewRec(MakeNewContractModel data);
-
+        public List<BpaListDto> GetBpaInfo(string supID);
+        public string getConIDByBPA(string bpaID);
     }
 
     public class ContractServices : IContractServices
@@ -38,10 +40,10 @@ namespace Server.Services
         {
             var contractdata = _dataContext.contract.Find(id);
             var contractmapData = _mapper.Map<ContractDto>(contractdata);
-
             var itemsData = new List<ContractDtoItem>();
             var data = new ContractDtoWithItem();
             data.Contract = contractmapData;
+            Console.WriteLine(contractdata.ContractType);
             if(contractdata.ContractType == "PC")
             {
                 var planContract = _dataContext.planContracts.Where(x => x.ContractID == id).FirstOrDefault();
@@ -61,6 +63,7 @@ namespace Server.Services
                     itemsData.Add(contractItem);
                 }
                 data.items = itemsData;
+                Console.WriteLine(data.ToString());
                 return data;
             }
             else if(contractdata.ContractType == "BPA")
@@ -126,7 +129,17 @@ namespace Server.Services
             }
         }
 
-
+        public string getConIDByBPA(string bpaID)
+        {
+            int BPAID = int.Parse(bpaID);
+            var BPAdata = _dataContext.bpa.Where(x => x.BPAID == BPAID).FirstOrDefault();
+            if (BPAdata != null)
+            {
+                Console.WriteLine(BPAdata.ContractID);
+                return BPAdata.ContractID;
+            }
+            return null;
+        }
 
 
         public bool MakeNewRec(MakeNewContractModel data)
@@ -157,7 +170,8 @@ namespace Server.Services
                     ExpireTime = data.contractData.data.ExpireTime,
                     ContractType = data.contractData.data.ContractType,
                     SupplierID = data.contractData.data.SupplierID,
-                    StaffID = data.contractData.data.StaffID
+                    StaffID = data.contractData.data.StaffID,
+                    refsupNum = data.contractData.data.refsupNum
                 };
 
                 _dataContext.contract.Add(newcontract);
@@ -218,7 +232,39 @@ namespace Server.Services
                 throw;
             }
         }
+        public List<BpaListDto> GetBpaInfo(string supID)
+        {
+            List<int> bpaid = (from BPA in _dataContext.bpa
+                    join Contract in _dataContext.contract on BPA.ContractID equals Contract.ContractID
+                    where Contract.SupplierID == supID
+                    where Contract.ExpireTime >= DateTime.Now
+                    select BPA.BPAID).ToList();
+            List<BpaListDto> datas = new List<BpaListDto>();
 
+            foreach (int id in bpaid)
+            {
+                BpaListDto bpadata = new BpaListDto();
+                bpadata.ID = id;
+                bpadata.refsupNum = _dataContext.contract.Where(x => x.ContractID == _dataContext.bpa.Where(y => y.BPAID == id).FirstOrDefault().ContractID).FirstOrDefault().refsupNum;
+                List<BpaItemListDto> bpaitems =(
+                    from bpaitem in _dataContext.item_BPA
+                    join item in _dataContext.item on bpaitem.ItemID equals item.ItemID
+                    where bpaitem.BPAID == id
+                        select new BpaItemListDto
+                        {
+                            ItemID = bpaitem.ItemID,
+                            ItemName = item.name,
+                            MOQ = bpaitem.MOQ,
+                            price = bpaitem.price,
+                            unit = item.UOM,
+                            refSupID = item.refSupID
+                        }
+                    ).ToList();
+                bpadata.items = bpaitems;
+                datas.Add(bpadata);
+            }
 
+            return datas;
+        }
     }
 }

@@ -30,11 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.siSearchBox = new System.Windows.Forms.TextBox();
-            this.ItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.SupGridView = new System.Windows.Forms.DataGridView();
             this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupNameDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SupGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,22 +54,23 @@
             this.siSearchBox.Size = new System.Drawing.Size(125, 20);
             this.siSearchBox.TabIndex = 6;
             // 
-            // ItemDataGridView
+            // SupGridView
             // 
-            this.ItemDataGridView.AllowUserToAddRows = false;
-            this.ItemDataGridView.AllowUserToDeleteRows = false;
-            this.ItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SupGridView.AllowUserToAddRows = false;
+            this.SupGridView.AllowUserToDeleteRows = false;
+            this.SupGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SupGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gvSupplierID,
             this.SupNameDataGrid,
             this.gvDetailBtn});
-            this.ItemDataGridView.Location = new System.Drawing.Point(36, 71);
-            this.ItemDataGridView.Margin = new System.Windows.Forms.Padding(2);
-            this.ItemDataGridView.Name = "ItemDataGridView";
-            this.ItemDataGridView.RowHeadersWidth = 62;
-            this.ItemDataGridView.RowTemplate.Height = 28;
-            this.ItemDataGridView.Size = new System.Drawing.Size(909, 402);
-            this.ItemDataGridView.TabIndex = 8;
+            this.SupGridView.Location = new System.Drawing.Point(36, 71);
+            this.SupGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.SupGridView.Name = "SupGridView";
+            this.SupGridView.RowHeadersWidth = 62;
+            this.SupGridView.RowTemplate.Height = 28;
+            this.SupGridView.Size = new System.Drawing.Size(909, 402);
+            this.SupGridView.TabIndex = 8;
+            this.SupGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupGridView_CellContentClick);
             // 
             // gvSupplierID
             // 
@@ -102,12 +103,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 545);
-            this.Controls.Add(this.ItemDataGridView);
+            this.Controls.Add(this.SupGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.siSearchBox);
             this.Name = "ViewPurchase";
             this.Text = "ViewPurchase";
-            ((System.ComponentModel.ISupportInitialize)(this.ItemDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SupGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,7 +118,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox siSearchBox;
-        private System.Windows.Forms.DataGridView ItemDataGridView;
+        private System.Windows.Forms.DataGridView SupGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvSupplierID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupNameDataGrid;
         private System.Windows.Forms.DataGridViewButtonColumn gvDetailBtn;

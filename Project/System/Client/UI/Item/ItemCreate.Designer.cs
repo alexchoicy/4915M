@@ -42,114 +42,107 @@
             this.SupIDTxt = new System.Windows.Forms.ComboBox();
             this.cnewSupBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UomList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.virtIDTxt = new System.Windows.Forms.ComboBox();
             this.sumBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.cateBtn = new System.Windows.Forms.Button();
-            this.UomList = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.refSupIDTxt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // itemIDTxt
             // 
-            this.itemIDTxt.Location = new System.Drawing.Point(150, 54);
-            this.itemIDTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.itemIDTxt.Location = new System.Drawing.Point(100, 35);
             this.itemIDTxt.Name = "itemIDTxt";
             this.itemIDTxt.ReadOnly = true;
-            this.itemIDTxt.Size = new System.Drawing.Size(164, 26);
+            this.itemIDTxt.Size = new System.Drawing.Size(111, 20);
             this.itemIDTxt.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(35, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Item ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(375, 58);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(250, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 20);
+            this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Supplier ID";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 128);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(25, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 20);
+            this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "CategoryID";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 89);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(25, 58);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Name";
             // 
             // itemNameTxt
             // 
-            this.itemNameTxt.Location = new System.Drawing.Point(150, 85);
-            this.itemNameTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.itemNameTxt.Location = new System.Drawing.Point(100, 55);
             this.itemNameTxt.Name = "itemNameTxt";
-            this.itemNameTxt.Size = new System.Drawing.Size(164, 26);
+            this.itemNameTxt.Size = new System.Drawing.Size(111, 20);
             this.itemNameTxt.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(494, 92);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(329, 60);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 20);
+            this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Price";
             // 
             // itemPriceTxt
             // 
-            this.itemPriceTxt.Location = new System.Drawing.Point(565, 89);
-            this.itemPriceTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.itemPriceTxt.Location = new System.Drawing.Point(377, 58);
             this.itemPriceTxt.Name = "itemPriceTxt";
-            this.itemPriceTxt.Size = new System.Drawing.Size(164, 26);
+            this.itemPriceTxt.Size = new System.Drawing.Size(111, 20);
             this.itemPriceTxt.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 217);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(25, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 20);
+            this.label7.Size = new System.Drawing.Size(50, 13);
             this.label7.TabIndex = 13;
             this.label7.Text = "Virtual ID";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.refSupIDTxt);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cateIDTxt);
             this.groupBox1.Controls.Add(this.SupIDTxt);
             this.groupBox1.Controls.Add(this.itemIDTxt);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(38, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(746, 223);
+            this.groupBox1.Size = new System.Drawing.Size(497, 145);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ID";
@@ -157,28 +150,25 @@
             // cateIDTxt
             // 
             this.cateIDTxt.FormattingEnabled = true;
-            this.cateIDTxt.Location = new System.Drawing.Point(136, 125);
-            this.cateIDTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cateIDTxt.Location = new System.Drawing.Point(91, 81);
             this.cateIDTxt.Name = "cateIDTxt";
-            this.cateIDTxt.Size = new System.Drawing.Size(180, 28);
+            this.cateIDTxt.Size = new System.Drawing.Size(121, 21);
             this.cateIDTxt.TabIndex = 15;
             // 
             // SupIDTxt
             // 
             this.SupIDTxt.FormattingEnabled = true;
-            this.SupIDTxt.Location = new System.Drawing.Point(498, 51);
-            this.SupIDTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SupIDTxt.Location = new System.Drawing.Point(332, 33);
             this.SupIDTxt.Name = "SupIDTxt";
-            this.SupIDTxt.Size = new System.Drawing.Size(212, 28);
+            this.SupIDTxt.Size = new System.Drawing.Size(143, 21);
             this.SupIDTxt.TabIndex = 8;
             this.SupIDTxt.SelectedIndexChanged += new System.EventHandler(this.SupIDTxt_SelectedIndexChanged);
             // 
             // cnewSupBtn
             // 
-            this.cnewSupBtn.Location = new System.Drawing.Point(837, 18);
-            this.cnewSupBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cnewSupBtn.Location = new System.Drawing.Point(558, 12);
             this.cnewSupBtn.Name = "cnewSupBtn";
-            this.cnewSupBtn.Size = new System.Drawing.Size(200, 69);
+            this.cnewSupBtn.Size = new System.Drawing.Size(133, 45);
             this.cnewSupBtn.TabIndex = 11;
             this.cnewSupBtn.Text = "Create New Supplier";
             this.cnewSupBtn.UseVisualStyleBackColor = true;
@@ -193,30 +183,47 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.itemPriceTxt);
-            this.groupBox2.Location = new System.Drawing.Point(38, 275);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(25, 179);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(746, 286);
+            this.groupBox2.Size = new System.Drawing.Size(497, 186);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Item Info";
             // 
+            // UomList
+            // 
+            this.UomList.FormattingEnabled = true;
+            this.UomList.Items.AddRange(new object[] {
+            "KG"});
+            this.UomList.Location = new System.Drawing.Point(364, 139);
+            this.UomList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UomList.Name = "UomList";
+            this.UomList.Size = new System.Drawing.Size(130, 21);
+            this.UomList.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(245, 141);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Unit of Measurement";
+            // 
             // virtIDTxt
             // 
             this.virtIDTxt.FormattingEnabled = true;
-            this.virtIDTxt.Location = new System.Drawing.Point(174, 212);
-            this.virtIDTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.virtIDTxt.Location = new System.Drawing.Point(116, 138);
             this.virtIDTxt.Name = "virtIDTxt";
-            this.virtIDTxt.Size = new System.Drawing.Size(180, 28);
+            this.virtIDTxt.Size = new System.Drawing.Size(121, 21);
             this.virtIDTxt.TabIndex = 14;
             // 
             // sumBtn
             // 
-            this.sumBtn.Location = new System.Drawing.Point(862, 622);
-            this.sumBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sumBtn.Location = new System.Drawing.Point(575, 404);
             this.sumBtn.Name = "sumBtn";
-            this.sumBtn.Size = new System.Drawing.Size(146, 72);
+            this.sumBtn.Size = new System.Drawing.Size(97, 47);
             this.sumBtn.TabIndex = 16;
             this.sumBtn.Text = "Sumbit";
             this.sumBtn.UseVisualStyleBackColor = true;
@@ -224,10 +231,9 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(658, 622);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cancelBtn.Location = new System.Drawing.Point(439, 404);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(152, 72);
+            this.cancelBtn.Size = new System.Drawing.Size(101, 47);
             this.cancelBtn.TabIndex = 17;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
@@ -235,46 +241,41 @@
             // 
             // cateBtn
             // 
-            this.cateBtn.Location = new System.Drawing.Point(837, 122);
-            this.cateBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cateBtn.Location = new System.Drawing.Point(558, 79);
             this.cateBtn.Name = "cateBtn";
-            this.cateBtn.Size = new System.Drawing.Size(200, 69);
+            this.cateBtn.Size = new System.Drawing.Size(133, 45);
             this.cateBtn.TabIndex = 18;
             this.cateBtn.Text = "Create New Category";
             this.cateBtn.UseVisualStyleBackColor = true;
             this.cateBtn.Click += new System.EventHandler(this.cateBtn_Click);
             // 
-            // UomList
+            // refSupIDTxt
             // 
-            this.UomList.FormattingEnabled = true;
-            this.UomList.Items.AddRange(new object[] {
-            "KG"});
-            this.UomList.Location = new System.Drawing.Point(546, 214);
-            this.UomList.Name = "UomList";
-            this.UomList.Size = new System.Drawing.Size(193, 28);
-            this.UomList.TabIndex = 19;
+            this.refSupIDTxt.Location = new System.Drawing.Point(332, 84);
+            this.refSupIDTxt.Name = "refSupIDTxt";
+            this.refSupIDTxt.Size = new System.Drawing.Size(143, 20);
+            this.refSupIDTxt.TabIndex = 16;
             // 
-            // label4
+            // label8
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(368, 217);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 20);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Unit of Measurement";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(245, 87);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Supplier Ref ID";
             // 
             // ItemCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 751);
+            this.ClientSize = new System.Drawing.Size(744, 488);
             this.Controls.Add(this.cateBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.cnewSupBtn);
             this.Controls.Add(this.sumBtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ItemCreate";
             this.Text = "ItemCateCreate";
             this.groupBox1.ResumeLayout(false);
@@ -307,5 +308,7 @@
         private System.Windows.Forms.Button cateBtn;
         private System.Windows.Forms.ComboBox UomList;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox refSupIDTxt;
+        private System.Windows.Forms.Label label8;
     }
 }

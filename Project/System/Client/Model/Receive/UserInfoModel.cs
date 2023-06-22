@@ -14,6 +14,7 @@ namespace Client.Model.Receive
         public string StaffID { get; set; }
         public string Position { get; set; }
         public string Department { get; set; }
+        public string address { get; set; }
         public string Remark { get; set; }
     }
 }

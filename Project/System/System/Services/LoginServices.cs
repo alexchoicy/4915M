@@ -45,6 +45,7 @@ namespace Server.Services
         {
             var query = from staff in _dataContext.staff
             join ac in _dataContext.account on staff.StaffID equals ac.StaffID
+            join rest in _dataContext.restaurant on staff.RestaurantID equals rest.RestaurantId
             where staff.StaffID == ID
             select new LoginDto
             {
@@ -55,7 +56,9 @@ namespace Server.Services
                 RestaurantName = staff.Restaurant.RestaurantName,
                 password = ac.password,
                 LoginCount = ac.LoginCount,
-                AccountLock = ac.AccountLock
+                AccountLock = ac.AccountLock,
+                address = rest.Address,
+                remark = staff.remark
             };
 
             var request = query.FirstOrDefault();
@@ -112,8 +115,8 @@ namespace Server.Services
             userData.staffID = ID;
             userData.postion = request.PositionName;
             userData.Dept = request.DeptName;
-            var user = _dataContext.staff.Find(ID);
-            userData.remark = user.remark;
+            userData.remark = request.remark;
+            userData.address = request.address;
             data.userData = userData;
             
             return LoginResult.Success;

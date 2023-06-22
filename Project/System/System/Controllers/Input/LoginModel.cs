@@ -29,5 +29,6 @@ namespace Server.Controllers.Input
         public string postion { get; set; }
         public string Dept { get; set; }
         public string remark { get; set; }
+        public string address { get; set; }
     }
 }

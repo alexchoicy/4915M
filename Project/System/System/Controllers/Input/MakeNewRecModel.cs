@@ -26,6 +26,7 @@ namespace Server.Controllers.Input
         public string SupplierID { get; set; }
         public string StaffID { get; set; }
         public int? RepeatDate { get; set; }
+        public string refsupNum {get;set;}
     }
     public class ContractSumbitItemModel
     {

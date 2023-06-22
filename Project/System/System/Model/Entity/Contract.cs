@@ -14,7 +14,7 @@ namespace Server.Model.Entity
         public string SupplierID { get; set; }
         public string? StaffID { get; set; }
 
-
+        public string refsupNum {get;set;}
 
 
         [ForeignKey("SupplierID")]
