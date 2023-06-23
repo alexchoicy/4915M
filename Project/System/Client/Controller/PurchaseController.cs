@@ -1,9 +1,11 @@
 ﻿using Client.Helper;
 using Client.Model.Receive;
+using Client.Model.Submit;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -192,5 +194,32 @@ namespace Client.Controller
                 throw;
             }
         }
+
+
+        public async Task<List<spoListModel>> getSpoData(string supid, List<reqspoModel> itemID)
+        {
+            var request = new RestRequest("/api/purchase/spo",Method.Post)
+                .AddHeader("Authorization", GlobalData.UserInfo.Token)
+                .AddJsonBody(itemID);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(response.Content);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var itemList = JsonConvert.DeserializeObject<List<spoListModel>>(response.Content);
+                    return itemList;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return null;
+        }
+
+
+
     }
 }

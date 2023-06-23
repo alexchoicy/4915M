@@ -29,4 +29,9 @@ namespace Client.Model.Submit
         public double qty { get; set; }
         public double TotalPrice { get; set; }
     }
+
+    public class reqspoModel
+    {
+        public string itemID { get; set; }
+    }
 }

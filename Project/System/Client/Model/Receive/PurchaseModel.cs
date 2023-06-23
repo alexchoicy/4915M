@@ -29,6 +29,21 @@ namespace Client.Model.Receive
         public string refSupID { get; set; }
     }
 
+    public class ReqspoModel
+    {
+        public string supID { get; set; }
+        public List<spoListModel> items { get; set; }
+    }
+
+    public class spoListModel
+    {
+        public string ItemID { get; set; }
+        public string ItemName { get; set; }
+        public string unit { get; set; }
+        public double price { get; set; }
+    }
+
+
 
     public class History
     {

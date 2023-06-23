@@ -14,6 +14,7 @@ namespace Server.Services
         public bool MakeNewPurchase(PuchaseNewModel data);
         public List<PurchaseRecord> getRecord();
         public History getRecordItem(string pid);
+        public List<SpoListDto> getSpoData(List<reqspoModel> itemIds);
     }
     public class PurchaseServices : IPurchaseServices
     {
@@ -203,5 +204,25 @@ namespace Server.Services
             data.items = items;
             return data;
         }
+
+
+        public List<SpoListDto> getSpoData(List<reqspoModel> itemIds)
+        {
+            List<SpoListDto> data = new List<SpoListDto>();
+
+            foreach(reqspoModel itemId in itemIds)
+            {
+                SpoListDto item = _dataContext.item.Where(item => item.ItemID == itemId.itemID).Select(item => new SpoListDto
+                {
+                    ItemID = item.ItemID,
+                    ItemName = item.name,
+                    unit = item.UOM,
+                    price = item.price
+                }).FirstOrDefault();
+                data.Add(item);
+            }
+            return data;
+        }
+
     }
 }

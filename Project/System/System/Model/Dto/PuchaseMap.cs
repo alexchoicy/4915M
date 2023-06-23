@@ -72,4 +72,11 @@ namespace Server.Model.Dto
         public double qty { get; set; }
         public double TotalPrice { get; set; }
     }
+    public class SpoListDto
+    {
+        public string ItemID { get; set; }
+        public string ItemName { get; set; }
+        public string unit { get; set; }
+        public double price { get; set; }
+    }
 }

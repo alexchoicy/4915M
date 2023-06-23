@@ -288,10 +288,10 @@
     <Compile Include="UI\NHS\Stock_editform.Designer.cs">
       <DependentUpon>Stock_editform.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Purchase\BPApurchase.cs">
+    <Compile Include="UI\Purchase\Process\BPApurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Purchase\BPApurchase.Designer.cs">
+    <Compile Include="UI\Purchase\Process\BPApurchase.Designer.cs">
       <DependentUpon>BPApurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Purchase\History\PurchaseHistory.cs">
@@ -305,6 +305,12 @@
     </Compile>
     <Compile Include="UI\Purchase\History\PurchaseHistoryDetail.Designer.cs">
       <DependentUpon>PurchaseHistoryDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchase\Process\SPOpurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\Process\SPOpurchase.Designer.cs">
+      <DependentUpon>SPOpurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Purchase\PurchaseItem.cs">
       <SubType>Form</SubType>
@@ -390,7 +396,7 @@
     <EmbeddedResource Include="UI\NHS\Stock_editform.resx">
       <DependentUpon>Stock_editform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Purchase\BPApurchase.resx">
+    <EmbeddedResource Include="UI\Purchase\Process\BPApurchase.resx">
       <DependentUpon>BPApurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\History\PurchaseHistory.resx">
@@ -398,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\History\PurchaseHistoryDetail.resx">
       <DependentUpon>PurchaseHistoryDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\Process\SPOpurchase.resx">
+      <DependentUpon>SPOpurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\PurchaseItem.resx">
       <DependentUpon>PurchaseItem.cs</DependentUpon>

@@ -4,11 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Client.UI.Purchase.Process;
+using Client.Model.Submit;
+using iText.Layout.Element;
 
 namespace Client.UI.Purchase
 {
@@ -66,6 +70,31 @@ namespace Client.UI.Purchase
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private async void spoBtn_Click(object sender, EventArgs e)
+        {
+            List<reqspoModel> itemID = new List<reqspoModel>();
+            foreach (DataGridViewRow row in itemDataGrid.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["selectItem"].Value))
+                {
+                    itemID.Add(new reqspoModel
+                    {
+                        itemID = row.Cells["itemIDGrid"].Value.ToString(),
+                    });
+                    Debug.WriteLine(row.Cells["itemIDGrid"].Value.ToString());
+                }
+            }
+
+            if (itemID.Count < 0)
+            {
+                return;
+            }
+            List<spoListModel> ListData = await purchaseController.getSpoData(_suppliers.SupplierID, itemID);
+            Form spoPurchase = new SPOpurchase(_suppliers, ListData);
+            spoPurchase.FormClosed += bpaPurchase_Close;
+            spoPurchase.ShowDialog();
         }
     }
 }

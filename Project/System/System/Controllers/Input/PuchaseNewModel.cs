@@ -34,5 +34,8 @@ namespace Server.Controllers.Input
         public double TotalPrice { get; set; }
     }
 
-
+    public class reqspoModel
+    {
+        public string itemID { get; set; }
+    }
 }

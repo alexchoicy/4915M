@@ -146,6 +146,7 @@
             this.spoBtn.TabIndex = 2;
             this.spoBtn.Text = "Standard Purchase Order";
             this.spoBtn.UseVisualStyleBackColor = true;
+            this.spoBtn.Click += new System.EventHandler(this.spoBtn_Click);
             // 
             // BPAcreateBtn
             // 

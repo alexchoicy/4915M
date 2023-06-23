@@ -87,5 +87,13 @@ namespace Server.Controllers
             }
             return NotFound();
         }
+
+        [HttpPost("spo")]
+        public IActionResult getSpoData([FromBody] List<reqspoModel> itemId)
+        {
+            List<SpoListDto> data = _purchaseServices.getSpoData(itemId);
+            return Ok(data);
+        }
+
     }
 }
