@@ -53,7 +53,19 @@ namespace Client.UI.Purchase
         private void BPAcreateBtn_Click(object sender, EventArgs e)
         {
             Form bpaPurchase = new BPApurchase(_suppliers);
+            bpaPurchase.FormClosed += bpaPurchase_Close;
             bpaPurchase.ShowDialog();
+        }
+
+        private void bpaPurchase_Close(object sender, FormClosedEventArgs e)
+        {
+            GetItemData();
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

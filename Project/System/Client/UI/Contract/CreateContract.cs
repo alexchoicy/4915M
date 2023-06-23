@@ -28,6 +28,7 @@ namespace Client.UI.Contract
         private List<ContractSumbitItemShowModel> ListItem;
         private List<SupplierModel> suppliers;
         private List<ContractModel> contracts;
+
         public CreateContract(List<ContractModel> item)
         {
             contracts = item;
@@ -131,10 +132,13 @@ namespace Client.UI.Contract
                 case 1:
                     contractType = "BPA";
                     break;
+                case 2:
+                    contractType = "Contract";
+                    break;
             }
             var data = new ContractDataModel
             {
-                ContractID = ContractID,
+                ContractID = contractType + ContractID,
                 SignDate = signDate,
                 ExpireTime = expDate,
                 ContractType = contractType,
@@ -197,6 +201,9 @@ namespace Client.UI.Contract
                     }
                 }
                 ContractData.ContractItems = items;
+            }else if (contractType == "Contract")
+            {
+
             }
 
             string jsonString = JsonSerializer.Serialize(ContractData);
@@ -229,14 +236,19 @@ namespace Client.UI.Contract
 
         private void ccDropType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ccDropType.SelectedIndex == 0)
+            if (ccDropType.SelectedIndex == 0)
             {
                 ccAddBtn.Enabled = true;
                 ccRepDateTxt.Enabled = true;
             }
-            if (ccDropType.SelectedIndex == 1)
+            else if (ccDropType.SelectedIndex == 1)
             {
                 ccAddBtn.Enabled = true;
+                ccRepDateTxt.Enabled = false;
+            }
+            else if (ccDropType.SelectedIndex == 2)
+            {
+                ccAddBtn.Enabled = false;
                 ccRepDateTxt.Enabled = false;
             }
         }
@@ -380,7 +392,7 @@ namespace Client.UI.Contract
             string[] regexData = regex.Split(rawsupplierID);
             string supID = regexData[0].Trim();
             bool subcheck = false;
-            foreach (var item in contracts)
+            foreach (var item in suppliers)
             {
                 if (supID == item.SupplierID)
                 {

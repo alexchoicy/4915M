@@ -29,7 +29,7 @@ namespace Client.UI.Contract
             cdStaffIDTxt.Text = respone.Contract.StaffID;
             cdexpTxt.Text = respone.Contract.ExpireTime.Date.ToString("dd/MM/yyyy");
             cdsignTxt.Text = respone.Contract.SignDate.Date.ToString("dd/MM/yyyy");
-            cdRepDate.Text = respone.Contract.RepeatDate.ToString();
+            refNumTxt.Text = respone.Contract.refsupNum.ToString();
             PopulateitemGridView(respone.items);
 
         }

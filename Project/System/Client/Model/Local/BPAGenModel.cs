@@ -12,7 +12,9 @@ namespace Client.Model.Local
         public SupplierModel Supplier { get; set; }
         public List<BPAitemGenModel> items { get; set; }
         public string refNum { get; set; }
+        public string pid { get; set; }
         public int BPAid { get; set; }
+        
     }
 
     public class BPAitemGenModel
@@ -24,5 +26,6 @@ namespace Client.Model.Local
         public double MOQ { get; set; }
         public double qty { get; set; }
         public string refSupID { get; set; }
+        public double Totalprice { get; set; }
     }
 }

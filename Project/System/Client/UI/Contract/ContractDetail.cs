@@ -30,8 +30,11 @@ namespace Client.UI.Contract
             cdexpTxt.Text = respone.Contract.ExpireTime.Date.ToString("dd/MM/yyyy");
             cdsignTxt.Text = respone.Contract.SignDate.Date.ToString("dd/MM/yyyy");
             cdRepDate.Text = respone.Contract.RepeatDate.ToString();
-            PopulateitemGridView(respone.items);
-
+            refNumTxt.Text = respone.Contract.refsupNum.ToString();
+            if (respone.Contract.ContractType == "PC")
+            {
+                PopulateitemGridView(respone.items);
+            }
         }
 
         private void PopulateitemGridView(List<ContractModelItem> datas)

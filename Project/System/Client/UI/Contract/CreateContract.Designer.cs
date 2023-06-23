@@ -159,7 +159,7 @@
             this.quantity,
             this.priceDataGrid,
             this.moqData});
-            this.supDataView.Location = new System.Drawing.Point(489, 31);
+            this.supDataView.Location = new System.Drawing.Point(687, 43);
             this.supDataView.Name = "supDataView";
             this.supDataView.RowHeadersVisible = false;
             this.supDataView.RowHeadersWidth = 62;
@@ -211,7 +211,7 @@
             // 
             // exitBtn
             // 
-            this.exitBtn.Location = new System.Drawing.Point(261, 437);
+            this.exitBtn.Location = new System.Drawing.Point(434, 437);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(92, 45);
             this.exitBtn.TabIndex = 12;
@@ -221,7 +221,7 @@
             // 
             // subBtn
             // 
-            this.subBtn.Location = new System.Drawing.Point(371, 437);
+            this.subBtn.Location = new System.Drawing.Point(571, 437);
             this.subBtn.Name = "subBtn";
             this.subBtn.Size = new System.Drawing.Size(92, 45);
             this.subBtn.TabIndex = 13;
@@ -269,12 +269,13 @@
             // 
             this.ccDropType.FormattingEnabled = true;
             this.ccDropType.Items.AddRange(new object[] {
-            "Planned Contract",
-            "BPA"});
-            this.ccDropType.Location = new System.Drawing.Point(156, 331);
-            this.ccDropType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            "Planned Purchase Order",
+            "Blanket Purchase Agreement",
+            "Contract"});
+            this.ccDropType.Location = new System.Drawing.Point(156, 330);
+            this.ccDropType.Margin = new System.Windows.Forms.Padding(2);
             this.ccDropType.Name = "ccDropType";
-            this.ccDropType.Size = new System.Drawing.Size(99, 21);
+            this.ccDropType.Size = new System.Drawing.Size(198, 21);
             this.ccDropType.TabIndex = 18;
             this.ccDropType.SelectedIndexChanged += new System.EventHandler(this.ccDropType_SelectedIndexChanged);
             // 
@@ -290,8 +291,8 @@
             // 
             // ccAddBtn
             // 
-            this.ccAddBtn.Location = new System.Drawing.Point(848, 456);
-            this.ccAddBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ccAddBtn.Location = new System.Drawing.Point(1045, 493);
+            this.ccAddBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ccAddBtn.Name = "ccAddBtn";
             this.ccAddBtn.Size = new System.Drawing.Size(81, 43);
             this.ccAddBtn.TabIndex = 20;
@@ -301,7 +302,7 @@
             // 
             // ccRepDateTxt
             // 
-            this.ccRepDateTxt.Location = new System.Drawing.Point(371, 330);
+            this.ccRepDateTxt.Location = new System.Drawing.Point(506, 331);
             this.ccRepDateTxt.Name = "ccRepDateTxt";
             this.ccRepDateTxt.Size = new System.Drawing.Size(90, 20);
             this.ccRepDateTxt.TabIndex = 22;
@@ -309,7 +310,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(269, 333);
+            this.label8.Location = new System.Drawing.Point(391, 333);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 13);
@@ -320,7 +321,7 @@
             // 
             this.ccCBSupID.FormattingEnabled = true;
             this.ccCBSupID.Location = new System.Drawing.Point(153, 190);
-            this.ccCBSupID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ccCBSupID.Margin = new System.Windows.Forms.Padding(2);
             this.ccCBSupID.Name = "ccCBSupID";
             this.ccCBSupID.Size = new System.Drawing.Size(201, 21);
             this.ccCBSupID.TabIndex = 24;
@@ -329,12 +330,12 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 382);
+            this.label9.Location = new System.Drawing.Point(48, 382);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 13);
+            this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 25;
-            this.label9.Text = "Ref Agreement Number";
+            this.label9.Text = "Ref Number";
             // 
             // refNumTxt
             // 
@@ -347,7 +348,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 507);
+            this.ClientSize = new System.Drawing.Size(1138, 547);
             this.Controls.Add(this.refNumTxt);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ccCBSupID);

@@ -14,7 +14,7 @@ namespace Server.Model.Entity
     {
         public int BuyID { get; set; }
         public string ItemID { get; set; }
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
         [ForeignKey("BuyID")]
         public virtual Buy buy { get; set; }
         [ForeignKey("ItemID")]

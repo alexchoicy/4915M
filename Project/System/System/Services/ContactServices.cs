@@ -86,26 +86,6 @@ namespace Server.Services
                 data.items = itemsData;
                 return data;
             }
-
-            var contractItemData = _dataContext.item.Where(x => x.ItemID == id).ToList();
-            if (contractItemData != null)
-            {
-
-                foreach (var itemData in contractItemData)
-                {
-                    var itemq = _dataContext.restaurant_item.Where(x => x.itemID == itemData.ItemID && x.restaurantID == "WH000").FirstOrDefault();
-                    var contractItem = new ContractDtoItem
-                    {
-                        itemID = itemData.ItemID,
-                        name = itemData.name,
-                        price = itemData.price,
-                        CategoryID = itemData.CategoryID,
-                        quantity = itemq.Quantity
-                    };
-                    itemsData.Add(contractItem);
-                }
-                data.items = itemsData;
-            };
             return data;
         }
 
@@ -151,7 +131,11 @@ namespace Server.Services
                 if (data.files != null && data.files.Count > 0)
                 {
                     string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Docs", "Contract");
-
+                    if (!Directory.Exists(folderPath))
+                    {
+                        // Create the folder
+                        Directory.CreateDirectory(folderPath);
+                    }
                     foreach (var file in data.files)
                     {
                         string filePath = Path.Combine(folderPath, file.FileName);
@@ -234,22 +218,26 @@ namespace Server.Services
         }
         public List<BpaListDto> GetBpaInfo(string supID)
         {
-            List<int> bpaid = (from BPA in _dataContext.bpa
+            List<bpaDataDto> bpaid = (from BPA in _dataContext.bpa
                     join Contract in _dataContext.contract on BPA.ContractID equals Contract.ContractID
                     where Contract.SupplierID == supID
                     where Contract.ExpireTime >= DateTime.Now
-                    select BPA.BPAID).ToList();
+                    select new bpaDataDto{
+                        BPAID = BPA.BPAID,
+                        ContractID = BPA.ContractID
+                    }).ToList();
             List<BpaListDto> datas = new List<BpaListDto>();
 
-            foreach (int id in bpaid)
+            foreach (bpaDataDto id in bpaid)
             {
                 BpaListDto bpadata = new BpaListDto();
-                bpadata.ID = id;
-                bpadata.refsupNum = _dataContext.contract.Where(x => x.ContractID == _dataContext.bpa.Where(y => y.BPAID == id).FirstOrDefault().ContractID).FirstOrDefault().refsupNum;
+                bpadata.ID = id.BPAID;
+                bpadata.ContractID = id.ContractID;
+                bpadata.refsupNum = _dataContext.contract.Where(x => x.ContractID == _dataContext.bpa.Where(y => y.BPAID == id.BPAID).FirstOrDefault().ContractID).FirstOrDefault().refsupNum;
                 List<BpaItemListDto> bpaitems =(
                     from bpaitem in _dataContext.item_BPA
                     join item in _dataContext.item on bpaitem.ItemID equals item.ItemID
-                    where bpaitem.BPAID == id
+                    where bpaitem.BPAID == id.BPAID
                         select new BpaItemListDto
                         {
                             ItemID = bpaitem.ItemID,

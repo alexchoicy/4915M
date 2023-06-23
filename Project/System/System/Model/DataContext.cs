@@ -42,6 +42,9 @@ namespace Server.Model
         public DbSet<item_buy> item_buy { get; set; }
         public DbSet<BPA> bpa { get; set; }
         public DbSet<item_BPA> item_BPA { get; set; }
+        public DbSet<purchase> purchases { get; set; }
+        public DbSet<item_Purchase> item_Purchases { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -101,6 +104,10 @@ namespace Server.Model
                 .ToTable("bpa").HasKey("BPAID");
             modelBuilder.Entity<item_BPA>()
                 .ToTable("item_bpa").HasKey("ItemID", "BPAID");
+            modelBuilder.Entity<purchase>()
+                .ToTable("Purchase").HasKey("pID");
+            modelBuilder.Entity<item_Purchase>()
+                .ToTable("item_Purchase").HasKey("ItemID", "pID");
         }
     }
 }

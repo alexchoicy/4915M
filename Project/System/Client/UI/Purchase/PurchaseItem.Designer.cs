@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.itemDataGrid = new System.Windows.Forms.DataGridView();
+            this.selectItem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.itemIDGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemNameDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemQtyDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.siSearchBox = new System.Windows.Forms.TextBox();
             this.selectAllBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.Options = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.spoBtn = new System.Windows.Forms.Button();
             this.BPAcreateBtn = new System.Windows.Forms.Button();
-            this.selectItem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.itemIDGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemNameDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemQtyDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGrid)).BeginInit();
             this.Options.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,39 @@
             this.itemDataGrid.Name = "itemDataGrid";
             this.itemDataGrid.Size = new System.Drawing.Size(776, 318);
             this.itemDataGrid.TabIndex = 0;
+            // 
+            // selectItem
+            // 
+            this.selectItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.selectItem.Frozen = true;
+            this.selectItem.HeaderText = "Select";
+            this.selectItem.Name = "selectItem";
+            this.selectItem.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectItem.Width = 43;
+            // 
+            // itemIDGrid
+            // 
+            this.itemIDGrid.Frozen = true;
+            this.itemIDGrid.HeaderText = "Item ID";
+            this.itemIDGrid.Name = "itemIDGrid";
+            this.itemIDGrid.ReadOnly = true;
+            // 
+            // itemNameDataGrid
+            // 
+            this.itemNameDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.itemNameDataGrid.Frozen = true;
+            this.itemNameDataGrid.HeaderText = "Item Name";
+            this.itemNameDataGrid.Name = "itemNameDataGrid";
+            this.itemNameDataGrid.ReadOnly = true;
+            this.itemNameDataGrid.Width = 496;
+            // 
+            // itemQtyDataGrid
+            // 
+            this.itemQtyDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.itemQtyDataGrid.Frozen = true;
+            this.itemQtyDataGrid.HeaderText = "Item Quantity";
+            this.itemQtyDataGrid.Name = "itemQtyDataGrid";
+            this.itemQtyDataGrid.Width = 94;
             // 
             // label1
             // 
@@ -92,10 +125,11 @@
             this.exitBtn.TabIndex = 11;
             this.exitBtn.Text = "Exit";
             this.exitBtn.UseVisualStyleBackColor = true;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // Options
             // 
-            this.Options.Controls.Add(this.button2);
+            this.Options.Controls.Add(this.spoBtn);
             this.Options.Controls.Add(this.BPAcreateBtn);
             this.Options.Location = new System.Drawing.Point(39, 442);
             this.Options.Name = "Options";
@@ -104,14 +138,14 @@
             this.Options.TabStop = false;
             this.Options.Text = "Options";
             // 
-            // button2
+            // spoBtn
             // 
-            this.button2.Location = new System.Drawing.Point(384, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 65);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Standard Purchase Order";
-            this.button2.UseVisualStyleBackColor = true;
+            this.spoBtn.Location = new System.Drawing.Point(384, 19);
+            this.spoBtn.Name = "spoBtn";
+            this.spoBtn.Size = new System.Drawing.Size(136, 65);
+            this.spoBtn.TabIndex = 2;
+            this.spoBtn.Text = "Standard Purchase Order";
+            this.spoBtn.UseVisualStyleBackColor = true;
             // 
             // BPAcreateBtn
             // 
@@ -122,39 +156,6 @@
             this.BPAcreateBtn.Text = "Blanket Purchase Release";
             this.BPAcreateBtn.UseVisualStyleBackColor = true;
             this.BPAcreateBtn.Click += new System.EventHandler(this.BPAcreateBtn_Click);
-            // 
-            // selectItem
-            // 
-            this.selectItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.selectItem.Frozen = true;
-            this.selectItem.HeaderText = "Select";
-            this.selectItem.Name = "selectItem";
-            this.selectItem.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectItem.Width = 43;
-            // 
-            // itemIDGrid
-            // 
-            this.itemIDGrid.Frozen = true;
-            this.itemIDGrid.HeaderText = "Item ID";
-            this.itemIDGrid.Name = "itemIDGrid";
-            this.itemIDGrid.ReadOnly = true;
-            // 
-            // itemNameDataGrid
-            // 
-            this.itemNameDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.itemNameDataGrid.Frozen = true;
-            this.itemNameDataGrid.HeaderText = "Item Name";
-            this.itemNameDataGrid.Name = "itemNameDataGrid";
-            this.itemNameDataGrid.ReadOnly = true;
-            this.itemNameDataGrid.Width = 496;
-            // 
-            // itemQtyDataGrid
-            // 
-            this.itemQtyDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.itemQtyDataGrid.Frozen = true;
-            this.itemQtyDataGrid.HeaderText = "Item Quantity";
-            this.itemQtyDataGrid.Name = "itemQtyDataGrid";
-            this.itemQtyDataGrid.Width = 94;
             // 
             // PurchaseItem
             // 
@@ -185,7 +186,7 @@
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.GroupBox Options;
         private System.Windows.Forms.Button BPAcreateBtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button spoBtn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn selectItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemIDGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGrid;

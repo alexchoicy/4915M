@@ -34,6 +34,7 @@
             this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupNameDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.viewHistBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SupGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,11 +99,22 @@
             this.gvDetailBtn.Text = "Detail";
             this.gvDetailBtn.Width = 40;
             // 
+            // viewHistBtn
+            // 
+            this.viewHistBtn.Location = new System.Drawing.Point(786, 15);
+            this.viewHistBtn.Name = "viewHistBtn";
+            this.viewHistBtn.Size = new System.Drawing.Size(159, 45);
+            this.viewHistBtn.TabIndex = 9;
+            this.viewHistBtn.Text = "View History";
+            this.viewHistBtn.UseVisualStyleBackColor = true;
+            this.viewHistBtn.Click += new System.EventHandler(this.viewHistBtn_Click);
+            // 
             // ViewPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 545);
+            this.Controls.Add(this.viewHistBtn);
             this.Controls.Add(this.SupGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.siSearchBox);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gvSupplierID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupNameDataGrid;
         private System.Windows.Forms.DataGridViewButtonColumn gvDetailBtn;
+        private System.Windows.Forms.Button viewHistBtn;
     }
 }

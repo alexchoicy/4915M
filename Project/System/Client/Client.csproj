@@ -171,6 +171,7 @@
     <Compile Include="Model\Submit\ItemCreateModel.cs" />
     <Compile Include="Model\Submit\ItemEditInv.cs" />
     <Compile Include="Model\Submit\ItemEditModel.cs" />
+    <Compile Include="Model\Submit\PurchaseSumbitModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Contract\AddBPAitem.cs">
@@ -293,6 +294,18 @@
     <Compile Include="UI\Purchase\BPApurchase.Designer.cs">
       <DependentUpon>BPApurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Purchase\History\PurchaseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\History\PurchaseHistory.Designer.cs">
+      <DependentUpon>PurchaseHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchase\History\PurchaseHistoryDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\History\PurchaseHistoryDetail.Designer.cs">
+      <DependentUpon>PurchaseHistoryDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Purchase\PurchaseItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +392,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\BPApurchase.resx">
       <DependentUpon>BPApurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\History\PurchaseHistory.resx">
+      <DependentUpon>PurchaseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\History\PurchaseHistoryDetail.resx">
+      <DependentUpon>PurchaseHistoryDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\PurchaseItem.resx">
       <DependentUpon>PurchaseItem.cs</DependentUpon>

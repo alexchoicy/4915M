@@ -52,12 +52,6 @@ namespace Server.Controllers
             var items = _ContractServices.GetBySupplier(id);
             return Ok(items);
         }
-        [HttpPost]
-        public IActionResult MakeNewRec([FromForm] MakeNewContractModel data)
-        {
-            _ContractServices.MakeNewRec(data);
-            return Ok();
-        }
 
         [HttpGet("getBPA/Docs/{BPAid}")]
         public IActionResult GetBPADocs(string BPAid)
@@ -72,6 +66,12 @@ namespace Server.Controllers
 
             }
             return NotFound();
+        }
+        [HttpPost]
+        public IActionResult MakeNewRec([FromForm] MakeNewContractModel data)
+        {
+            _ContractServices.MakeNewRec(data);
+            return Ok();
         }
     }
 }

@@ -31,10 +31,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bpaIDselect = new System.Windows.Forms.ComboBox();
             this.BPAviewGrid = new System.Windows.Forms.DataGridView();
+            this.ItemIDdata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refSupItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemNameGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moqGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.supIDTxt = new System.Windows.Forms.TextBox();
             this.sumBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.exitBtn = new System.Windows.Forms.Button();
             this.supNameTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SupConNameTxt = new System.Windows.Forms.TextBox();
@@ -49,13 +56,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.refTxt = new System.Windows.Forms.TextBox();
-            this.ItemIDdata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.refSupItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemNameGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moqGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pIDTxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BPAviewGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +98,47 @@
             this.BPAviewGrid.Size = new System.Drawing.Size(795, 599);
             this.BPAviewGrid.TabIndex = 2;
             // 
+            // ItemIDdata
+            // 
+            this.ItemIDdata.HeaderText = "item ID";
+            this.ItemIDdata.Name = "ItemIDdata";
+            this.ItemIDdata.ReadOnly = true;
+            // 
+            // refSupItemID
+            // 
+            this.refSupItemID.HeaderText = "Supplier Ref ID";
+            this.refSupItemID.Name = "refSupItemID";
+            this.refSupItemID.ReadOnly = true;
+            // 
+            // itemNameGrid
+            // 
+            this.itemNameGrid.HeaderText = "Item Name";
+            this.itemNameGrid.Name = "itemNameGrid";
+            this.itemNameGrid.ReadOnly = true;
+            // 
+            // unitGrid
+            // 
+            this.unitGrid.HeaderText = "Unit";
+            this.unitGrid.Name = "unitGrid";
+            this.unitGrid.ReadOnly = true;
+            // 
+            // moqGrid
+            // 
+            this.moqGrid.HeaderText = "MOQ";
+            this.moqGrid.Name = "moqGrid";
+            this.moqGrid.ReadOnly = true;
+            // 
+            // quantityGrid
+            // 
+            this.quantityGrid.HeaderText = "Quantity";
+            this.quantityGrid.Name = "quantityGrid";
+            // 
+            // priceGrid
+            // 
+            this.priceGrid.HeaderText = "Price";
+            this.priceGrid.Name = "priceGrid";
+            this.priceGrid.ReadOnly = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -123,14 +166,15 @@
             this.sumBtn.UseVisualStyleBackColor = true;
             this.sumBtn.Click += new System.EventHandler(this.sumBtn_Click);
             // 
-            // button2
+            // exitBtn
             // 
-            this.button2.Location = new System.Drawing.Point(650, 947);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 51);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.exitBtn.Location = new System.Drawing.Point(650, 947);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(110, 51);
+            this.exitBtn.TabIndex = 6;
+            this.exitBtn.Text = "Exit";
+            this.exitBtn.UseVisualStyleBackColor = true;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // supNameTxt
             // 
@@ -265,57 +309,35 @@
             this.refTxt.Size = new System.Drawing.Size(335, 20);
             this.refTxt.TabIndex = 19;
             // 
-            // ItemIDdata
+            // pIDTxt
             // 
-            this.ItemIDdata.HeaderText = "item ID";
-            this.ItemIDdata.Name = "ItemIDdata";
-            this.ItemIDdata.ReadOnly = true;
+            this.pIDTxt.Location = new System.Drawing.Point(541, 56);
+            this.pIDTxt.Name = "pIDTxt";
+            this.pIDTxt.ReadOnly = true;
+            this.pIDTxt.Size = new System.Drawing.Size(301, 20);
+            this.pIDTxt.TabIndex = 21;
             // 
-            // refSupItemID
+            // label10
             // 
-            this.refSupItemID.HeaderText = "Supplier Ref ID";
-            this.refSupItemID.Name = "refSupItemID";
-            this.refSupItemID.ReadOnly = true;
-            // 
-            // itemNameGrid
-            // 
-            this.itemNameGrid.HeaderText = "Item Name";
-            this.itemNameGrid.Name = "itemNameGrid";
-            this.itemNameGrid.ReadOnly = true;
-            // 
-            // unitGrid
-            // 
-            this.unitGrid.HeaderText = "Unit";
-            this.unitGrid.Name = "unitGrid";
-            this.unitGrid.ReadOnly = true;
-            // 
-            // moqGrid
-            // 
-            this.moqGrid.HeaderText = "MOQ";
-            this.moqGrid.Name = "moqGrid";
-            this.moqGrid.ReadOnly = true;
-            // 
-            // quantityGrid
-            // 
-            this.quantityGrid.HeaderText = "Quantity";
-            this.quantityGrid.Name = "quantityGrid";
-            // 
-            // priceGrid
-            // 
-            this.priceGrid.HeaderText = "Price";
-            this.priceGrid.Name = "priceGrid";
-            this.priceGrid.ReadOnly = true;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(471, 59);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(66, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Purchase ID";
             // 
             // BPApurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 1009);
+            this.Controls.Add(this.pIDTxt);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.refTxt);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.sumBtn);
             this.Controls.Add(this.BPAviewGrid);
             this.Controls.Add(this.bpaIDselect);
@@ -338,7 +360,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox supIDTxt;
         private System.Windows.Forms.Button sumBtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.TextBox supNameTxt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox SupConNameTxt;
@@ -360,5 +382,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn moqGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceGrid;
+        private System.Windows.Forms.TextBox pIDTxt;
+        private System.Windows.Forms.Label label10;
     }
 }

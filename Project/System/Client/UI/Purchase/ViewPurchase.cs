@@ -69,5 +69,11 @@ namespace Client.UI.Purchase
                 throw;
             }
         }
+
+        private void viewHistBtn_Click(object sender, EventArgs e)
+        {
+            Form PurHist = new PurchaseHistory();
+            PurHist.ShowDialog();
+        }
     }
 }
