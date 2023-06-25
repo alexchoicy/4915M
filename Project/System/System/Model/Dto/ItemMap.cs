@@ -32,6 +32,7 @@ namespace Server.Model.Dto
         public double quantity { get; set; }
         public string UOM {get;set;}
         public string refSupID {get;set;}
+
     }
 
     public class EditItemDto

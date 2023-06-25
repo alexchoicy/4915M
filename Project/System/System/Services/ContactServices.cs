@@ -180,7 +180,7 @@ namespace Server.Services
                         {
                             planContractID = planContractID,
                             ItemID = dataitems.itemID,
-                            Quantity =(int)(dataitems.quantity == null ? 0: dataitems.quantity),
+                            Quantity =(double)(dataitems.quantity == null ? 0: dataitems.quantity),
                             price = dataitems.price
                         };
                         _dataContext.planContract_Items.Add(planItem);

@@ -33,6 +33,7 @@ namespace Client.UI.Purchase.Process
             BindData();
             getNewpID();
             shipAddTxt.Text = GlobalData.UserInfo.address;
+            PPAIDselect.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         public async void BindData()
         {
@@ -117,6 +118,11 @@ namespace Client.UI.Purchase.Process
 
         private async void sumBtn_Click(object sender, EventArgs e)
         {
+            if (PPAIDselect.Text == "")
+            {
+                MessageBox.Show("Please select a PPA");
+                return;
+            }
             string pid = pIDTxt.Text;
             string conid = _ppalistModels.ppa.Where(x => x.ID == id).Select(x => x.ContractID).FirstOrDefault();
             Debug.WriteLine(conid);
@@ -153,6 +159,12 @@ namespace Client.UI.Purchase.Process
                 };
                 srgenModel.item.Add(item);
             }
+            if (srgenModel.item == null || srgenModel.item.Count == 0)
+            {
+                MessageBox.Show("No selected Item");
+                return;
+            }
+
 
             SRPDF gen = new SRPDF(srgenModel);
             if (!gen.getStatus())

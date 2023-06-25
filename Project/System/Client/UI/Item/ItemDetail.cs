@@ -36,6 +36,9 @@ namespace Client.UI.Item
                 virtualIDTxt.ReadOnly = true;
                 itemNameTxt.ReadOnly=true;
                 priceTxt.ReadOnly=true;
+                refSupID.ReadOnly = true;
+                cateIDTxt.Enabled = false;
+                UOMList.Enabled = false;
             }
         }
 
@@ -58,6 +61,7 @@ namespace Client.UI.Item
             stockTxt.Text = data.quantity.ToString();
             UOMList.Text = data.UOM;
             refSupID.Text = data.refSupID;
+            cateIDTxt.Text = data.CategoryID;
             getContractBysup(data.SupplierID);
         }
         private async void getContractBysup(string id)

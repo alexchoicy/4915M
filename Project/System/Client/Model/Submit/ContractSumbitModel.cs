@@ -15,7 +15,7 @@ namespace Client.Model.Submit
     public class ContractSumbitItemModel
     {
         public string itemID { get; set; }
-        public int? quantity { get; set; }
+        public double? quantity { get; set; }
         public double? MOQ { get; set; }
         public double price { get; set; }
     }
@@ -24,7 +24,7 @@ namespace Client.Model.Submit
     {
         public string itemID { get; set; }
         public string itemName { get; set; }
-        public int? quantity { get; set; }
+        public double? quantity { get; set; }
         public double? MOQ { get; set; }
         public double? price { get; set; }
     }

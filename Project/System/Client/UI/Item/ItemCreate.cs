@@ -34,6 +34,7 @@ namespace Client.UI.Item
             InitializeComponent();
             getStartData();
             SupIDTxt.SelectedIndexChanged += SupIDTxt_SelectedIndexChanged;
+            cateIDTxt.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         public ItemCreate()
         {
@@ -41,6 +42,7 @@ namespace Client.UI.Item
             getItemData();
             getStartData();
             SupIDTxt.SelectedIndexChanged += SupIDTxt_SelectedIndexChanged;
+            cateIDTxt.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private async void getItemData()
@@ -86,20 +88,16 @@ namespace Client.UI.Item
             virtIDTxt.AutoCompleteCustomSource = acVID;
 
             //setup suggestion of Category ID
-            var cateData =await categoryController.getAll();
-            AutoCompleteStringCollection acCate = new AutoCompleteStringCollection();
+            var cateData = await categoryController.getAll();
+            //AutoCompleteStringCollection acCate = new AutoCompleteStringCollection();
             cateIDTxt.Items.Clear();
             foreach (var item in cateData)
             {
-                if (!acCate.Contains(item.CategoryID))
-                {
-                    acCate.Add(item.CategoryID);
-                    cateIDTxt.Items.Add(item.CategoryID + $" {item.name}");
-                }
+                cateIDTxt.Items.Add(item.CategoryID + $" {item.name}");
             }
-            cateIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cateIDTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cateIDTxt.AutoCompleteCustomSource = acCate;
+            //cateIDTxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //cateIDTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //cateIDTxt.AutoCompleteCustomSource = acCate;
 
 
         }
@@ -162,6 +160,7 @@ namespace Client.UI.Item
             string rawcateID = cateIDTxt.Text;
             string UOM = UomList.Text;
             string refSupID = refSupIDTxt.Text;
+            string vID = virtIDTxt.Text;
             // only get ID
             Regex regex = new Regex("\\s");
             string[] supID = regex.Split(rawSupplierID);
@@ -171,12 +170,17 @@ namespace Client.UI.Item
 
 
             if (string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(rawSupplierID) || string.IsNullOrEmpty(CategoryID) 
-               || string.IsNullOrEmpty(itemname) || string.IsNullOrEmpty(CategoryID) || string.IsNullOrEmpty(virtIDTxt.Text) || string.IsNullOrEmpty(UOM))
+               || string.IsNullOrEmpty(itemname) || string.IsNullOrEmpty(CategoryID) || string.IsNullOrEmpty(vID) || string.IsNullOrEmpty(UOM))
             {
                 MessageBox.Show("Please input all item");
                 return;
             }
 
+            if (vID.Length > 10)
+            {
+                MessageBox.Show("Virtual ID can't more than 10");
+                return;
+            }
             int itemprice;
             if (!int.TryParse(itemPriceTxt.Text, out itemprice))
             {
@@ -191,7 +195,7 @@ namespace Client.UI.Item
                 name = itemname,
                 CategoryID = CategoryID,
                 price = itemprice,
-                VirtualID = virtIDTxt.Text,
+                VirtualID = vID,
                 UOM = UOM,
                 refSupID = refSupID
             };

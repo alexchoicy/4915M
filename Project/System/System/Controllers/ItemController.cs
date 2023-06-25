@@ -26,20 +26,26 @@ namespace Server.Controllers
         {
             var userID = User.FindFirst(ClaimTypes.Name)?.Value;
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            string dept = User.FindFirst(ClaimTypes.Actor)?.Value;
+            string restID = User.FindFirst(ClaimTypes.UserData)?.Value;
             IEnumerable<ItemDto> items;
             if (userID == null)
             {
                 return BadRequest("Error");
             }
 
-            if (role == "Admin")
+            if (role == "Manager" && dept == "Restaurant")
+            {
+                _ = _itemServices.ItemCanOrder(userID, out items);
+                return Ok(items);
+            }
+
+            if ((role == "Manager" || role == "Admin") && restID == "WH000")
             {
                 _ = _itemServices.getAll(out items);
                 return Ok(items);
             }
-
-            _ = _itemServices.ItemCanOrder(userID, out items);
-            return Ok(items);
+            return BadRequest("Error");
         }
 
 

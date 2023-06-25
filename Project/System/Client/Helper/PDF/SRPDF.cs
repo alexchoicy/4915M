@@ -116,7 +116,7 @@ namespace Client.Helper.PDF
                 document.Add(refNum);
                 LineSeparator ls2 = new LineSeparator(new SolidLine());
                 document.Add(ls2);
-                Table table = new Table(6, true);
+                Table table = new Table(5, true);
                 Cell cellRefID = new Cell()
                     .Add(new Paragraph("Item ID"));
                 Cell Description = new Cell()

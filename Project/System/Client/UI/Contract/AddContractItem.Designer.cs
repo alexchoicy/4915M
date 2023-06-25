@@ -32,6 +32,11 @@
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acAddItemViewGrid = new System.Windows.Forms.DataGridView();
+            this.addItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addqty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataView = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acRmBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.acAddBtn = new System.Windows.Forms.Button();
             this.acQtyTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,11 +48,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.priceTxt = new System.Windows.Forms.TextBox();
-            this.addItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addqty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataView = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.acRmBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.acAddItemViewGrid)).BeginInit();
             this.SuspendLayout();
@@ -61,8 +61,8 @@
             this.itemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
             this.itemName});
-            this.itemDataGridView.Location = new System.Drawing.Point(29, 212);
-            this.itemDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.itemDataGridView.Location = new System.Drawing.Point(28, 324);
+            this.itemDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.itemDataGridView.Name = "itemDataGridView";
             this.itemDataGridView.RowHeadersWidth = 62;
             this.itemDataGridView.RowTemplate.Height = 28;
@@ -98,120 +98,13 @@
             this.priceDataView,
             this.acRmBtn});
             this.acAddItemViewGrid.Location = new System.Drawing.Point(29, 20);
-            this.acAddItemViewGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.acAddItemViewGrid.Margin = new System.Windows.Forms.Padding(2);
             this.acAddItemViewGrid.Name = "acAddItemViewGrid";
             this.acAddItemViewGrid.RowHeadersWidth = 62;
             this.acAddItemViewGrid.RowTemplate.Height = 28;
             this.acAddItemViewGrid.Size = new System.Drawing.Size(703, 121);
             this.acAddItemViewGrid.TabIndex = 1;
             this.acAddItemViewGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.acAddItemViewGrid_CellContentClick);
-            // 
-            // acAddBtn
-            // 
-            this.acAddBtn.Location = new System.Drawing.Point(634, 158);
-            this.acAddBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.acAddBtn.Name = "acAddBtn";
-            this.acAddBtn.Size = new System.Drawing.Size(97, 40);
-            this.acAddBtn.TabIndex = 3;
-            this.acAddBtn.Text = "Add";
-            this.acAddBtn.UseVisualStyleBackColor = true;
-            this.acAddBtn.Click += new System.EventHandler(this.acAddBtn_Click);
-            // 
-            // acQtyTxt
-            // 
-            this.acQtyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acQtyTxt.Location = new System.Drawing.Point(396, 172);
-            this.acQtyTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.acQtyTxt.Name = "acQtyTxt";
-            this.acQtyTxt.Size = new System.Drawing.Size(88, 23);
-            this.acQtyTxt.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(243, 158);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Item ID";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(393, 155);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Quantity";
-            // 
-            // acCancelBtn
-            // 
-            this.acCancelBtn.Location = new System.Drawing.Point(533, 389);
-            this.acCancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.acCancelBtn.Name = "acCancelBtn";
-            this.acCancelBtn.Size = new System.Drawing.Size(97, 43);
-            this.acCancelBtn.TabIndex = 8;
-            this.acCancelBtn.Text = "Cancel";
-            this.acCancelBtn.UseVisualStyleBackColor = true;
-            this.acCancelBtn.Click += new System.EventHandler(this.acCancelBtn_Click);
-            // 
-            // acSubmitBtn
-            // 
-            this.acSubmitBtn.Location = new System.Drawing.Point(634, 389);
-            this.acSubmitBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.acSubmitBtn.Name = "acSubmitBtn";
-            this.acSubmitBtn.Size = new System.Drawing.Size(97, 43);
-            this.acSubmitBtn.TabIndex = 9;
-            this.acSubmitBtn.Text = "Sumbit";
-            this.acSubmitBtn.UseVisualStyleBackColor = true;
-            this.acSubmitBtn.Click += new System.EventHandler(this.acSubmitBtn_Click);
-            // 
-            // acItemTxt
-            // 
-            this.acItemTxt.FormattingEnabled = true;
-            this.acItemTxt.Location = new System.Drawing.Point(246, 174);
-            this.acItemTxt.Name = "acItemTxt";
-            this.acItemTxt.Size = new System.Drawing.Size(121, 21);
-            this.acItemTxt.TabIndex = 10;
-            // 
-            // searchTxt
-            // 
-            this.searchTxt.Location = new System.Drawing.Point(72, 170);
-            this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(146, 20);
-            this.searchTxt.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 172);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Search";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(499, 151);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Price";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // priceTxt
-            // 
-            this.priceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTxt.Location = new System.Drawing.Point(502, 171);
-            this.priceTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.priceTxt.Name = "priceTxt";
-            this.priceTxt.Size = new System.Drawing.Size(88, 23);
-            this.priceTxt.TabIndex = 15;
             // 
             // addItemID
             // 
@@ -255,11 +148,127 @@
             this.acRmBtn.UseColumnTextForButtonValue = true;
             this.acRmBtn.Width = 150;
             // 
+            // acAddBtn
+            // 
+            this.acAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acAddBtn.Location = new System.Drawing.Point(637, 167);
+            this.acAddBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.acAddBtn.Name = "acAddBtn";
+            this.acAddBtn.Size = new System.Drawing.Size(97, 40);
+            this.acAddBtn.TabIndex = 3;
+            this.acAddBtn.Text = "Add";
+            this.acAddBtn.UseVisualStyleBackColor = true;
+            this.acAddBtn.Click += new System.EventHandler(this.acAddBtn_Click);
+            // 
+            // acQtyTxt
+            // 
+            this.acQtyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acQtyTxt.Location = new System.Drawing.Point(242, 175);
+            this.acQtyTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.acQtyTxt.Name = "acQtyTxt";
+            this.acQtyTxt.Size = new System.Drawing.Size(176, 30);
+            this.acQtyTxt.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(46, 143);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Item ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(252, 143);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Quantity";
+            // 
+            // acCancelBtn
+            // 
+            this.acCancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acCancelBtn.Location = new System.Drawing.Point(456, 536);
+            this.acCancelBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.acCancelBtn.Name = "acCancelBtn";
+            this.acCancelBtn.Size = new System.Drawing.Size(136, 61);
+            this.acCancelBtn.TabIndex = 8;
+            this.acCancelBtn.Text = "Cancel";
+            this.acCancelBtn.UseVisualStyleBackColor = true;
+            this.acCancelBtn.Click += new System.EventHandler(this.acCancelBtn_Click);
+            // 
+            // acSubmitBtn
+            // 
+            this.acSubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acSubmitBtn.Location = new System.Drawing.Point(596, 536);
+            this.acSubmitBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.acSubmitBtn.Name = "acSubmitBtn";
+            this.acSubmitBtn.Size = new System.Drawing.Size(136, 61);
+            this.acSubmitBtn.TabIndex = 9;
+            this.acSubmitBtn.Text = "Sumbit";
+            this.acSubmitBtn.UseVisualStyleBackColor = true;
+            this.acSubmitBtn.Click += new System.EventHandler(this.acSubmitBtn_Click);
+            // 
+            // acItemTxt
+            // 
+            this.acItemTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acItemTxt.FormattingEnabled = true;
+            this.acItemTxt.Location = new System.Drawing.Point(38, 172);
+            this.acItemTxt.Name = "acItemTxt";
+            this.acItemTxt.Size = new System.Drawing.Size(166, 33);
+            this.acItemTxt.TabIndex = 10;
+            // 
+            // searchTxt
+            // 
+            this.searchTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTxt.Location = new System.Drawing.Point(28, 289);
+            this.searchTxt.Name = "searchTxt";
+            this.searchTxt.Size = new System.Drawing.Size(146, 30);
+            this.searchTxt.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(33, 250);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 25);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Search";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(474, 143);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 25);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Price";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // priceTxt
+            // 
+            this.priceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceTxt.Location = new System.Drawing.Point(467, 175);
+            this.priceTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.priceTxt.Name = "priceTxt";
+            this.priceTxt.Size = new System.Drawing.Size(139, 30);
+            this.priceTxt.TabIndex = 15;
+            // 
             // AddContractItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 440);
+            this.ClientSize = new System.Drawing.Size(799, 649);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.priceTxt);
             this.Controls.Add(this.label3);
@@ -273,7 +282,7 @@
             this.Controls.Add(this.acAddBtn);
             this.Controls.Add(this.acAddItemViewGrid);
             this.Controls.Add(this.itemDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddContractItem";
             this.Text = "AddContractItem";
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).EndInit();

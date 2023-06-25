@@ -31,29 +31,31 @@
             this.label1 = new System.Windows.Forms.Label();
             this.siSearchBox = new System.Windows.Forms.TextBox();
             this.SupGridView = new System.Windows.Forms.DataGridView();
-            this.viewHistBtn = new System.Windows.Forms.Button();
             this.existCheckGV = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gvSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupNameDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gvDetailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.viewHistBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SupGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 32);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(52, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(75, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Search";
             // 
             // siSearchBox
             // 
-            this.siSearchBox.Location = new System.Drawing.Point(116, 28);
+            this.siSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siSearchBox.Location = new System.Drawing.Point(132, 27);
             this.siSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.siSearchBox.Name = "siSearchBox";
-            this.siSearchBox.Size = new System.Drawing.Size(125, 20);
+            this.siSearchBox.Size = new System.Drawing.Size(125, 30);
             this.siSearchBox.TabIndex = 6;
             // 
             // SupGridView
@@ -74,16 +76,6 @@
             this.SupGridView.Size = new System.Drawing.Size(909, 402);
             this.SupGridView.TabIndex = 8;
             this.SupGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupGridView_CellContentClick);
-            // 
-            // viewHistBtn
-            // 
-            this.viewHistBtn.Location = new System.Drawing.Point(786, 15);
-            this.viewHistBtn.Name = "viewHistBtn";
-            this.viewHistBtn.Size = new System.Drawing.Size(159, 45);
-            this.viewHistBtn.TabIndex = 9;
-            this.viewHistBtn.Text = "View History";
-            this.viewHistBtn.UseVisualStyleBackColor = true;
-            this.viewHistBtn.Click += new System.EventHandler(this.viewHistBtn_Click);
             // 
             // existCheckGV
             // 
@@ -116,6 +108,17 @@
             this.gvDetailBtn.ReadOnly = true;
             this.gvDetailBtn.Text = "Detail";
             this.gvDetailBtn.Width = 40;
+            // 
+            // viewHistBtn
+            // 
+            this.viewHistBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewHistBtn.Location = new System.Drawing.Point(786, 15);
+            this.viewHistBtn.Name = "viewHistBtn";
+            this.viewHistBtn.Size = new System.Drawing.Size(159, 45);
+            this.viewHistBtn.TabIndex = 9;
+            this.viewHistBtn.Text = "View History";
+            this.viewHistBtn.UseVisualStyleBackColor = true;
+            this.viewHistBtn.Click += new System.EventHandler(this.viewHistBtn_Click);
             // 
             // ViewPurchase
             // 

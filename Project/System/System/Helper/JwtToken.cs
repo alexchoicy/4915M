@@ -15,12 +15,14 @@ namespace Server.Helper
         {
             _configuration = configuration;
         }
-        public string Creater(string staffId, string PositionName)
+        public string Creater(string staffId, string PositionName, string dept, string restID)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, staffId),
-                new Claim(ClaimTypes.Role, PositionName)
+                new Claim(ClaimTypes.Role, PositionName),
+                new Claim(ClaimTypes.Actor,dept),
+                new Claim(ClaimTypes.UserData, restID)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:KEY"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

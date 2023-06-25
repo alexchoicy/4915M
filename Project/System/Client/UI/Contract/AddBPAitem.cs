@@ -165,7 +165,7 @@ namespace Client.UI.Contract
 
         private void acAddItemViewGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
                 acAddItemViewGrid.Rows.RemoveAt(e.RowIndex);
         }
 
@@ -198,6 +198,7 @@ namespace Client.UI.Contract
             }
 
             parentForm.ReceiveDataFromAddControlItem(data);
+            DialogResult = DialogResult.OK;
             this.Close();
         }
 

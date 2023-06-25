@@ -93,7 +93,7 @@ namespace Client.Helper.PDF
                 document.Add(refNum);
                 LineSeparator ls2 = new LineSeparator(new SolidLine());
                 document.Add(ls2);
-                Table table = new Table(5, true);
+                Table table = new Table(6, true);
                 Cell cellRefID = new Cell()
                     .Add(new Paragraph("Item ID"));
                 Cell Description = new Cell()
@@ -104,11 +104,14 @@ namespace Client.Helper.PDF
                     .Add(new Paragraph("Item Qty"));
                 Cell cellprice = new Cell()
                     .Add(new Paragraph("Item Price"));
+                Cell celltotalPrice = new Cell()
+                    .Add(new Paragraph("Total Price ($HKD)"));
                 table.AddHeaderCell(cellRefID);
                 table.AddHeaderCell(Description);
                 table.AddHeaderCell(itemName);
                 table.AddHeaderCell(cellqty);
                 table.AddHeaderCell(cellprice);
+                table.AddHeaderCell(celltotalPrice);
                 foreach (var bpaitem in bpaGenModel.items)
                 {
                     Cell refID = new Cell()
@@ -121,11 +124,14 @@ namespace Client.Helper.PDF
                         .Add(new Paragraph(bpaitem.qty.ToString()));
                     Cell itempriceCell = new Cell()
                         .Add(new Paragraph(bpaitem.price.ToString()));
+                    Cell itemTotalCell = new Cell()
+                        .Add(new Paragraph(bpaitem.Totalprice.ToString()));
                     table.AddCell(refID);
                     table.AddCell(localID);
                     table.AddCell(itemNameCell);
                     table.AddCell(itemqtyCell);
                     table.AddCell(itempriceCell);
+                    table.AddCell(itemTotalCell);
                 }
 
                 document.Add(table);

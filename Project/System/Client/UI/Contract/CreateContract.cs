@@ -16,6 +16,7 @@ using Client.Controller;
 using Client.Helper;
 using Client.Model.Receive;
 using Client.Model.Submit;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Client.UI.Contract
 {
@@ -37,6 +38,8 @@ namespace Client.UI.Contract
             SupplierText();
             StaffLock.CheckedChanged += StaffLock_CheckedChanged;
             setUpComponent();
+            ccCBSupID.DropDownStyle = ComboBoxStyle.DropDownList;
+            ccDropType.SelectedIndexChanged += ccCBSupID_SelectedIndexChanged;
         }
         public CreateContract()
         {
@@ -46,6 +49,8 @@ namespace Client.UI.Contract
             StaffLock.CheckedChanged += StaffLock_CheckedChanged;
             getContractData();
             setUpComponent();
+            ccCBSupID.DropDownStyle = ComboBoxStyle.DropDownList;
+            ccDropType.SelectedIndexChanged += ccCBSupID_SelectedIndexChanged;
         }
 
         private void setUpComponent()
@@ -65,15 +70,15 @@ namespace Client.UI.Contract
             suppliers = await suppliercontroller.getAll();
             if(suppliers != null)
             {
-                AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
+                //AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
                 foreach (var item in suppliers)
                 {
-                    ac.Add(item.SupplierID+ $" ({item.SupName})");
+                    //ac.Add(item.SupplierID+ $" ({item.SupName})");
                     ccCBSupID.Items.Add(item.SupplierID + $" ({item.SupName})");
                 }
-                ccCBSupID.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                ccCBSupID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                ccCBSupID.AutoCompleteCustomSource = ac;
+                //ccCBSupID.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                //ccCBSupID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                //ccCBSupID.AutoCompleteCustomSource = ac;
                 
             }
         }
@@ -100,12 +105,11 @@ namespace Client.UI.Contract
                 return;
             }
             var ContractID = contractTxt.Text;
-            var staffID = string.IsNullOrEmpty(staffTxt.Text)? GlobalData.UserInfo.StaffID : staffTxt.Text;
+            string staffID = string.IsNullOrEmpty(staffTxt.Text)? GlobalData.UserInfo.StaffID : staffTxt.Text;
             String rawsupplierID = ccCBSupID.Text;
             Regex regex = new Regex("\\s");
             string[] supID = regex.Split(rawsupplierID);
             String supplierID = supID[0].Trim();
-            MessageBox.Show(supID[0]);
             bool correct = false;
 
             foreach (var item in suppliers)
@@ -123,22 +127,10 @@ namespace Client.UI.Contract
                 return;
             }
             int.TryParse(ccRepDateTxt.Text, out repeatDate);
-            var contractType = "";
-            switch (ccDropType.SelectedIndex)
-            {
-                case 0:
-                    contractType = "PC";
-                    break;
-                case 1:
-                    contractType = "BPA";
-                    break;
-                case 2:
-                    contractType = "Contract";
-                    break;
-            }
+            var contractType = conType();
             var data = new ContractDataModel
             {
-                ContractID = contractType + ContractID,
+                ContractID = ContractID,
                 SignDate = signDate,
                 ExpireTime = expDate,
                 ContractType = contractType,
@@ -168,7 +160,7 @@ namespace Client.UI.Contract
                     if (itemIDCell.Value != null && quantityCell.Value != null && priceCell.Value != null)
                     {
                         var itemID = itemIDCell.Value.ToString();
-                        var quantity = int.Parse(quantityCell.Value.ToString());
+                        var quantity = double.Parse(quantityCell.Value.ToString());
                         var price = double.Parse(priceCell.Value.ToString());
                         var sumbitData = new ContractSumbitItemModel
                         {
@@ -178,6 +170,12 @@ namespace Client.UI.Contract
                         };
                         items.Add(sumbitData);
                     }
+                }
+
+                if (items == null || items.Count == 0)
+                {
+                    MessageBox.Show("No items");
+                    return;
                 }
                 ContractData.ContractItems = items;
             }else if(contractType == "BPA"){
@@ -200,6 +198,11 @@ namespace Client.UI.Contract
                         items.Add(sumbitData);
                     }
                 }
+                if (items == null || items.Count == 0)
+                {
+                    MessageBox.Show("No items");
+                    return;
+                }
                 ContractData.ContractItems = items;
             }else if (contractType == "Contract")
             {
@@ -218,6 +221,27 @@ namespace Client.UI.Contract
 
         }
 
+        public string conType()
+        {
+            string Type;
+            switch (ccDropType.SelectedIndex)
+            {
+                case 0:
+                    Type = "PC";
+                    break;
+                case 1:
+                    Type = "BPA";
+                    break;
+                case 2:
+                    Type = "Contract";
+                    break;
+                default:
+                    Type = "BPA";
+                    break;
+            }
+
+            return Type;
+        }
         private void exitBtn_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -227,9 +251,17 @@ namespace Client.UI.Contract
         private void uploadBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            fileDialog.DefaultExt = "pdf";
+            fileDialog.AddExtension = true;
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 filePath = fileDialog.FileName;
+                if (Path.GetExtension(filePath).ToLower() != ".pdf")
+                {
+                    MessageBox.Show("Incorrect file extension");
+                    return;
+                }
                 uploadTxt.Text = Path.GetFileName(filePath);
             }
         }
@@ -353,7 +385,11 @@ namespace Client.UI.Contract
             int biggest = -1;
             foreach (var item in contracts.Where(item => item.SupplierID == supID))
             {
-                int id = int.Parse(item.ContractID.Substring(supID.Length));
+                int id;
+                if (!int.TryParse(item.ContractID.Substring(8), out id))
+                {
+                    break;
+                }
                 if (id > biggest)
                 {
                     biggest = id;
@@ -365,12 +401,33 @@ namespace Client.UI.Contract
                 biggest = 0;
             }
 
+            string type = conIDType();
             int nextID = biggest + 1;
-            string newItemID = supID + nextID.ToString().PadLeft(3, '0');
+            string newItemID = type + supID + nextID.ToString().PadLeft(3, '0');
             contractTxt.Text = newItemID;
         }
 
+        public string conIDType()
+        {
+            string Type;
+            switch (ccDropType.SelectedIndex)
+            {
+                case 0:
+                    Type = "PPA";
+                    break;
+                case 1:
+                    Type = "BPA";
+                    break;
+                case 2:
+                    Type = "CON";
+                    break;
+                default:
+                    Type = "BPA";
+                    break;
+            }
 
+            return Type;
+        }
 
 
         private void StaffLock_CheckedChanged(object sender, EventArgs e)
@@ -406,6 +463,11 @@ namespace Client.UI.Contract
                 return;
             }
             AutoCreateItemID(supID);
+        }
+
+        private void contractTxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

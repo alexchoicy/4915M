@@ -136,9 +136,8 @@ namespace Client.UI.Contract
                 MessageBox.Show("Item already exists in the grid.");
                 return;
             }
-
-            int qty;
-            if (!int.TryParse(acQtyTxt.Text, out qty))
+            double qty;
+            if (!double.TryParse(acQtyTxt.Text, out qty))
             {
                 MessageBox.Show("please input number");
                 return;
@@ -183,7 +182,7 @@ namespace Client.UI.Contract
                 {
                     var itemID = itemIDCell.Value.ToString();
                     var itemName = itemNameCell.Value.ToString();
-                    var quantity = int.Parse(quantityCell.Value.ToString());
+                    var quantity = double.Parse(quantityCell.Value.ToString());
                     var price = double.Parse(priceCell.Value.ToString());
                         var sumbitData = new ContractSumbitItemShowModel
                         {
@@ -197,6 +196,7 @@ namespace Client.UI.Contract
             }
 
             parentForm.ReceiveDataFromAddControlItem(data);
+            DialogResult = DialogResult.OK;
             this.Close();
         }
 

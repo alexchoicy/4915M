@@ -31,7 +31,7 @@ namespace Server.Controllers.Input
     public class ContractSumbitItemModel
     {
         public string itemID { get; set; }
-        public int? quantity { get; set; }
+        public double? quantity { get; set; }
         public double price {get;set;}
         public double? MOQ { get; set; }
     }

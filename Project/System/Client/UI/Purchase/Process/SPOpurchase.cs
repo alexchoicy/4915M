@@ -32,6 +32,7 @@ namespace Client.UI.Purchase.Process
             InitializeComponent();
             getNeedData();
             spoDGV.CellValueChanged += spoDGV_CellValueChanged;
+            conIDselect.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public async void getNeedData()
@@ -119,6 +120,11 @@ namespace Client.UI.Purchase.Process
 
         private async void sumBtn_Click(object sender, EventArgs e)
         {
+            if (conIDselect.Text == "")
+            {
+                MessageBox.Show("Please select a Contract");
+                return;
+            }
             string refConSupNum = refTxt.Text;
             string pID = pIDTxt.Text;
             SPOGenModel spogenModel = new SPOGenModel();
@@ -164,6 +170,11 @@ namespace Client.UI.Purchase.Process
                     Totalprice = totalprice
                 };
                 spogenModel.item.Add(items);
+            }
+            if (spogenModel.item == null || spogenModel.item.Count == 0)
+            {
+                MessageBox.Show("No selected Item");
+                return;
             }
 
             SPOPDF gen = new SPOPDF(spogenModel);

@@ -72,9 +72,18 @@ namespace Server.Services
             if (request.AccountLock > DateTime.Now)
             {
                 data.accountLock = request.AccountLock;
+                _dataContext.account.Update(account);
+                _dataContext.SaveChanges();
                 return LoginResult.LoginLater;
+            } else {
+                if (account != null)
+                {
+                    account.LoginCount = 0;
+                    _dataContext.account.Update(account);
+                    _dataContext.SaveChanges();
+                }
             }
-            if (request.LoginCount >= 5)
+            if (account.LoginCount >= 5)
             {
                 if (account != null)
                 {
@@ -106,7 +115,8 @@ namespace Server.Services
             _dataContext.SaveChanges();
             //Create Token
             LoginSuccModel.Token newToken = new LoginSuccModel.Token();
-            newToken.token = _jwtToken.Creater(request.StaffID, request.PositionName);
+            string restID = _dataContext.staff.Where(x => x.StaffID == ID).Select(x => x.RestaurantID).FirstOrDefault();
+            newToken.token = _jwtToken.Creater(request.StaffID, request.PositionName,request.DeptName,restID);
             newToken.expire_time = DateTime.Now.AddHours(5);
             data.userToken = newToken;
             //bind userData

@@ -31,6 +31,7 @@ namespace Client.UI.Purchase
             _suppliers = suppliers;
             BindData();
             getNewpID();
+            bpaIDselect.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public async void BindData()
@@ -59,7 +60,7 @@ namespace Client.UI.Purchase
         {
             foreach (var item in bpaList)
             {
-                bpaIDselect.Items.Add(item.ID + $" ({item.refsupNum})");
+                bpaIDselect.Items.Add(item.ID + $" ({item.refsupNum}) ({item.ContractID}");
             }
         }
 
@@ -100,6 +101,11 @@ namespace Client.UI.Purchase
 
         private async void sumBtn_Click(object sender, EventArgs e)
         {
+            if (bpaIDselect.Text == "")
+            {
+                MessageBox.Show("Please select a BPA");
+                return;
+            }
             string pID = pIDTxt.Text;
             BPAGenModel bpaGenModel = new BPAGenModel();
             bpaGenModel.items = new List<BPAitemGenModel>();

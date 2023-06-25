@@ -75,7 +75,8 @@ namespace Server.Services
                     UOM = items.UOM,
                     price = items.price,
                     VirtualID = items.VirtualID,
-                    quantity = inv != null ? inv.Quantity : 0
+                    quantity = inv != null ? inv.Quantity : 0,
+                    refSupID = items.refSupID
                 });
             itemsData = query;
             return true;
