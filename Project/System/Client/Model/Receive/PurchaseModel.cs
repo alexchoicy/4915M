@@ -6,6 +6,20 @@ using System.Threading.Tasks;
 
 namespace Client.Model.Receive
 {
+    public class SupplierPurModel
+    {
+        public string SupplierID { get; set; }
+        public string SupName { get; set; }
+
+        public string Contact_Name { get; set; }
+
+        public string Contact_Email { get; set; }
+
+        public string Contact_Phone { get; set; }
+
+        public string address { get; set; }
+        public bool exist { get; set; }
+    }
     public class PurchaseItemModel
     {
         public string itemID { get; set; }
@@ -31,8 +45,8 @@ namespace Client.Model.Receive
 
     public class ReqspoModel
     {
-        public string supID { get; set; }
-        public List<spoListModel> items { get; set; }
+        public string contractID { get; set; }
+        public string refsupNum { get; set; }
     }
 
     public class spoListModel
@@ -41,9 +55,38 @@ namespace Client.Model.Receive
         public string ItemName { get; set; }
         public string unit { get; set; }
         public double price { get; set; }
+        public string refSupID { get; set; }
+    }
+    public class PPAInfo
+    {
+        public List<PPAListModel> ppa { get; set; }
+        public List<ppaRestAddressModel> restAddress { get; set; }
+
+    }
+    public class PPAListModel
+    {
+        public int ID { get; set; }
+        public string refsupPPANum { get; set; }
+        public string ContractID { get; set; }
+        public List<PPAListItemModel> items { get; set; }
     }
 
 
+    public class PPAListItemModel
+    {
+        public string ItemID { get; set; }
+        public string ItemName { get; set; }
+        public string unit { get; set; }
+        public double price { get; set; }
+        public double qty { get; set; }
+        public string refSupID { get; set; }
+    }
+    public class ppaRestAddressModel
+    {
+        public string restId { get; set; }
+        public string restName { get; set; }
+        public string restAddress { get; set; }
+    }
 
     public class History
     {

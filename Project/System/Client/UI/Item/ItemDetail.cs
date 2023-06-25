@@ -76,8 +76,8 @@ namespace Client.UI.Item
             string rawstock = stockTxt.Text;
             string UOM = UOMList.Text;
             string refSupID = this.refSupID.Text;
-            int stock;
-            if (!int.TryParse(rawstock, out stock))
+            double stock;
+            if (!double.TryParse(rawstock, out stock))
             {
                 MessageBox.Show("Incorrect data of Stock");
                 return;

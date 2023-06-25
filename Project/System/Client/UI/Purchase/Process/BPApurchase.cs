@@ -20,12 +20,12 @@ namespace Client.UI.Purchase
 {
     public partial class BPApurchase : Form
     {
-        private SupplierModel _suppliers;
+        private SupplierPurModel _suppliers;
         private List<BpaListModel> bpaList;
         private PurchaseController purchaseController = new PurchaseController();
         private int id;
         private string[] refNumber;
-        public BPApurchase(SupplierModel suppliers)
+        public BPApurchase(SupplierPurModel suppliers)
         {
             InitializeComponent();
             _suppliers = suppliers;
@@ -49,9 +49,9 @@ namespace Client.UI.Purchase
         {
             supIDTxt.Text = _suppliers.SupplierID;
             supNameTxt.Text = _suppliers.SupName;
-            SupConNameTxt.Text = _suppliers.contact_Name;
-            supConEmailTxt.Text = _suppliers.contact_Email;
-            supConNumTxt.Text = _suppliers.contact_Phone;
+            SupConNameTxt.Text = _suppliers.Contact_Name;
+            supConEmailTxt.Text = _suppliers.Contact_Email;
+            supConNumTxt.Text = _suppliers.Contact_Phone;
             supAddressTxt.Text = _suppliers.address;
         }
 

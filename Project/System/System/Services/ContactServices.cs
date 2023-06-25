@@ -15,6 +15,7 @@ namespace Server.Services
         public bool MakeNewRec(MakeNewContractModel data);
         public List<BpaListDto> GetBpaInfo(string supID);
         public string getConIDByBPA(string bpaID);
+        public PPAInfo getPPAData(string supID);
     }
 
     public class ContractServices : IContractServices
@@ -254,5 +255,52 @@ namespace Server.Services
 
             return datas;
         }
+
+        public PPAInfo getPPAData(string supID)
+        {
+            List<ppaDataDto> ppaid = (from PPA in _dataContext.planContracts
+                join contract in _dataContext.contract on PPA.ContractID equals contract.ContractID
+                where contract.SupplierID == supID
+                where contract.ExpireTime >= DateTime.Now
+                select new ppaDataDto{
+                    pcID = (int)PPA.planContractID,
+                    ContractID = PPA.ContractID
+                }).ToList();
+            PPAInfo ppaInfo = new PPAInfo();
+
+            List<PPAListDto> datas = new List<PPAListDto>();
+            foreach (ppaDataDto data in ppaid)
+            {
+                PPAListDto ppadata = new PPAListDto();
+                ppadata.ID = data.pcID;
+                ppadata.ContractID = data.ContractID;
+                ppadata.refsupPPANum = _dataContext.contract.Where(x => x.ContractID == data.ContractID).FirstOrDefault().refsupNum;
+                List<PPAListItemModel> ppaitems = (
+                    from ppaitem in _dataContext.planContract_Items
+                    join item in _dataContext.item on ppaitem.ItemID equals item.ItemID
+                    where ppaitem.planContractID == data.pcID
+                    select new PPAListItemModel
+                    {
+                        ItemID = ppaitem.ItemID,
+                        ItemName = item.name,
+                        qty = ppaitem.Quantity,
+                        price = ppaitem.price,
+                        unit = item.UOM,
+                        refSupID = item.refSupID
+                    }
+                ).ToList();
+                ppadata.items = ppaitems;
+                datas.Add(ppadata);
+            }
+            ppaInfo.ppa = datas;
+            ppaInfo.restAddress = new List<ppaRestAddressModel>();
+            ppaInfo.restAddress = _dataContext.restaurant.ToList().Select(x => new ppaRestAddressModel{
+                restId = x.RestaurantId,
+                restName = x.RestaurantName,
+                restAddress = x.Address
+            }).ToList();
+            return ppaInfo;
+        }
+
     }
 }

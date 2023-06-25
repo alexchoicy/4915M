@@ -7,23 +7,19 @@ using Client.Model.Receive;
 
 namespace Client.Model.Local
 {
-    public class BPAGenModel
+    public class SPOGenModel
     {
-        public SupplierPurModel Supplier { get; set; }
-        public List<BPAitemGenModel> items { get; set; }
-        public string refNum { get; set; }
         public string pid { get; set; }
-        public int BPAid { get; set; }
-        
+        public string conID { get; set; }
+        public string refSupConID { get; set; }
+        public List<SPOitemGenModel> item { get; set; }
+        public SupplierPurModel Supplier { get; set; }
     }
-
-    public class BPAitemGenModel
+    public class SPOitemGenModel
     {
         public string ItemID { get; set; }
         public string ItemName { get; set; }
-        public string unit { get; set; }
         public double price { get; set; }
-        public double MOQ { get; set; }
         public double qty { get; set; }
         public string refSupID { get; set; }
         public double Totalprice { get; set; }

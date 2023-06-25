@@ -38,6 +38,7 @@
             this.selectAllBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.Options = new System.Windows.Forms.GroupBox();
+            this.srbtn = new System.Windows.Forms.Button();
             this.spoBtn = new System.Windows.Forms.Button();
             this.BPAcreateBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGrid)).BeginInit();
@@ -116,6 +117,7 @@
             this.selectAllBtn.TabIndex = 10;
             this.selectAllBtn.Text = "Select All";
             this.selectAllBtn.UseVisualStyleBackColor = true;
+            this.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
             // 
             // exitBtn
             // 
@@ -129,6 +131,7 @@
             // 
             // Options
             // 
+            this.Options.Controls.Add(this.srbtn);
             this.Options.Controls.Add(this.spoBtn);
             this.Options.Controls.Add(this.BPAcreateBtn);
             this.Options.Location = new System.Drawing.Point(39, 442);
@@ -137,6 +140,16 @@
             this.Options.TabIndex = 12;
             this.Options.TabStop = false;
             this.Options.Text = "Options";
+            // 
+            // srbtn
+            // 
+            this.srbtn.Location = new System.Drawing.Point(242, 19);
+            this.srbtn.Name = "srbtn";
+            this.srbtn.Size = new System.Drawing.Size(136, 65);
+            this.srbtn.TabIndex = 3;
+            this.srbtn.Text = "Schedule Release";
+            this.srbtn.UseVisualStyleBackColor = true;
+            this.srbtn.Click += new System.EventHandler(this.srbtn_Click);
             // 
             // spoBtn
             // 
@@ -192,5 +205,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemIDGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemQtyDataGrid;
+        private System.Windows.Forms.Button srbtn;
     }
 }

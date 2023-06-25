@@ -19,9 +19,10 @@ namespace Client.UI.Purchase
     public partial class PurchaseItem : Form
     {
         private PurchaseController purchaseController = new PurchaseController();
-        private SupplierModel _suppliers;
+        private SupplierPurModel _suppliers;
         private List<PurchaseItemModel> items;
-        public PurchaseItem(SupplierModel suppliers)
+        private bool checkall;
+        public PurchaseItem(SupplierPurModel suppliers)
         {
             InitializeComponent();
             _suppliers = suppliers;
@@ -36,13 +37,14 @@ namespace Client.UI.Purchase
                 MessageBox.Show("NoData");
                 return;
             }
-            BindItemData();
+            BindItemData(items);
+            serachSuggestion();
         }
 
-        public void BindItemData()
+        public void BindItemData(List<PurchaseItemModel> filterItem)
         {
             itemDataGrid.Rows.Clear();
-            foreach (PurchaseItemModel item in items)
+            foreach (PurchaseItemModel item in filterItem)
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(itemDataGrid,
@@ -61,6 +63,29 @@ namespace Client.UI.Purchase
             bpaPurchase.ShowDialog();
         }
 
+        private void serachSuggestion()
+        {
+            AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
+            foreach (PurchaseItemModel item in items)
+            {
+                ac.Add(item.itemID);
+                ac.Add(item.itemName);
+            }
+            siSearchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            siSearchBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            siSearchBox.AutoCompleteCustomSource = ac;
+            siSearchBox.TextChanged += siSearchBox_TextChanged;
+        }
+        private void siSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string serachText = siSearchBox.Text.Trim().ToLower();
+            List<PurchaseItemModel> filterItem = items
+                .Where(item =>
+                    item.itemID.ToLower().Contains(serachText) ||
+                    item.itemName.ToLower().Contains(serachText))
+                .ToList();
+            BindItemData(filterItem);
+        }
         private void bpaPurchase_Close(object sender, FormClosedEventArgs e)
         {
             GetItemData();
@@ -91,10 +116,45 @@ namespace Client.UI.Purchase
             {
                 return;
             }
+
             List<spoListModel> ListData = await purchaseController.getSpoData(_suppliers.SupplierID, itemID);
+            if (ListData == null)
+            {
+                MessageBox.Show("NoData");
+                return;
+            }
             Form spoPurchase = new SPOpurchase(_suppliers, ListData);
             spoPurchase.FormClosed += bpaPurchase_Close;
             spoPurchase.ShowDialog();
+        }
+
+        private void srbtn_Click(object sender, EventArgs e)
+        {
+            Form sRpurchase = new SRpurchase(_suppliers);
+            sRpurchase.FormClosed += bpaPurchase_Close;
+            sRpurchase.ShowDialog();
+        }
+
+        private void selectAllBtn_Click(object sender, EventArgs e)
+        {
+            if (checkall)
+            {
+                foreach (DataGridViewRow row in itemDataGrid.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                    chk.Value = false;
+                }
+                checkall = false;
+            }
+            else
+            {
+                foreach (DataGridViewRow row in itemDataGrid.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                    chk.Value = true;
+                }
+                checkall = true;
+            }
         }
     }
 }

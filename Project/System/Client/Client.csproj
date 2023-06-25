@@ -158,7 +158,11 @@
     <Compile Include="Helper\BasicClose.cs" />
     <Compile Include="Helper\GlobalData.cs" />
     <Compile Include="Helper\PDF\BPAPDF.cs" />
+    <Compile Include="Helper\PDF\SPOPDF.cs" />
+    <Compile Include="Helper\PDF\SRPDF.cs" />
     <Compile Include="Model\Local\BPAGenModel.cs" />
+    <Compile Include="Model\Local\SPOGenModel.cs" />
+    <Compile Include="Model\Local\SRGenModel.cs" />
     <Compile Include="Model\Receive\CategoryModel.cs" />
     <Compile Include="Model\Receive\ContractModel.cs" />
     <Compile Include="Model\Receive\ItemModel.cs" />
@@ -312,6 +316,12 @@
     <Compile Include="UI\Purchase\Process\SPOpurchase.Designer.cs">
       <DependentUpon>SPOpurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Purchase\Process\SRpurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\Process\SRpurchase.Designer.cs">
+      <DependentUpon>SRpurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Purchase\PurchaseItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\Process\SPOpurchase.resx">
       <DependentUpon>SPOpurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\Process\SRpurchase.resx">
+      <DependentUpon>SRpurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\PurchaseItem.resx">
       <DependentUpon>PurchaseItem.cs</DependentUpon>

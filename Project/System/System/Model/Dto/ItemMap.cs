@@ -29,7 +29,7 @@ namespace Server.Model.Dto
         public string name { get; set; }
         public double price { get; set; }
         public string VirtualID { get; set; }
-        public int quantity { get; set; }
+        public double quantity { get; set; }
         public string UOM {get;set;}
         public string refSupID {get;set;}
     }

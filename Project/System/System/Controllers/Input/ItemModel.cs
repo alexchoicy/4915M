@@ -13,6 +13,7 @@ namespace Server.Controllers.Input
         public double? price { get; set; }
         public string? virtualID { get; set; }
         public string? UOM {get;set;}
-        public int quantity { get; set; } = 0;
+        public double quantity { get; set; } = 0;
+        public string? refSupID { get; set; }
     }
 }

@@ -37,6 +37,7 @@ namespace Client.Controller
                 Console.WriteLine(e);
                 throw;
             }
+
             return null;
         }
 
@@ -47,7 +48,7 @@ namespace Client.Controller
             var request = new RestRequest("/api/contract/", Method.Post)
                 .AddHeader("Authorization", GlobalData.UserInfo.Token)
                 .AddParameter("contractData", jsonData, ParameterType.RequestBody)
-                .AddFile("files", file, id+".pdf" , "application/pdf");
+                .AddFile("files", file, id + ".pdf", "application/pdf");
             try
             {
                 var respone = await ApiClient.client.ExecuteAsync(request);
@@ -55,6 +56,7 @@ namespace Client.Controller
                 {
                     return true;
                 }
+
                 MessageBox.Show(respone.StatusCode.ToString());
                 return false;
             }
@@ -83,6 +85,7 @@ namespace Client.Controller
                 Console.WriteLine(e);
                 throw;
             }
+
             return null;
         }
 
@@ -114,6 +117,7 @@ namespace Client.Controller
                 throw;
             }
         }
+
         public async Task<List<ContractIDDto>> getContractIDDto(string id)
         {
             var request = new RestRequest("/api/contract/bySupplier/" + id)
@@ -156,5 +160,24 @@ namespace Client.Controller
             }
         }
 
+        public async Task<byte[]> GetConDocsinBytes(string id)
+        {
+            var request = new RestRequest("/api/contract/" + id + "/Docs")
+                .AddHeader("Authorization", GlobalData.UserInfo.Token);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return response.RawBytes;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return null;
+        }
     }
 }

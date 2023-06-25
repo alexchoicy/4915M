@@ -21,6 +21,8 @@ namespace Client.UI.Purchase
         {
             InitializeComponent();
             GetData();
+            siCateBox.Items.Add("All");
+            siCateBox.SelectedIndex = 0;
         }
 
         public async void GetData()
@@ -31,13 +33,14 @@ namespace Client.UI.Purchase
                 MessageBox.Show("NoData");
                 return;
             }
-            BindData();
+            BindData(records);
+            serachSuggestion();
         }
 
-        public void BindData()
+        public void BindData(List<PurchaseRecord> filterItem)
         {
             hisDGV.Rows.Clear();
-            foreach (var record in records)
+            foreach (var record in filterItem)
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(hisDGV,
@@ -47,7 +50,35 @@ namespace Client.UI.Purchase
                     record.date.ToString("d"),
                     "Detail");
                 hisDGV.Rows.Add(row);
+                if (!siCateBox.Items.Contains(record.Type))
+                {
+                    siCateBox.Items.Add(record.Type);
+                }
             }
+        }
+
+        private void serachSuggestion()
+        {
+            AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
+            foreach (PurchaseRecord item in records)
+            {
+                ac.Add(item.pid);
+                ac.Add(item.supID);
+            }
+            siSearchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            siSearchBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            siSearchBox.AutoCompleteCustomSource = ac;
+            siSearchBox.TextChanged += siSearchBox_TextChanged;
+        }
+        private void siSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string serachText = siSearchBox.Text.Trim().ToLower();
+            List<PurchaseRecord> filterItem = records
+                .Where(item =>
+                    item.pid.ToLower().Contains(serachText) ||
+                    item.supID.ToLower().Contains(serachText))
+                .ToList();
+            BindData(filterItem);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

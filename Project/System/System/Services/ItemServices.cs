@@ -132,7 +132,8 @@ namespace Server.Services
 
         public bool EditItem(EditItemDto item)
         {
-            var cur = _dataContext.item.Find(item.itemID);
+            try{
+                            var cur = _dataContext.item.Find(item.itemID);
             if (cur == null)
             {
                 return false;
@@ -153,6 +154,11 @@ namespace Server.Services
             _dataContext.SaveChanges();
 
             return true;
+            }catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return false;
         }
 
         public bool EditInv(string userid, List<ItemModel> items)
@@ -173,13 +179,13 @@ namespace Server.Services
                 }
                 else
                 {
-                var itemData = new Restaurant_item
-                {
-                    itemID = item.ItemID,
-                    restaurantID = restID,
-                    Quantity = item.quantity
-                };
-                    _dataContext.restaurant_item.Add(itemData);
+                    var itemData = new Restaurant_item
+                    {
+                        itemID = item.ItemID,
+                        restaurantID = restID,
+                        Quantity = item.quantity
+                    };
+                        _dataContext.restaurant_item.Add(itemData);
                 }
             }
             _dataContext.SaveChanges();

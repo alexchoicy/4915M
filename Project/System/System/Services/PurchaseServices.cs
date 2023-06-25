@@ -8,13 +8,14 @@ namespace Server.Services
 {
     public interface IPurchaseServices
     {
-        public List<Suppliers> GetSup();
+        public List<SupplierPurDto> GetSup();
         public List<GetPurItemDto> GetItem(string supid);
         public string getLastID(string supid);
         public bool MakeNewPurchase(PuchaseNewModel data);
         public List<PurchaseRecord> getRecord();
         public History getRecordItem(string pid);
         public List<SpoListDto> getSpoData(List<reqspoModel> itemIds);
+        public List<ReqspoModel> getSpConData(string supID);
     }
     public class PurchaseServices : IPurchaseServices
     {
@@ -28,17 +29,25 @@ namespace Server.Services
         }
 
 
-        public List<Suppliers> GetSup()
+        public List<SupplierPurDto> GetSup()
         {
             try
             {
-                Console.WriteLine("test");
-                List<Suppliers> suppliers = (from supplier in _dataContext.suppliers
-                        join item in _dataContext.item on supplier.SupplierID equals item.SupplierID
-                        join itembuy in _dataContext.item_buy on item.ItemID equals itembuy.ItemID
-                        group supplier by supplier.SupplierID into gpSupplier
-                        select gpSupplier.First()
-                    ).ToList();
+                List<SupplierPurDto> suppliers = (from supplier in _dataContext.suppliers
+                                                join item in _dataContext.item on supplier.SupplierID equals item.SupplierID
+                                                join itembuy in _dataContext.item_buy on item.ItemID equals itembuy.ItemID into itemBuys
+                                                from itemBuy in itemBuys.DefaultIfEmpty()
+                                                group new { supplier, itemBuy } by supplier.SupplierID into grouped
+                                                select new SupplierPurDto
+                                                {
+                                                    SupplierID = grouped.Key,
+                                                    SupName = grouped.First().supplier.SupName,
+                                                    Contact_Name = grouped.First().supplier.Contact_Name,
+                                                    Contact_Email = grouped.First().supplier.Contact_Email,
+                                                    Contact_Phone = grouped.First().supplier.Contact_Phone,
+                                                    address = grouped.First().supplier.address,
+                                                    exist = grouped.Any(x => x.itemBuy != null)
+                                                }).ToList();
                 return suppliers;
             }
             catch (Exception e)
@@ -141,16 +150,19 @@ namespace Server.Services
                     _dataContext.item_Purchases.Add(newitem);
                     //process remove item in waiting buy db
                     item_buy itemBuy = _dataContext.item_buy.FirstOrDefault(item => item.ItemID == items.itemID);
-                    if (itemBuy.ItemID == items.itemID)
+                    if(itemBuy != null)
                     {
-                        itemBuy.Quantity -= items.qty;
-                        if (itemBuy.Quantity <= 0)
+                        if (itemBuy.ItemID == items.itemID)
                         {
-                            _dataContext.item_buy.Remove(itemBuy);
-                        }
-                        else
-                        {
-                            _dataContext.item_buy.Update(itemBuy);
+                            itemBuy.Quantity -= items.qty;
+                            if (itemBuy.Quantity <= 0)
+                            {
+                                _dataContext.item_buy.Remove(itemBuy);
+                            }
+                            else
+                            {
+                                _dataContext.item_buy.Update(itemBuy);
+                            }
                         }
                     }
                 }
@@ -217,12 +229,24 @@ namespace Server.Services
                     ItemID = item.ItemID,
                     ItemName = item.name,
                     unit = item.UOM,
-                    price = item.price
+                    price = item.price,
+                    refSupID = item.refSupID
                 }).FirstOrDefault();
                 data.Add(item);
             }
             return data;
         }
-
+        public List<ReqspoModel> getSpConData(string supID){
+            List<ReqspoModel> data = (from contract in _dataContext.contract
+                where contract.SupplierID == supID
+                where contract.ExpireTime >= DateTime.Now
+                where contract.ContractType == "Contract"
+                select new ReqspoModel
+                {
+                    contractID = contract.ContractID,
+                    refsupNum = contract.refsupNum,
+                }).ToList();
+            return data;
+        }
     }
 }

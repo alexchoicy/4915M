@@ -22,7 +22,7 @@ namespace Server.Controllers
         [HttpGet]
         public IActionResult SupList()
         {
-            List<Suppliers> data = _purchaseServices.GetSup();
+            List<SupplierPurDto> data = _purchaseServices.GetSup();
             return Ok(data);
         }
 
@@ -92,6 +92,19 @@ namespace Server.Controllers
         public IActionResult getSpoData([FromBody] List<reqspoModel> itemId)
         {
             List<SpoListDto> data = _purchaseServices.getSpoData(itemId);
+            return Ok(data);
+        }
+        [HttpGet("spo/{supID}")]
+        public IActionResult getSpoConData(string supID)
+        {
+            List<ReqspoModel> data = _purchaseServices.getSpConData(supID);
+            return Ok(data);
+        }
+        
+        [HttpGet("ppa/{supID}")]
+        public IActionResult getPPAData(string supID)
+        {
+            PPAInfo data = _contractServices.getPPAData(supID);
             return Ok(data);
         }
 

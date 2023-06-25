@@ -52,7 +52,7 @@ namespace Server.Model.Entity
         public string restaurantID { get; set; }
         [Key]
         public string itemID { get; set; }
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
         [ForeignKey("restaurantID")]
         public virtual Restaurant restaurant { get; set; }
         [ForeignKey("itemID")]

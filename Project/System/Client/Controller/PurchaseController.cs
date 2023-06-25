@@ -16,7 +16,7 @@ namespace Client.Controller
 {
     public class PurchaseController
     {
-        public async Task<List<SupplierModel>> getSupplier()
+        public async Task<List<SupplierPurModel>> getSupplier()
         {
             var request = new RestRequest("/api/purchase")
                 .AddHeader("Authorization", GlobalData.UserInfo.Token);
@@ -25,7 +25,7 @@ namespace Client.Controller
                 var respone = await ApiClient.client.ExecuteAsync(request);
                 if (respone.StatusCode == HttpStatusCode.OK)
                 {
-                    var data = JsonConvert.DeserializeObject<List<SupplierModel>>(respone.Content);
+                    var data = JsonConvert.DeserializeObject<List<SupplierPurModel>>(respone.Content);
                     return data;
                 }
             }
@@ -219,7 +219,48 @@ namespace Client.Controller
             return null;
         }
 
+        public async Task<List<ReqspoModel>> getSpoConData(string supid)
+        {
+            var request = new RestRequest("/api/purchase/spo/" + supid)
+                .AddHeader("Authorization", GlobalData.UserInfo.Token);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(response.Content);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var ConList = JsonConvert.DeserializeObject<List<ReqspoModel>>(response.Content);
+                    return ConList;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return null;
+        }
 
-
+        public async Task<PPAInfo> getPPA(string supplierID)
+        {
+            var request = new RestRequest("/api/purchase/ppa/" + supplierID)
+                .AddHeader("Authorization", GlobalData.UserInfo.Token);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(response.Content);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var ConList = JsonConvert.DeserializeObject<PPAInfo>(response.Content);
+                    return ConList;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return null;
+        }
     }
 }

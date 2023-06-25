@@ -11,6 +11,22 @@ namespace Server.Model.Dto
         }
     }
 
+    public class SupplierPurDto
+    {
+        public string SupplierID { get; set; }
+        public string SupName { get; set; }
+
+        public string Contact_Name { get; set; }
+
+        public string Contact_Email { get; set; }
+
+        public string Contact_Phone { get; set; }
+
+        public string address { get; set; }
+        public bool exist {get;set;}
+    }
+
+
     public class GetPurItemDto
     {
         public string ItemID { get; set; }
@@ -49,6 +65,12 @@ namespace Server.Model.Dto
         public string ContractID { get; set; }
     }
 
+    public class ppaDataDto
+    {
+        public int pcID { get; set; }
+        public string ContractID { get; set; }
+    }
+
 
     public class History
     {
@@ -78,5 +100,45 @@ namespace Server.Model.Dto
         public string ItemName { get; set; }
         public string unit { get; set; }
         public double price { get; set; }
+        public string refSupID {get;set;}
+    }
+        public class ReqspoModel
+    {
+        public string contractID { get; set; }
+        public string refsupNum { get; set; }
+    }
+
+
+    public class PPAInfo
+    {
+        public List<PPAListDto> ppa { get; set; }
+        public List<ppaRestAddressModel> restAddress {get;set;}
+
+    }
+        public class PPAListDto
+    {
+        public int ID { get; set; }
+        public string refsupPPANum { get; set; }
+        public string ContractID { get; set; }
+        public List<PPAListItemModel> items { get; set; }
+
+    }
+
+
+    public class PPAListItemModel
+    {
+        public string ItemID { get; set; }
+        public string ItemName { get; set; }
+        public string unit { get; set; }
+        public double price { get; set; }
+        public double qty { get; set; }
+        public string refSupID { get; set; }
+    }
+
+    public class ppaRestAddressModel
+    {
+        public string restId { get; set; }
+        public string restName {get;set;}
+        public string restAddress { get; set; }
     }
 }

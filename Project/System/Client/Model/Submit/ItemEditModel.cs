@@ -20,7 +20,7 @@ namespace Client.Model.Submit
     public class UpdateItem
     {
         public string itemID { get; set; }
-        public int quantity { get; set; }
+        public double quantity { get; set; }
     }
 
 }
