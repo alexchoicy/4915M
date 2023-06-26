@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Server.Controllers.Input;
+using Server.Model.Dto;
 using Server.Services;
 using System.Security.Claims;
 
@@ -12,9 +13,11 @@ namespace Server.Controllers
     public class InventoryController : ControllerBase
     {
         private readonly IItemServices _itemServices;
-        public InventoryController(IItemServices itemServices)
+                private readonly ILoginServices _loginServices;
+        public InventoryController(IItemServices itemServices,ILoginServices loginServices)
         {
             _itemServices = itemServices;
+                        _loginServices = loginServices;
         }
 
         //Edit Inventory quantity
@@ -34,7 +37,12 @@ namespace Server.Controllers
             return Ok();
         }
 
-
+        [HttpGet("Message")]
+        public List<Message> Message()
+        {
+            var userID = User.FindFirst(ClaimTypes.Name)?.Value;
+            return _loginServices.Message(userID);
+        }
 
     }
 }

@@ -166,6 +166,7 @@
     <Compile Include="Model\Receive\CategoryModel.cs" />
     <Compile Include="Model\Receive\ContractModel.cs" />
     <Compile Include="Model\Receive\ItemModel.cs" />
+    <Compile Include="Model\Receive\Message.cs" />
     <Compile Include="Model\Receive\PurchaseModel.cs" />
     <Compile Include="Model\Receive\RestaurantModel.cs" />
     <Compile Include="Model\Receive\SupplierModel.cs" />

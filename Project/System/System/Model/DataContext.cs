@@ -44,7 +44,7 @@ namespace Server.Model
         public DbSet<item_BPA> item_BPA { get; set; }
         public DbSet<purchase> purchases { get; set; }
         public DbSet<item_Purchase> item_Purchases { get; set; }
-
+        public DbSet<notificat> notificat {get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -108,6 +108,8 @@ namespace Server.Model
                 .ToTable("Purchase").HasKey("pID");
             modelBuilder.Entity<item_Purchase>()
                 .ToTable("item_Purchase").HasKey("ItemID", "pID");
+            modelBuilder.Entity<notificat>()
+                .ToTable("notificat");
         }
     }
 }

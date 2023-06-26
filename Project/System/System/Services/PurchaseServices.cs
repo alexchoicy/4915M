@@ -16,6 +16,7 @@ namespace Server.Services
         public History getRecordItem(string pid);
         public List<SpoListDto> getSpoData(List<reqspoModel> itemIds);
         public List<ReqspoModel> getSpConData(string supID);
+        public bool expDateUpdate(ExpDateUpdate exp, string staffID);
     }
     public class PurchaseServices : IPurchaseServices
     {
@@ -194,14 +195,20 @@ namespace Server.Services
         public History getRecordItem(string pid)
         {
             History data = new History();
-            data.record = _dataContext.purchases.Where(item => item.pID == pid).ToList().Select(item => new PurchaseRecord
-            {
-                pid = item.pID,
-                date = item.date,
-                supID = item.supID,
-                Type = item.Type,
-                refAggreNum = item.ContractID
-            }).FirstOrDefault();
+            data.record = (from purchase in _dataContext.purchases
+              join contract in _dataContext.contract
+              on purchase.ContractID equals contract.ContractID
+              where purchase.pID == pid
+              select new PurchaseRecord
+              {
+                  pid = purchase.pID,
+                  date = purchase.date,
+                  supID = purchase.supID,
+                  Type = purchase.Type,
+                  refAggreNum = contract.refsupNum,
+                  ContractID = purchase.ContractID,
+                  expDate = purchase.ExpDate
+              }).FirstOrDefault();
             List<PurchaseitemRecord> items = (from item in _dataContext.item_Purchases
                 join itemData in _dataContext.item on item.ItemID equals itemData.ItemID
                 where item.pID == pid
@@ -211,7 +218,8 @@ namespace Server.Services
                     itemName = itemData.name,
                     UOM = itemData.UOM,
                     qty = item.qty,
-                    TotalPrice = item.Totalprice
+                    TotalPrice = item.Totalprice,
+                    supRefItemID = itemData.refSupID
                 }).ToList();
             data.items = items;
             return data;
@@ -247,6 +255,26 @@ namespace Server.Services
                     refsupNum = contract.refsupNum,
                 }).ToList();
             return data;
+        }
+        public bool expDateUpdate(ExpDateUpdate exp,string staffID)
+        {
+            purchase purchase = _dataContext.purchases.FirstOrDefault(item => item.pID == exp.pid);
+            if (purchase != null)
+            {
+                purchase.ExpDate = exp.expDate;
+                _dataContext.purchases.Update(purchase);
+                _dataContext.SaveChanges();
+                string restID = _dataContext.staff.FirstOrDefault(item => item.StaffID == staffID).RestaurantID;
+                notificat not = new notificat{
+                    restID = restID,
+                    Message = "Purchase ID: " + exp.pid + " ExpDate has been updated",
+                    Type = "Delivery"
+                };
+                _dataContext.notificat.Add(not);
+                _dataContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

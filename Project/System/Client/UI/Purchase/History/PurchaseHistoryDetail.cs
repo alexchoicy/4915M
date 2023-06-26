@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Controller;
 using Client.Model.Receive;
+using Client.Model.Submit;
 using Client.UI.Contract;
 
 namespace Client.UI.Purchase.History
@@ -36,10 +37,12 @@ namespace Client.UI.Purchase.History
 
         public void BindData()
         {
+            cdcontractIdTxt.Text = history.record.ContractID;
             SupIDTxt.Text = history.record.supID;
-            cdcontractIdTxt.Text = history.record.refAggreNum;
+            supRefTxt.Text = history.record.refAggreNum;
             typeTxt.Text = history.record.Type;
             dateTxt.Text = history.record.date.ToString("d");
+            expDatePick.Value = history.record.expDate;
             BindGV();
         }
 
@@ -51,6 +54,7 @@ namespace Client.UI.Purchase.History
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(GV,
                     record.itemID,
+                    record.supRefItemID,
                     $"{record.itemName} / {record.UOM}",
                     record.qty,
                     record.TotalPrice,
@@ -76,6 +80,21 @@ namespace Client.UI.Purchase.History
         private void DownBtn_Click(object sender, EventArgs e)
         {
             purchaseController.GetDocs(history.record.pid);
+        }
+
+        private async void upBtn_Click(object sender, EventArgs e)
+        {
+            if(expDatePick.Value < DateTime.Now)
+            {
+                MessageBox.Show("Exp Date Error");
+                return;
+            }
+            ExpDateUpdate expDate = new ExpDateUpdate
+            {
+                pid = history.record.pid,
+                expDate = expDatePick.Value,
+            };
+            await purchaseController.updateExp(expDate);
         }
     }
 }

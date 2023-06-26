@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Server.Controllers.Input;
 using Server.Model.Dto;
@@ -107,6 +108,17 @@ namespace Server.Controllers
             PPAInfo data = _contractServices.getPPAData(supID);
             return Ok(data);
         }
-
+        [HttpPost("update")]
+        public IActionResult updateExp([FromBody] ExpDateUpdate update)
+        {
+            String userID = User.FindFirst(ClaimTypes.Name)?.Value;
+            bool status = _purchaseServices.expDateUpdate(update,userID);
+            if (status)
+            {
+                return Ok();
+            }else{
+                return BadRequest();
+            }
+        }
     }
 }

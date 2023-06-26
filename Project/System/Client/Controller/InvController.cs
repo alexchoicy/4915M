@@ -1,4 +1,5 @@
 ﻿using Client.Helper;
+using Client.Model.Receive;
 using Client.Model.Submit;
 using Newtonsoft.Json;
 using RestSharp;
@@ -38,6 +39,28 @@ namespace Client.Controller
                 return false;
             }
             return false;
+        }
+        public async Task<List<MessageModel>> messages()
+        {
+            var request = new RestRequest("/api/Inv/Message")
+            .AddHeader("Authorization", GlobalData.UserInfo.Token);
+            try
+            {
+                var respone = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(respone.StatusCode);
+                if (respone.StatusCode == HttpStatusCode.OK)
+                {
+                    List<MessageModel> messages = JsonConvert.DeserializeObject<List<MessageModel>>(respone.Content);
+
+                    return messages;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

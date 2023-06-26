@@ -22,6 +22,7 @@ namespace Server.Services
     {
         LoginResult Login(string ID,string password, out LoginSuccModel data);
         public string passwordHash(string password);
+        public List<Message> Message(string staffID);
     }
     public class LoginServices : ILoginServices
     {
@@ -131,6 +132,18 @@ namespace Server.Services
             
             return LoginResult.Success;
         }
-
+        public List<Message> Message(string staffID)
+        {
+            var query = from msg in _dataContext.notificat
+            join Type in _dataContext.dept on msg.Type equals Type.DeptName
+            join staff in _dataContext.staff on Type.DeptId equals staff.DeptID
+            where staff.StaffID == staffID
+            select new Message
+            {
+                messages = msg.Message
+            };
+            Console.WriteLine(staffID);
+            return query.ToList();
+        }
     }
 }

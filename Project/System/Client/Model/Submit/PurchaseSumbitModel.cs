@@ -34,4 +34,9 @@ namespace Client.Model.Submit
     {
         public string itemID { get; set; }
     }
+    public class ExpDateUpdate
+    {
+        public string pid { get; set; }
+        public DateTime expDate { get; set; }
+    }
 }

@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Client.Controller;
 using Client.Helper;
+using Client.Model.Receive;
 using Client.UI.Agreement;
 using Client.UI.Item;
 using Client.UI.Purchase;
@@ -25,6 +27,7 @@ namespace Client.UI
                 showContractBtn.Hide();
                 showPurBtn.Hide();
             }
+            message();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -35,7 +38,24 @@ namespace Client.UI
             posLabel.Text = GlobalData.UserInfo.Position;
 
         }
-
+        public async void message()
+        {
+            List<MessageModel> message = new List<MessageModel>();
+            InvController invController = new InvController();
+            message = await invController.messages();
+            if (message == null)
+            {
+                return;
+            }
+            messageGrid.Rows.Clear();
+            foreach (MessageModel messageModel in message)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(messageGrid,
+                    messageModel.messages);
+                messageGrid.Rows.Add(row);
+            }
+        }
         private void ShowContract_Click(object sender, EventArgs e)
         {
             var contractForm = new ShowContract(this);

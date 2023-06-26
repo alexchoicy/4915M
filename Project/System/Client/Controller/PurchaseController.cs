@@ -262,5 +262,31 @@ namespace Client.Controller
             }
             return null;
         }
+        public async Task updateExp(ExpDateUpdate expDate)
+        {
+            var request = new RestRequest("/api/purchase/update", Method.Post)
+            .AddHeader("Authorization", GlobalData.UserInfo.Token)
+            .AddJsonBody(expDate);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(response.Content);
+                if(response.StatusCode == HttpStatusCode.OK)
+                {
+                    MessageBox.Show("Success");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Fail");
+                    return;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

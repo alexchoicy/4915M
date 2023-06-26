@@ -83,7 +83,9 @@ namespace Server.Model.Dto
         public string Type { get; set; }
         public string refAggreNum { get; set; }
         public string supID { get; set; }
+        public string ContractID { get; set; }
         public DateTime date { get; set; } = DateTime.Now;
+        public DateTime expDate { get; set; } = DateTime.Now;
     }
 
     public class PurchaseitemRecord
@@ -93,6 +95,7 @@ namespace Server.Model.Dto
         public string UOM {get;set;}
         public double qty { get; set; }
         public double TotalPrice { get; set; }
+        public string supRefItemID { get; set; }
     }
     public class SpoListDto
     {
@@ -140,5 +143,11 @@ namespace Server.Model.Dto
         public string restId { get; set; }
         public string restName {get;set;}
         public string restAddress { get; set; }
+    }
+
+    public class ExpDateUpdate
+    {
+        public string pid { get; set; }
+        public DateTime expDate { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace Server.Model.Entity
         public DateTime date {get;set;}
         public string supID { get; set; }
         public string ContractID {get;set;}
+        public DateTime ExpDate {get;set;}
         [ForeignKey("supID")]
         public virtual Suppliers suppliers { get; set; }
         [ForeignKey("ContractID")]
