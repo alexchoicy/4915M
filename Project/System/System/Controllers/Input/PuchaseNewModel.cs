@@ -24,6 +24,7 @@ namespace Server.Controllers.Input
         public string refAggreNum { get; set; }
         public string supID { get; set; }
         public DateTime date { get; set; } = DateTime.Now;
+        public string DN { get; set; }
     }
 
     public class itemSumbitModel

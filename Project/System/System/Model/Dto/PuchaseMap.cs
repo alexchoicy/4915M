@@ -84,6 +84,7 @@ namespace Server.Model.Dto
         public string refAggreNum { get; set; }
         public string supID { get; set; }
         public string ContractID { get; set; }
+        public string DNtxt { get; set; }
         public DateTime date { get; set; } = DateTime.Now;
         public DateTime expDate { get; set; } = DateTime.Now;
     }
@@ -149,5 +150,10 @@ namespace Server.Model.Dto
     {
         public string pid { get; set; }
         public DateTime expDate { get; set; }
+    }
+        public class DNoteUpdate
+    {
+        public string pid { get; set; }
+        public string DNtxt { get; set; }
     }
 }

@@ -102,6 +102,7 @@ namespace Client.Model.Receive
         public string ContractID { get; set; }
         public DateTime date { get; set; } = DateTime.Now;
         public DateTime expDate { get; set; }
+        public string DNtxt { get; set; }
     }
 
     public class PurchaseitemRecord

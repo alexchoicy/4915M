@@ -35,13 +35,17 @@ namespace Server.Controllers
                 {
                     return Ok(succdata);
                 }
-                else if (succdata.accountLock != null)
+                else if (result == LoginResult.ToManyTimes || result == LoginResult.LoginLater)
                 {
                     return BadRequest($"Please Login after {succdata.accountLock}");
                 }
-                else
+                else if(result == LoginResult.InvalidCredentials)
                 {
                     return BadRequest("Invalid login credentials");
+                }
+                else
+                {
+                    return BadRequest("error");
                 }
             }
             catch (Exception e)

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\alexchoicy\Desktop\push</_PublishTargetUrl>
+    <History>True|2023-06-26T16:35:51.4035134Z;True|2023-06-25T23:28:07.0376614+08:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="conDB">
+      <Value>server=localhost%3bdatabase=project%3buser=root%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Server.Model.DataContext">
+      <Value>server=localhost%3bdatabase=project%3buser=root%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

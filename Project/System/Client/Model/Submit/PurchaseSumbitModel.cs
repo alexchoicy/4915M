@@ -20,6 +20,7 @@ namespace Client.Model.Submit
         public string refAggreNum { get; set; }
         public string supID { get; set; }
         public DateTime date { get; set; } = DateTime.Now;
+        public string DN { get; set; }
     }
 
     public class itemSumbitModel
@@ -38,5 +39,11 @@ namespace Client.Model.Submit
     {
         public string pid { get; set; }
         public DateTime expDate { get; set; }
+    }
+
+    public class DNoteUpdate
+    {
+        public string pid { get; set; }
+        public string DNtxt { get; set; }
     }
 }

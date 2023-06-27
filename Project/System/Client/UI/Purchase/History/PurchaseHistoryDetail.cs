@@ -43,6 +43,8 @@ namespace Client.UI.Purchase.History
             typeTxt.Text = history.record.Type;
             dateTxt.Text = history.record.date.ToString("d");
             expDatePick.Value = history.record.expDate;
+            DNtxt.Text = history.record.DNtxt;
+            pIDtxt.Text = history.record.pid;
             BindGV();
         }
 
@@ -67,12 +69,12 @@ namespace Client.UI.Purchase.History
         {
             if (history.record.Type == "BPA")
             {
-                Form conDetailForm = new BPADetail(history.record.refAggreNum);
+                Form conDetailForm = new BPADetail(history.record.ContractID);
                 conDetailForm.ShowDialog();
             }
             else
             {
-                Form conDetailForm = new ContractDetail(history.record.refAggreNum);
+                Form conDetailForm = new ContractDetail(history.record.ContractID);
                 conDetailForm.ShowDialog();
             }
         }
@@ -84,17 +86,33 @@ namespace Client.UI.Purchase.History
 
         private async void upBtn_Click(object sender, EventArgs e)
         {
-            if(expDatePick.Value < DateTime.Now)
+
+            if (expDatePick.Value != history.record.expDate)
             {
-                MessageBox.Show("Exp Date Error");
-                return;
+
+                if (expDatePick.Value < DateTime.Now)
+                {
+                    MessageBox.Show("Exp Date Error");
+                    return;
+                }
+                ExpDateUpdate expDate = new ExpDateUpdate
+                {
+                    pid = history.record.pid,
+                    expDate = expDatePick.Value,
+                };
+                await purchaseController.updateExp(expDate);
+
             }
-            ExpDateUpdate expDate = new ExpDateUpdate
+
+            if (DNtxt.Text != history.record.DNtxt)
             {
-                pid = history.record.pid,
-                expDate = expDatePick.Value,
-            };
-            await purchaseController.updateExp(expDate);
+                DNoteUpdate DNote = new DNoteUpdate
+                {
+                    pid = history.record.pid,
+                    DNtxt = DNtxt.Text
+                };
+                await purchaseController.updateDN(DNote);
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Controller;
+using Client.Helper;
 using Client.Model.Receive;
 using Client.UI.Item;
 

@@ -196,7 +196,8 @@ namespace Client.UI.Purchase.Process
                 pid = pID,
                 refAggreNum = refConSupNum,
                 Type = "SPO",
-                supID = _suppliers.SupplierID
+                supID = _suppliers.SupplierID,
+                DN = "Waiting"
             };
             foreach (var item in spogenModel.item)
             {

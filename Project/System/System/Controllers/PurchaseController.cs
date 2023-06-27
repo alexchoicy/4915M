@@ -108,11 +108,24 @@ namespace Server.Controllers
             PPAInfo data = _contractServices.getPPAData(supID);
             return Ok(data);
         }
-        [HttpPost("update")]
+        [HttpPost("updateDate")]
         public IActionResult updateExp([FromBody] ExpDateUpdate update)
         {
             String userID = User.FindFirst(ClaimTypes.Name)?.Value;
             bool status = _purchaseServices.expDateUpdate(update,userID);
+            if (status)
+            {
+                return Ok();
+            }else{
+                return BadRequest();
+            }
+        }
+
+        [HttpPost("updateNote")]
+        public IActionResult updateExp([FromBody] DNoteUpdate dNote)
+        {
+            String userID = User.FindFirst(ClaimTypes.Name)?.Value;
+            bool status = _purchaseServices.DeliveryNoteUpdate(dNote,userID);
             if (status)
             {
                 return Ok();

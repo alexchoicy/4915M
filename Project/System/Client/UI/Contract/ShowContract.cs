@@ -77,16 +77,6 @@ namespace Client.UI.Agreement
                 ContractDataView.Rows.Add(row);
             }
         }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-
-            // Check if the close reason is the user clicking the close button
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                mainForm.Show();
-            }
-        }
 
         private void createContractBtn_Click(object sender, EventArgs e)
         {
@@ -103,7 +93,6 @@ namespace Client.UI.Agreement
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-            mainForm.Show();
         }
 
         private void ContractDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)

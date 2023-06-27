@@ -14,6 +14,7 @@ using Client.UI.Agreement;
 using Client.UI.Item;
 using Client.UI.Purchase;
 using test;
+using Delivery = Client.UI.USFDelivery.Delivery;
 
 namespace Client.UI
 {
@@ -26,6 +27,16 @@ namespace Client.UI
             {
                 showContractBtn.Hide();
                 showPurBtn.Hide();
+            }else if (GlobalData.UserInfo.Department == "Delivery")
+            {
+                showPurBtn.Text = "Purchase History";
+                showPurBtn.Click += showPurHistBtn_Click;
+                showContractBtn.Hide();
+
+            }
+            else
+            {
+                showPurBtn.Click += showPurBtn_Click;
             }
             message();
         }
@@ -36,7 +47,7 @@ namespace Client.UI
             idLabel.Text = GlobalData.UserInfo.StaffID;
             deptLabel.Text = GlobalData.UserInfo.Department;
             posLabel.Text = GlobalData.UserInfo.Position;
-
+            messageGrid.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
         public async void message()
         {
@@ -52,6 +63,7 @@ namespace Client.UI
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(messageGrid,
+                    messageModel.Datetime.ToString("dd/MM/yyyy HH:mm"),
                     messageModel.messages);
                 messageGrid.Rows.Add(row);
             }
@@ -59,14 +71,12 @@ namespace Client.UI
         private void ShowContract_Click(object sender, EventArgs e)
         {
             var contractForm = new ShowContract(this);
-            this.Hide(); 
             contractForm.ShowDialog();
         }
 
         private void ItemControlBtn_Click(object sender, EventArgs e)
         {
             var itemForm = new showItem(this);
-            this.Hide();
             itemForm.ShowDialog();
         }
         private void logoutBtn_Click(object sender, EventArgs e)
@@ -79,11 +89,25 @@ namespace Client.UI
             var restForm = new RestaurantManager(this);
             restForm.ShowDialog();
         }
-
         private void showPurBtn_Click(object sender, EventArgs e)
         {
             var purForm = new ViewPurchase(this);
             purForm.ShowDialog();
+        }
+        private void showPurHistBtn_Click(object sender, EventArgs e)
+        {
+            var purForm = new PurchaseHistory();
+            purForm.ShowDialog();
+        }
+        private void DeBtn_Click(object sender, EventArgs e)
+        {
+            var purForm = new USFDelivery.Delivery();
+            purForm.ShowDialog();
+        }
+
+        private void updateMesBtn_Click(object sender, EventArgs e)
+        {
+            message();
         }
     }
 }

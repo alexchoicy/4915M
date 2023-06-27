@@ -5,5 +5,6 @@ namespace Server.Model.Dto{
         public class Message
     {
         public string messages { get; set; }
+        public DateTime Datetime { get; set; }
     }
 }

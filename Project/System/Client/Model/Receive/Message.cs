@@ -9,5 +9,6 @@ namespace Client.Model.Receive
     public class MessageModel
     {
         public string messages { get; set; }
+        public DateTime Datetime { get; set; }
     }
 }

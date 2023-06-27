@@ -17,6 +17,7 @@ namespace Server.Services
         public List<SpoListDto> getSpoData(List<reqspoModel> itemIds);
         public List<ReqspoModel> getSpConData(string supID);
         public bool expDateUpdate(ExpDateUpdate exp, string staffID);
+        public bool DeliveryNoteUpdate(DNoteUpdate dNote, string staffID);
     }
     public class PurchaseServices : IPurchaseServices
     {
@@ -128,13 +129,16 @@ namespace Server.Services
                 }
                 SumbitDataModel pdata = data.PurchaseData.data;
                 string conID = _dataContext.contract.Where(item => item.refsupNum == pdata.refAggreNum).Select(item => item.ContractID).FirstOrDefault();
+                Console.WriteLine(pdata.DN);
                 purchase newPurchase = new purchase
                 {
                     pID = pdata.pid,
                     date = pdata.date,
                     supID = pdata.supID,
                     Type = pdata.Type,
-                    ContractID = conID
+                    ContractID = conID,
+                    DN = pdata.DN,
+                    ExpDate = DateTime.Now
                 };
                 _dataContext.purchases.Add(newPurchase);
                 _dataContext.SaveChanges();
@@ -182,14 +186,24 @@ namespace Server.Services
         //History
         public List<PurchaseRecord> getRecord()
         {
-            List<PurchaseRecord> data = _dataContext.purchases.OrderBy(item => item.date).ToList().Select(item => new PurchaseRecord
+            try
             {
-                pid = item.pID,
-                date = item.date,
-                supID = item.supID,
-                Type = item.Type
-            }).ToList();
-            return data;
+                List<PurchaseRecord> data = _dataContext.purchases.OrderBy(item => item.date).ToList().Select(item => new PurchaseRecord
+                {
+                    pid = item.pID,
+                    date = item.date,
+                    supID = item.supID,
+                    Type = item.Type,
+                    ContractID = item.ContractID,
+                    DNtxt = item.DN
+                }).ToList();
+                return data;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public History getRecordItem(string pid)
@@ -207,7 +221,9 @@ namespace Server.Services
                   Type = purchase.Type,
                   refAggreNum = contract.refsupNum,
                   ContractID = purchase.ContractID,
-                  expDate = purchase.ExpDate
+                  expDate = purchase.ExpDate,
+                  DNtxt = purchase.DN
+
               }).FirstOrDefault();
             List<PurchaseitemRecord> items = (from item in _dataContext.item_Purchases
                 join itemData in _dataContext.item on item.ItemID equals itemData.ItemID
@@ -268,7 +284,29 @@ namespace Server.Services
                 notificat not = new notificat{
                     restID = restID,
                     Message = "Purchase ID: " + exp.pid + " ExpDate has been updated",
-                    Type = "Delivery"
+                    Type = "Delivery",
+                    Datetime = DateTime.Now
+                };
+                _dataContext.notificat.Add(not);
+                _dataContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public bool DeliveryNoteUpdate(DNoteUpdate dNote, string staffID)
+        {
+            purchase purchase = _dataContext.purchases.FirstOrDefault(item => item.pID == dNote.pid);
+            if (purchase != null)
+            {
+                purchase.DN = dNote.DNtxt;
+                _dataContext.purchases.Update(purchase);
+                _dataContext.SaveChanges();
+                string restID = _dataContext.staff.FirstOrDefault(item => item.StaffID == staffID).RestaurantID;
+                notificat not = new notificat{
+                    restID = restID,
+                    Message = "Purchase ID: " + dNote.pid + " Delivery Note has been updated",
+                    Type = "Delivery",
+                    Datetime = DateTime.Now
                 };
                 _dataContext.notificat.Add(not);
                 _dataContext.SaveChanges();

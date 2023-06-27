@@ -185,7 +185,8 @@ namespace Client.UI.Purchase.Process
                 pid = pid,
                 refAggreNum = refSupConID,
                 Type = "SR",
-                supID = _suppliers.SupplierID
+                supID = _suppliers.SupplierID,
+                DN = "Waiting"
             };
             foreach (var item in srgenModel.item)
             {
@@ -194,7 +195,7 @@ namespace Client.UI.Purchase.Process
                     itemID = item.ItemID,
                     pID = pid,
                     qty = item.qty,
-                    TotalPrice = item.price
+                    TotalPrice = item.price,
                 };
                 sumbit.item.Add(itemData);
             }

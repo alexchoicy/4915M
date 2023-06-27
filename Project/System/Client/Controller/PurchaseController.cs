@@ -264,7 +264,7 @@ namespace Client.Controller
         }
         public async Task updateExp(ExpDateUpdate expDate)
         {
-            var request = new RestRequest("/api/purchase/update", Method.Post)
+            var request = new RestRequest("/api/purchase/updateDate", Method.Post)
             .AddHeader("Authorization", GlobalData.UserInfo.Token)
             .AddJsonBody(expDate);
             try
@@ -273,16 +273,43 @@ namespace Client.Controller
                 Debug.WriteLine(response.Content);
                 if(response.StatusCode == HttpStatusCode.OK)
                 {
-                    MessageBox.Show("Success");
+                    MessageBox.Show("Expected Date Update Successed");
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Fail");
+                    MessageBox.Show("Fail to Update Expected Date");
                     return;
                 }
             }
             catch(Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task updateDN(DNoteUpdate dNote)
+        {
+            var request = new RestRequest("/api/purchase/updateNote", Method.Post)
+                .AddHeader("Authorization", GlobalData.UserInfo.Token)
+                .AddJsonBody(dNote);
+            try
+            {
+                var response = await ApiClient.client.ExecuteAsync(request);
+                Debug.WriteLine(response.Content);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    MessageBox.Show("Delivery Note Update Success");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Fail to Update Delivery Note");
+                    return;
+                }
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;

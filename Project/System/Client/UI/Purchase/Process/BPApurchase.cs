@@ -165,7 +165,7 @@ namespace Client.UI.Purchase
                 pid = pID,
                 refAggreNum = refNum,
                 Type = "BPA",
-                
+                DN = "Waiting",
                 supID = _suppliers.SupplierID
             };
 
