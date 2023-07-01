@@ -22,8 +22,7 @@ namespace Server.Controllers
         public IActionResult GetOrder()
         {
             var userID = User.FindFirst(ClaimTypes.Name)?.Value;
-            IEnumerable<OrderDto> orderData;
-            _ = _orderServices.GetOrder(userID, out orderData);
+            _ = _orderServices.GetOrder(userID, out IEnumerable<OrderDto> orderData);
             return Ok(orderData);
         }
 
@@ -32,6 +31,14 @@ namespace Server.Controllers
         {
             var info = _orderServices.GetOrderInfo(id);
             return Ok(info);
+        }
+
+        [HttpGet("getNewOrderID")]
+        public IActionResult GetNewOrderID()
+        {
+            string RestID = User.FindFirst(ClaimTypes.UserData)?.Value;
+            string newID = _orderServices.GetNewOrderID(RestID);
+            return Ok(newID);
         }
 
 
@@ -63,7 +70,7 @@ namespace Server.Controllers
             var status = _orderServices.DeleteOrder(userID, id);
             if (status == OrderServices.DelReturn.success)
             {
-                return Ok();
+                return Ok("Success");
             }
 
             if (status == OrderServices.DelReturn.Notallow)

@@ -25,6 +25,7 @@ namespace Server.Model.Dto
         public string DeptName { get; set; }
         public string PositionName { get; set; }
         public string RestaurantName { get; set; }
+        public string RestaurantID {get;set;}
         public string password { get; set; }
         public int LoginCount { get; set; }
         public DateTime? AccountLock { get; set; }

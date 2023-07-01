@@ -45,7 +45,7 @@ namespace Server.Model.Entity
         public int id { get; set; }
         public string itemID { get; set; }
         public string orderID { get; set; }
-        public int quantity { get; set; }
+        public double quantity { get; set; }
         [ForeignKey("itemID")]
         public virtual item item { get; set; }
         [ForeignKey("orderID")]

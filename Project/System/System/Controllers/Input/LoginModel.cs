@@ -30,5 +30,6 @@ namespace Server.Controllers.Input
         public string Dept { get; set; }
         public string remark { get; set; }
         public string address { get; set; }
+        public string RestaurantID {get;set;}
     }
 }

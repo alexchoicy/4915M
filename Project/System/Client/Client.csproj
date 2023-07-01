@@ -202,6 +202,7 @@
     <Compile Include="Controller\InvController.cs" />
     <Compile Include="Controller\ItemController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\OrderController.cs" />
     <Compile Include="Controller\PurchaseController.cs" />
     <Compile Include="Controller\RestaurantController.cs" />
     <Compile Include="Controller\ResturantController.cs" />
@@ -214,12 +215,14 @@
     <Compile Include="Helper\PDF\SPOPDF.cs" />
     <Compile Include="Helper\PDF\SRPDF.cs" />
     <Compile Include="Model\Local\BPAGenModel.cs" />
+    <Compile Include="Model\Local\OrderViewModel.cs" />
     <Compile Include="Model\Local\SPOGenModel.cs" />
     <Compile Include="Model\Local\SRGenModel.cs" />
     <Compile Include="Model\Receive\CategoryModel.cs" />
     <Compile Include="Model\Receive\ContractModel.cs" />
     <Compile Include="Model\Receive\ItemModel.cs" />
     <Compile Include="Model\Receive\Message.cs" />
+    <Compile Include="Model\Receive\OrderModel.cs" />
     <Compile Include="Model\Receive\PurchaseModel.cs" />
     <Compile Include="Model\Receive\RestaurantModel.cs" />
     <Compile Include="Model\Receive\SupplierModel.cs" />
@@ -229,6 +232,7 @@
     <Compile Include="Model\Submit\ItemCreateModel.cs" />
     <Compile Include="Model\Submit\ItemEditInv.cs" />
     <Compile Include="Model\Submit\ItemEditModel.cs" />
+    <Compile Include="Model\Submit\OrderSubmitModel.cs" />
     <Compile Include="Model\Submit\PurchaseSumbitModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -316,35 +320,53 @@
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NHS\CreateOrder.cs">
+    <Compile Include="UI\NHS2\CreateOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NHS\CreateOrder.Designer.cs">
+    <Compile Include="UI\NHS2\CreateOrder.designer.cs">
       <DependentUpon>CreateOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NHS\RestaurantManager.cs">
+    <Compile Include="UI\NHS2\EditOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NHS\RestaurantManager.Designer.cs">
+    <Compile Include="UI\NHS2\EditOrder.designer.cs">
+      <DependentUpon>EditOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NHS2\RestaurantManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NHS2\RestaurantManager.designer.cs">
       <DependentUpon>RestaurantManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NHS\RestaurantManager_Requestform.cs">
+    <Compile Include="UI\Order\EditItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NHS\RestaurantManager_Requestform.Designer.cs">
-      <DependentUpon>RestaurantManager_Requestform.cs</DependentUpon>
+    <Compile Include="UI\Order\EditItem.Designer.cs">
+      <DependentUpon>EditItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NHS\Stock_DeliverForm.cs">
+    <Compile Include="UI\Order\AddItemOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NHS\Stock_DeliverForm.Designer.cs">
-      <DependentUpon>Stock_DeliverForm.cs</DependentUpon>
+    <Compile Include="UI\Order\AddItemOrder.Designer.cs">
+      <DependentUpon>AddItemOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NHS\Stock_editform.cs">
+    <Compile Include="UI\Order\CreateOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NHS\Stock_editform.Designer.cs">
-      <DependentUpon>Stock_editform.cs</DependentUpon>
+    <Compile Include="UI\Order\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\OrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\OrderDetail.Designer.cs">
+      <DependentUpon>OrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\ViewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\ViewOrder.Designer.cs">
+      <DependentUpon>ViewOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Purchase\Process\BPApurchase.cs">
       <SubType>Form</SubType>
@@ -457,20 +479,29 @@
     <EmbeddedResource Include="UI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\CreateOrder.resx">
+    <EmbeddedResource Include="UI\NHS2\CreateOrder.resx">
       <DependentUpon>CreateOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\RestaurantManager.resx">
+    <EmbeddedResource Include="UI\NHS2\EditOrder.resx">
+      <DependentUpon>EditOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NHS2\RestaurantManager.resx">
       <DependentUpon>RestaurantManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\RestaurantManager_Requestform.resx">
-      <DependentUpon>RestaurantManager_Requestform.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Order\EditItem.resx">
+      <DependentUpon>EditItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\Stock_DeliverForm.resx">
-      <DependentUpon>Stock_DeliverForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Order\AddItemOrder.resx">
+      <DependentUpon>AddItemOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NHS\Stock_editform.resx">
-      <DependentUpon>Stock_editform.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Order\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\OrderDetail.resx">
+      <DependentUpon>OrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\ViewOrder.resx">
+      <DependentUpon>ViewOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase\Process\BPApurchase.resx">
       <DependentUpon>BPApurchase.cs</DependentUpon>
@@ -530,5 +561,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

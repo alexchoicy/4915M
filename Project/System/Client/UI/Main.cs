@@ -12,8 +12,8 @@ using Client.Helper;
 using Client.Model.Receive;
 using Client.UI.Agreement;
 using Client.UI.Item;
+using Client.UI.Order;
 using Client.UI.Purchase;
-using test;
 using Delivery = Client.UI.USFDelivery.Delivery;
 
 namespace Client.UI
@@ -32,7 +32,7 @@ namespace Client.UI
                 showPurBtn.Text = "Purchase History";
                 showPurBtn.Click += showPurHistBtn_Click;
                 showContractBtn.Hide();
-
+                restBtn.Hide();
             }
             else
             {
@@ -47,6 +47,7 @@ namespace Client.UI
             idLabel.Text = GlobalData.UserInfo.StaffID;
             deptLabel.Text = GlobalData.UserInfo.Department;
             posLabel.Text = GlobalData.UserInfo.Position;
+            restID.Text = GlobalData.UserInfo.RestaurantID;
             messageGrid.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
         public async void message()
@@ -86,7 +87,7 @@ namespace Client.UI
 
         private void restBtn_Click(object sender, EventArgs e)
         {
-            var restForm = new RestaurantManager(this);
+            var restForm = new ViewOrder();
             restForm.ShowDialog();
         }
         private void showPurBtn_Click(object sender, EventArgs e)
@@ -109,5 +110,6 @@ namespace Client.UI
         {
             message();
         }
+
     }
 }

@@ -16,5 +16,6 @@ namespace Client.Model.Receive
         public string Department { get; set; }
         public string address { get; set; }
         public string Remark { get; set; }
+        public string RestaurantID { get; set; }
     }
 }

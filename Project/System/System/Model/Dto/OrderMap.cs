@@ -50,12 +50,13 @@ namespace Server.Model.Dto
         public DateTime CreatedDate { get; set; }
         public TimeSpan CreateTime { get; set; }
         public bool emergency { get; set; }
+        public string remark {get;set;}
         public List<OrderDtoWithItemsData> OrderItems { get; set; }
     }
     public class OrderDtoWithItemsData
     {
         public string ItemID { get; set; }
         public string Name { get; set; }
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
     }
 }

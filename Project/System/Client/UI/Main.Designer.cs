@@ -46,13 +46,16 @@
             this.messageDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeBtn = new System.Windows.Forms.Button();
             this.updateMesBtn = new System.Windows.Forms.Button();
+            this.restID = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.messageGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // showContractBtn
             // 
             this.showContractBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showContractBtn.Location = new System.Drawing.Point(12, 107);
+            this.showContractBtn.Location = new System.Drawing.Point(16, 139);
             this.showContractBtn.Name = "showContractBtn";
             this.showContractBtn.Size = new System.Drawing.Size(192, 85);
             this.showContractBtn.TabIndex = 1;
@@ -63,7 +66,7 @@
             // ItemControlBtn
             // 
             this.ItemControlBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemControlBtn.Location = new System.Drawing.Point(12, 217);
+            this.ItemControlBtn.Location = new System.Drawing.Point(16, 249);
             this.ItemControlBtn.Name = "ItemControlBtn";
             this.ItemControlBtn.Size = new System.Drawing.Size(192, 85);
             this.ItemControlBtn.TabIndex = 2;
@@ -85,7 +88,7 @@
             // 
             this.userLabel.AutoSize = true;
             this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userLabel.Location = new System.Drawing.Point(118, 24);
+            this.userLabel.Location = new System.Drawing.Point(171, 24);
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(64, 25);
             this.userLabel.TabIndex = 4;
@@ -105,7 +108,7 @@
             // 
             this.idLabel.AutoSize = true;
             this.idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(118, 54);
+            this.idLabel.Location = new System.Drawing.Point(171, 54);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(64, 25);
             this.idLabel.TabIndex = 6;
@@ -165,7 +168,7 @@
             // restBtn
             // 
             this.restBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restBtn.Location = new System.Drawing.Point(15, 317);
+            this.restBtn.Location = new System.Drawing.Point(19, 349);
             this.restBtn.Name = "restBtn";
             this.restBtn.Size = new System.Drawing.Size(189, 81);
             this.restBtn.TabIndex = 12;
@@ -176,7 +179,7 @@
             // showPurBtn
             // 
             this.showPurBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showPurBtn.Location = new System.Drawing.Point(15, 415);
+            this.showPurBtn.Location = new System.Drawing.Point(19, 447);
             this.showPurBtn.Name = "showPurBtn";
             this.showPurBtn.Size = new System.Drawing.Size(189, 85);
             this.showPurBtn.TabIndex = 13;
@@ -191,7 +194,7 @@
             this.messageGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DateTimeDGV,
             this.messageDGV});
-            this.messageGrid.Location = new System.Drawing.Point(279, 107);
+            this.messageGrid.Location = new System.Drawing.Point(283, 139);
             this.messageGrid.Name = "messageGrid";
             this.messageGrid.RowHeadersWidth = 62;
             this.messageGrid.RowTemplate.Height = 28;
@@ -215,7 +218,7 @@
             // DeBtn
             // 
             this.DeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeBtn.Location = new System.Drawing.Point(15, 523);
+            this.DeBtn.Location = new System.Drawing.Point(19, 555);
             this.DeBtn.Name = "DeBtn";
             this.DeBtn.Size = new System.Drawing.Size(189, 85);
             this.DeBtn.TabIndex = 15;
@@ -226,7 +229,7 @@
             // updateMesBtn
             // 
             this.updateMesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateMesBtn.Location = new System.Drawing.Point(812, 129);
+            this.updateMesBtn.Location = new System.Drawing.Point(816, 161);
             this.updateMesBtn.Name = "updateMesBtn";
             this.updateMesBtn.Size = new System.Drawing.Size(118, 63);
             this.updateMesBtn.TabIndex = 16;
@@ -234,11 +237,44 @@
             this.updateMesBtn.UseVisualStyleBackColor = true;
             this.updateMesBtn.Click += new System.EventHandler(this.updateMesBtn_Click);
             // 
+            // restID
+            // 
+            this.restID.AutoSize = true;
+            this.restID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restID.Location = new System.Drawing.Point(171, 97);
+            this.restID.Name = "restID";
+            this.restID.Size = new System.Drawing.Size(64, 25);
+            this.restID.TabIndex = 18;
+            this.restID.Text = "label4";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 97);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 25);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Restaurant ID:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 25);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Restaurant ID:";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 727);
+            this.Controls.Add(this.restID);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.updateMesBtn);
             this.Controls.Add(this.DeBtn);
             this.Controls.Add(this.messageGrid);
@@ -283,5 +319,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTimeDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn messageDGV;
         private System.Windows.Forms.Button updateMesBtn;
+        private System.Windows.Forms.Label restID;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

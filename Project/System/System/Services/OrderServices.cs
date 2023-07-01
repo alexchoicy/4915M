@@ -16,6 +16,7 @@ namespace Server.Services
         public bool EditOrder(string staffid, OrderModel orderData);
         public DelReturn DeleteOrder(string staffid, string orderid);
         public OrderDtoWithItems GetOrderInfo(string orderID);
+        public string GetNewOrderID(string restID);
     }
     public class OrderServices : IOrderServices
     {
@@ -34,7 +35,14 @@ namespace Server.Services
                 join order in _dataContext.order on restaurant.RestaurantId equals order.restaurantID
                 join map in _dataContext.mapping on order.mappingID equals map.MappingId
                 where staff.StaffID == staffid
-                select _mapper.Map<OrderDto>(order);
+                select new OrderDto{
+                    OrderID = order.orderID,
+                    status = order.status,
+                    CreateTime = order.time,
+                    CreatedDate = order.date,
+                    emergency = order.emergency,
+                    MapLocked = map.Locked,
+                };
 
             orderData = query;
             return true;
@@ -59,7 +67,9 @@ namespace Server.Services
                 status = orderInfo.status,
                 CreateTime = orderInfo.time,
                 CreatedDate = orderInfo.date,
-                OrderItems = orderData
+                OrderItems = orderData,
+                remark = orderInfo.remark,
+                emergency = orderInfo.emergency
             };
             return orderDataDto;
         }
@@ -118,6 +128,8 @@ namespace Server.Services
                 }
                 existingOrder.date = DateTime.Now.Date;
                 existingOrder.time = DateTime.Now.TimeOfDay;
+                existingOrder.remark = orderData.remark;
+                existingOrder.emergency = orderData.emergency;
                 foreach (var orderitems in orderData.OrderItems)
                 {
                     var existingItemOrder = _dataContext.item_order.FirstOrDefault(item => item.orderID == orderData.OrderId && item.itemID == orderitems.ItemID);
@@ -180,6 +192,25 @@ namespace Server.Services
         public enum DelReturn
         {
             Mapping,Notallow,success
+        }
+        public string GetNewOrderID(string restID)
+        {
+            List<string> oID = _dataContext.order.Where(order => order.restaurantID == restID).Select(order => order.orderID).ToList();
+            int biggest = -1;
+            if(oID.Count == 0){
+                return restID + "0000";
+            }
+            foreach (string orderid in oID)
+            {
+                int id = int.Parse(orderid.Substring(restID.Length));
+                if(id > biggest)
+                {
+                    biggest = id;
+                }
+            }
+            int nextID = biggest + 1;
+            string nextIDString = restID + nextID.ToString().PadLeft(3, '0');
+            return nextIDString;
         }
     }
 }

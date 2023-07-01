@@ -155,9 +155,9 @@ namespace Client.UI.Contract
                 MessageBox.Show("please input number");
                 return;
             }
-            if (qty < 0)
+            if (price < 0)
             {
-                MessageBox.Show("qty need > 0");
+                MessageBox.Show("price need > 0");
                 return;
             }
             acAddItemViewGrid.Rows.Add(acItemTxt.Text, name,price, qty);

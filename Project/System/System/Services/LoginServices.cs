@@ -59,6 +59,7 @@ namespace Server.Services
                                 DeptName = staff.Dept.DeptName,
                                 PositionName = staff.Position.PositionName,
                                 RestaurantName = staff.Restaurant.RestaurantName,
+                                RestaurantID = staff.RestaurantID,
                                 password = ac.password,
                                 LoginCount = ac.LoginCount,
                                 AccountLock = ac.AccountLock,
@@ -89,8 +90,6 @@ namespace Server.Services
                         _dataContext.SaveChanges();
                     }
                 }
-
-                Console.WriteLine(account.LoginCount);
                 if (account.LoginCount >= 5)
                 {
                     if (account != null)
@@ -136,6 +135,7 @@ namespace Server.Services
                 userData.Dept = request.DeptName;
                 userData.remark = request.remark;
                 userData.address = request.address;
+                userData.RestaurantID = request.RestaurantID;
                 data.userData = userData;
 
                 return LoginResult.Success;
