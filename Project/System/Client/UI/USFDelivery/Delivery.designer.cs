@@ -42,9 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Date = new System.Windows.Forms.Label();
             this.tbDate = new System.Windows.Forms.TextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +51,7 @@
             this.deliveryData.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -71,18 +68,19 @@
             this.deliveryDetail});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.deliveryData.DefaultCellStyle = dataGridViewCellStyle2;
-            this.deliveryData.Location = new System.Drawing.Point(169, 163);
+            this.deliveryData.Location = new System.Drawing.Point(11, 125);
+            this.deliveryData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.deliveryData.MultiSelect = false;
             this.deliveryData.Name = "deliveryData";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -90,7 +88,7 @@
             this.deliveryData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.deliveryData.RowHeadersWidth = 51;
             this.deliveryData.RowTemplate.Height = 27;
-            this.deliveryData.Size = new System.Drawing.Size(928, 354);
+            this.deliveryData.Size = new System.Drawing.Size(1038, 323);
             this.deliveryData.TabIndex = 2;
             this.deliveryData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -159,78 +157,46 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("新細明體", 14F);
-            this.label3.Location = new System.Drawing.Point(427, 32);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label3.Location = new System.Drawing.Point(320, 28);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(326, 24);
+            this.label3.Size = new System.Drawing.Size(291, 24);
             this.label3.TabIndex = 5;
             this.label3.Text = "Yummy Restaurant Group Limited";
             // 
             // Date
             // 
             this.Date.AutoSize = true;
-            this.Date.Font = new System.Drawing.Font("新細明體", 14F);
-            this.Date.Location = new System.Drawing.Point(888, 32);
+            this.Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.Date.Location = new System.Drawing.Point(666, 28);
+            this.Date.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(58, 24);
+            this.Date.Size = new System.Drawing.Size(53, 24);
             this.Date.TabIndex = 6;
             this.Date.Text = "Date:";
             this.Date.Click += new System.EventHandler(this.Date_Click);
             // 
             // tbDate
             // 
-            this.tbDate.Font = new System.Drawing.Font("新細明體", 10F);
-            this.tbDate.Location = new System.Drawing.Point(952, 33);
+            this.tbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbDate.Location = new System.Drawing.Point(714, 29);
+            this.tbDate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tbDate.Name = "tbDate";
-            this.tbDate.Size = new System.Drawing.Size(145, 27);
+            this.tbDate.Size = new System.Drawing.Size(110, 23);
             this.tbDate.TabIndex = 7;
             this.tbDate.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("新細明體", 12F);
-            this.linkLabel1.Location = new System.Drawing.Point(12, 163);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(50, 20);
-            this.linkLabel1.TabIndex = 8;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Stock";
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("新細明體", 11F);
-            this.linkLabel2.Location = new System.Drawing.Point(12, 217);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(143, 19);
-            this.linkLabel2.TabIndex = 9;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Purchase Manager";
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Font = new System.Drawing.Font("新細明體", 12F);
-            this.linkLabel3.Location = new System.Drawing.Point(12, 268);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(98, 20);
-            this.linkLabel3.TabIndex = 13;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "View Order";
-            // 
             // Delivery
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 529);
-            this.Controls.Add(this.linkLabel3);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.linkLabel1);
+            this.ClientSize = new System.Drawing.Size(1060, 564);
             this.Controls.Add(this.tbDate);
             this.Controls.Add(this.Date);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.deliveryData);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Delivery";
             this.Text = "Delivery";
             ((System.ComponentModel.ISupportInitialize)(this.deliveryData)).EndInit();
@@ -251,9 +217,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryState;
         private System.Windows.Forms.DataGridViewButtonColumn deliveryDetail;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel3;
     }
 }
 

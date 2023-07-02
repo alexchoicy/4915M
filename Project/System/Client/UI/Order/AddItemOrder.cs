@@ -146,7 +146,7 @@ namespace Client.UI.Order
                 MessageBox.Show("please input number");
                 return;
             }
-            if (qty < 0)
+            if (qty < 1)
             {
                 MessageBox.Show("qty need > 0");
                 return;

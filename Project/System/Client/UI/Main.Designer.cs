@@ -49,6 +49,7 @@
             this.restID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.mapBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.messageGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,7 +158,7 @@
             // logoutBtn
             // 
             this.logoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutBtn.Location = new System.Drawing.Point(683, 671);
+            this.logoutBtn.Location = new System.Drawing.Point(697, 833);
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Size = new System.Drawing.Size(113, 44);
             this.logoutBtn.TabIndex = 11;
@@ -179,7 +180,7 @@
             // showPurBtn
             // 
             this.showPurBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showPurBtn.Location = new System.Drawing.Point(19, 447);
+            this.showPurBtn.Location = new System.Drawing.Point(16, 564);
             this.showPurBtn.Name = "showPurBtn";
             this.showPurBtn.Size = new System.Drawing.Size(189, 85);
             this.showPurBtn.TabIndex = 13;
@@ -218,7 +219,7 @@
             // DeBtn
             // 
             this.DeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeBtn.Location = new System.Drawing.Point(19, 555);
+            this.DeBtn.Location = new System.Drawing.Point(16, 672);
             this.DeBtn.Name = "DeBtn";
             this.DeBtn.Size = new System.Drawing.Size(189, 85);
             this.DeBtn.TabIndex = 15;
@@ -267,11 +268,23 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Restaurant ID:";
             // 
+            // mapBtn
+            // 
+            this.mapBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mapBtn.Location = new System.Drawing.Point(19, 456);
+            this.mapBtn.Name = "mapBtn";
+            this.mapBtn.Size = new System.Drawing.Size(189, 81);
+            this.mapBtn.TabIndex = 19;
+            this.mapBtn.Text = "Mapping";
+            this.mapBtn.UseVisualStyleBackColor = true;
+            this.mapBtn.Click += new System.EventHandler(this.mapBtn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 727);
+            this.ClientSize = new System.Drawing.Size(942, 889);
+            this.Controls.Add(this.mapBtn);
             this.Controls.Add(this.restID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
@@ -322,5 +335,6 @@
         private System.Windows.Forms.Label restID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button mapBtn;
     }
 }

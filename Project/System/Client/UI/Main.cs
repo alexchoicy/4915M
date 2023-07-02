@@ -12,9 +12,10 @@ using Client.Helper;
 using Client.Model.Receive;
 using Client.UI.Agreement;
 using Client.UI.Item;
-using Client.UI.Order;
+using Client.UI.NHS2.Mapping;
 using Client.UI.Purchase;
 using Delivery = Client.UI.USFDelivery.Delivery;
+using ViewOrder = Client.UI.Order.ViewOrder;
 
 namespace Client.UI
 {
@@ -111,5 +112,10 @@ namespace Client.UI
             message();
         }
 
+        private void mapBtn_Click(object sender, EventArgs e)
+        {
+            Form mapForm = new Viewer();
+            mapForm.ShowDialog();
+        }
     }
 }

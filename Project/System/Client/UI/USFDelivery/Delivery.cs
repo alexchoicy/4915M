@@ -16,23 +16,40 @@ namespace Client.UI.USFDelivery
 {
     public partial class Delivery : Form
     {
+        private Timer timer;
         public Delivery()
         {
-            String mysqlCon = "server=127.0.0.1; user=root; database=project; password=";
-            MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
-            try
-            {
-                mySqlConnection.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();
-            }
             InitializeComponent();
+            this.Load += new EventHandler(Delivery_Load);
+            this.FormClosing += new FormClosingEventHandler(Delivery_FormClosing);
+
+            // Initialize the timer
+            timer = new Timer();
+            timer.Interval = 1000; // 1 second
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+        }
+
+        private void Delivery_Load(object sender, EventArgs e)
+        {
+            // Call the dataGridView1_CellContentClick_1 method to populate the DataGridView
+            dataGridView1_CellContentClick_1(null, null);
+
+            // Set the current date and time in the TextBox control
+            tbDate.Text = DateTime.Now.ToString("HH:m zzz");
+        }
+
+        private void Delivery_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Stop the timer when the form is closing
+            timer.Stop();
+            timer.Dispose();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            // Update the text in the TextBox control with the current date and time
+            tbDate.Text = DateTime.Now.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,22 +76,30 @@ namespace Client.UI.USFDelivery
                 deliveryData.Refresh();
             }
 
-            if (deliveryData.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            try
             {
-                // get the value of the clicked cell
-                DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)deliveryData.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                string buttonCellValue = buttonCell.Value.ToString();
-
-                // perform some action based on the button value
-                if (buttonCellValue == "Detail")
+                if (e != null && e.RowIndex >= 0 && e.ColumnIndex == 6)
                 {
-                    // Get the orderID of the selected row
-                    string orderID = deliveryData.Rows[e.RowIndex].Cells["orderID"].Value.ToString();
+                    // get the value of the clicked cell
+                    DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)deliveryData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    string buttonCellValue = buttonCell.Value.ToString();
 
-                    Form DeliveryDetail = new DeliveryDetail(orderID);
-                    DeliveryDetail.ShowDialog();
-                    var Delivery = new Delivery();
+                    // perform some action based on the button value
+                    if (buttonCellValue == "Detail")
+                    {
+                        // Get the orderID of the selected row
+                        string orderID = deliveryData.Rows[e.RowIndex].Cells["orderID"].Value.ToString();
+
+                        Form DeliveryDetail = new DeliveryDetail(orderID);
+                        DeliveryDetail.ShowDialog();
+                        var Delivery = new Delivery();
+                    }
                 }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
             }
         }
 

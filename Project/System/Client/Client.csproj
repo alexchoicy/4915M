@@ -332,6 +332,36 @@
     <Compile Include="UI\NHS2\EditOrder.designer.cs">
       <DependentUpon>EditOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\NHS2\Mapping\MapItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\MapItem.designer.cs">
+      <DependentUpon>MapItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\Viewer.designer.cs">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\ViewItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\ViewItem.designer.cs">
+      <DependentUpon>ViewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\ViewMapping.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\ViewMapping.designer.cs">
+      <DependentUpon>ViewMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\ViewOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NHS2\Mapping\ViewOrder.designer.cs">
+      <DependentUpon>ViewOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NHS2\RestaurantManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -484,6 +514,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NHS2\EditOrder.resx">
       <DependentUpon>EditOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NHS2\Mapping\MapItem.resx">
+      <DependentUpon>MapItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NHS2\Mapping\Viewer.resx">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NHS2\Mapping\ViewItem.resx">
+      <DependentUpon>ViewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NHS2\Mapping\ViewMapping.resx">
+      <DependentUpon>ViewMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NHS2\Mapping\ViewOrder.resx">
+      <DependentUpon>ViewOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NHS2\RestaurantManager.resx">
       <DependentUpon>RestaurantManager.cs</DependentUpon>

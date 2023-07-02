@@ -12,6 +12,9 @@ namespace Client.UI.USFDelivery
         {
             InitializeComponent();
             OrderID = orderID;
+
+            // Add event handlers for the Load event of the form
+            this.Load += new EventHandler(DeliveryDetail_Load);
         }
 
         public string OrderID { get; set; }
@@ -19,6 +22,33 @@ namespace Client.UI.USFDelivery
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DeliveryDetail_Load(object sender, EventArgs e)
+        {
+            // Call the dataGridView1_CellContentClick method to populate the DataGridView
+            dataGridView1_CellContentClick(null, null);
+
+            // Call the tbDeliveryID_TextChanged method to populate the TextBox control
+            tbDeliveryID_TextChanged(null, null);
+
+            // Call the tbResturantID_TextChanged method to populate the TextBox control
+            tbResturantID_TextChanged(null, null);
+
+            // Call the tbSupplierssupID_TextChanged method to populate the TextBox control
+            tbSupplierssupID_TextChanged(null, null);
+
+            // Call the tbDeliveryDate_TextChanged method to populate the TextBox control
+            tbDeliveryDate_TextChanged(null, null);
+
+            // Call the tbDeliveryT_TextChanged method to populate the TextBox control
+            tbDeliveryT_TextChanged(null, null);
+
+            // Call the tbResturant_TextChanged method to populate the TextBox control
+            tbResturant_TextChanged(null, null);
+
+            // Call the tbAddress_TextChanged method to populate the TextBox control
+            tbAddress_TextChanged(null, null);
         }
 
         private void Form1_Load(object sender, EventArgs e)
